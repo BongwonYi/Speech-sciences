@@ -1,0 +1,258 @@
+<meta charset="utf-8">
+<title>말과학 · 15주 강의자료</title>
+<style>
+:root{
+  --bg:#fbfaf8; --surface:#fff; --surface2:#f4f2ee; --ink:#1c1f26; --ink2:#3d434f;
+  --muted:#6b7280; --line:#e3e0da; --line2:#d5d1c9; --accent:#0f6f6a; --lab:#b4451f;
+  --warn:#a8620d;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161a; --surface:#1b1e24; --surface2:#22262d; --ink:#e8e6e1; --ink2:#c3c7ce;
+  --muted:#9aa1ad; --line:#2c3138; --line2:#3a4048; --accent:#4db6ac; --lab:#e88a5c;
+  --warn:#d9a441;
+}}
+:root[data-theme="dark"]{
+  --bg:#14161a; --surface:#1b1e24; --surface2:#22262d; --ink:#e8e6e1; --ink2:#c3c7ce;
+  --muted:#9aa1ad; --line:#2c3138; --line2:#3a4048; --accent:#4db6ac; --lab:#e88a5c;
+  --warn:#d9a441;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px 90px}
+header{background:var(--surface);border-bottom:1px solid var(--line);
+  padding:42px 22px 34px;margin-bottom:34px}
+header .in{max-width:1000px;margin:0 auto}
+.crumb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:10px}
+h1{margin:0 0 12px;font-size:31px;letter-spacing:-.02em;line-height:1.3}
+.sub{margin:0;color:var(--ink2);font-size:15.5px;max-width:72ch}
+.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface2);border:1px solid var(--line);border-radius:999px;
+  padding:5px 13px;font-size:12.5px;color:var(--ink2)}
+.chip b{color:var(--ink)}
+h2{font-size:20px;margin:44px 0 6px;padding-bottom:9px;border-bottom:2px solid var(--line2);
+  letter-spacing:-.01em}
+h2 .n{color:var(--accent);font-weight:700;margin-right:9px}
+.hint{color:var(--muted);font-size:13.5px;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:13px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:11px;
+  padding:15px 17px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card .wk{font-size:11.5px;letter-spacing:.1em;font-weight:700;color:var(--accent);
+  text-transform:uppercase}
+.card h3{margin:5px 0 7px;font-size:16px;letter-spacing:-.01em}
+.card p{margin:0 0 11px;font-size:13px;color:var(--muted);line-height:1.62}
+.card .links{display:flex;gap:7px;flex-wrap:wrap}
+a.btn{display:inline-block;font-size:12.5px;text-decoration:none;padding:5px 11px;
+  border-radius:7px;border:1px solid var(--line2);color:var(--ink2);background:var(--surface2)}
+a.btn:hover{border-color:var(--accent);color:var(--accent)}
+a.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+a.btn.pri:hover{opacity:.87;color:#fff}
+.exam{border-left:3px solid var(--lab)}
+.exam .wk{color:var(--lab)}
+.box{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:9px;padding:16px 19px;margin:22px 0}
+.box .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+  color:var(--accent);margin-bottom:8px}
+.box p{margin:0 0 9px;font-size:14px;color:var(--ink2)}
+.box p:last-child{margin-bottom:0}
+.box.warn{border-left-color:var(--warn)}
+.box.warn .lb{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0}
+th,td{padding:8px 11px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink2)}
+th{background:var(--surface2);font-weight:700;color:var(--ink);font-size:12.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px}
+code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+
+<header><div class="in">
+  <div class="crumb">실습 중심 개편 · 2026</div>
+  <h1>말과학 — 15주 강의자료</h1>
+  <p class="sub">Praat과 Parselmouth로 <strong>직접 재고 확인하는</strong> 실습 중심 강의.
+     각 주차는 이론과 실습이 한 페이지에 들어 있고, 페이지 안의 모든 수치는
+     <strong>실제로 합성하고 되분석해 확인한 값</strong>이다.</p>
+  <div class="meta">
+    <span class="chip"><b>15</b>주차</span>
+    <span class="chip">주당 <b>이론 60분 + 실습 120분</b></span>
+    <span class="chip">바이브 코딩 미션 <b>12</b>회</span>
+    <span class="chip">✓ 검증 <b>40</b>곳</span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<div class="box">
+  <div class="lb">쓰는 법</div>
+  <p><strong>각 페이지는 파일 하나로 완결된다.</strong> 소리와 그림이 전부 안에 들어 있어
+     인터넷 없이도 열리고, 학생에게 파일만 보내면 된다.</p>
+  <p>페이지 안에서 <strong>▾ 상세 전부 펼치기</strong>로 접힌 내용을 한 번에 열 수 있고,
+     <strong>◐ 화면 밝기 전환</strong>으로 밝게/어둡게 바꿀 수 있다.
+     실습 체크박스는 <strong>브라우저에 저장</strong>되어 다시 열어도 남아 있다.</p>
+  <p><strong>§ 번호</strong>는 수업 중 “§2.3 보세요”로 위치를 맞추기 위한 것이다.</p>
+</div>
+
+<h2><span class="n">Ⅰ</span>소리와 신호의 기초</h2>
+<p class="hint">1–4주차 · 말소리를 다루기 전에 소리 자체를 다룬다</p>
+<div class="grid">
+
+<div class="card"><div class="wk">1주차</div>
+<h3>말과학과 디지털 오디오</h3>
+<p>말 사슬 · 구성개념과 측정치 · 조작적 정의 · 표본화와 나이퀴스트 · 양자화 · 클리핑</p>
+<div class="links"><a class="btn pri" href="malgwahak_week01.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/bd331097-fa7b-4766-973b-7316386d65a4">웹</a></div></div>
+
+<div class="card"><div class="wk">2주차</div>
+<h3>소리의 물리 Ⅰ — 진동과 파동</h3>
+<p>훅의 법칙 · 단순조화운동 · 고유진동수 · 종파와 횡파 · 압력파 · 음속 · v = f λ</p>
+<div class="links"><a class="btn pri" href="malgwahak_week02.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/87abdab2-c41b-4948-ba58-61cc39a09639">웹</a></div></div>
+
+<div class="card"><div class="wk">3주차</div>
+<h3>소리의 물리 Ⅱ — 파동의 행동과 크기</h3>
+<p>중첩과 간섭 · 맥놀이 · 반사와 회절 · 정상파 · 관 공명 1:3:5 · 데시벨 · 등청감곡선</p>
+<div class="links"><a class="btn pri" href="malgwahak_week03.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/e95f03a9-782f-43d9-8da1-44e32ca5abdf">웹</a></div></div>
+
+<div class="card"><div class="wk">4주차</div>
+<h3>복합파와 푸리에 분석</h3>
+<p>주기파와 비주기파 · 부분음·조화음·상음 · 푸리에 정리 · 주파수 해상도 · 협대역과 광대역</p>
+<div class="links"><a class="btn pri" href="malgwahak_week04.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/b973260e-a632-4a59-adb2-da6e47214663">웹</a></div></div>
+
+</div>
+
+<h2><span class="n">Ⅱ</span>말소리의 산출 — 음원</h2>
+<p class="hint">5–7주차 · 음원-필터 이론을 세우고 음원 쪽을 파고든다</p>
+<div class="grid">
+
+<div class="card"><div class="wk">5주차</div>
+<h3>성도 공명과 음원-필터 이론</h3>
+<p>대역폭과 Q · 성도는 한쪽 열린 관 · 500·1500·2500 Hz · 섭동 이론 · 음원과 필터의 독립성</p>
+<div class="links"><a class="btn pri" href="malgwahak_week05.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/646e6d31-8838-4b21-b411-af343ee213c6">웹</a></div></div>
+
+<div class="card"><div class="wk">6주차</div>
+<h3>호흡과 발성, 그리고 음역</h3>
+<p>폐용적 · 성문하압 · 근탄성-공기역학 이론 · 발성 유형 · 성구 · MPT와 s/z · 반음 척도 · VRP</p>
+<div class="links"><a class="btn pri" href="malgwahak_week06.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/aa631f71-ac57-416c-9f1d-0d835b205357">웹</a></div></div>
+
+<div class="card"><div class="wk">7주차</div>
+<h3>음원 계측과 청지각 평가</h3>
+<p>F0 추출 설정 · jitter와 shimmer · 신호 유형 · HNR과 CPP · GRBAS와 CAPE-V · 신뢰도</p>
+<div class="links"><a class="btn pri" href="malgwahak_week07.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/a2d8b17a-0766-408b-8a03-17526c0339bc">웹</a></div></div>
+
+<div class="card exam"><div class="wk">8주차 · 시험</div>
+<h3>중간 실기시험</h3>
+<p>1–7주차 전 범위 · <strong>모의고사 음원 7종과 설정별 정답표</strong> · 환경 점검 스크립트 · 흔한 실패</p>
+<div class="links"><a class="btn pri" href="malgwahak_week08.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/caedd7e8-7154-41e2-8334-3e17210f2f97">웹</a></div></div>
+
+</div>
+
+<h2><span class="n">Ⅲ</span>말소리의 산출 — 필터</h2>
+<p class="hint">9–12주차 · 조음이 만드는 소리를 분절음부터 초분절까지</p>
+<div class="grid">
+
+<div class="card"><div class="wk">9주차</div>
+<h3>모음과 포먼트</h3>
+<p>모음 사각도 · 이중모음 · LPC와 max formant · 정규화(Lobanov) · VSA와 FCR · Pillai 합류 판정 · TextGrid</p>
+<div class="links"><a class="btn pri" href="malgwahak_week09.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/0e36afff-d956-499d-be8e-310b14dcad2a">웹</a></div></div>
+
+<div class="card"><div class="wk">10주차</div>
+<h3>파열음과 한국어 삼중대립</h3>
+<p>VOT · <strong>포먼트 전이와 locus</strong> · velar pinch · 평음·경음·격음 · VOT 병합과 성조 발생 · 병합의 정량화</p>
+<div class="links"><a class="btn pri" href="malgwahak_week10.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/506969f1-52f3-493a-8fc4-a87c6122d3d7">웹</a></div></div>
+
+<div class="card"><div class="wk">11주차</div>
+<h3>마찰음과 공명자음</h3>
+<p>난류 소음 · 스펙트럼 모멘트와 COG · 전처리 민감도 · 계수 효과 · 비음과 안티포먼트 · 유음</p>
+<div class="links"><a class="btn pri" href="malgwahak_week11.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/8d5a199b-f562-41d7-8c00-35c39bfbf4be">웹</a></div></div>
+
+<div class="card"><div class="wk">12주차</div>
+<h3>초분절 요소</h3>
+<p>억양과 운율 구조 · 말 리듬과 리듬 지표 · 말속도와 조음속도 · 쉼 임계값 · 음절핵 검출 · DDK</p>
+<div class="links"><a class="btn pri" href="malgwahak_week12.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/e13e1a0e-6a3e-4b6f-983a-a1fec4fb55fb">웹</a></div></div>
+
+</div>
+
+<h2><span class="n">Ⅳ</span>지각과 종합</h2>
+<p class="hint">13–15주차 · 말 사슬의 마지막 고리를 지나 학기를 닫는다</p>
+<div class="grid">
+
+<div class="card"><div class="wk">13주차</div>
+<h3>말소리 지각</h3>
+<p>말초 청각과 임계대역 · 범주적 지각의 두 조건 · 예측 판별 · 불변성 문제 · 말 명료도와 소음 속 지각</p>
+<div class="links"><a class="btn pri" href="malgwahak_week13.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/8412e1b0-e3ce-4593-84be-9dd61fd26873">웹</a></div></div>
+
+<div class="card"><div class="wk">14주차</div>
+<h3>트랙별 프로젝트 워크숍</h3>
+<p>연구 윤리와 재현성 · 질문 좁히기 · <strong>표본 크기의 현실</strong> · z점수의 함정 · 임상 트랙 · 연구 트랙</p>
+<div class="links"><a class="btn pri" href="malgwahak_week14.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/0bc71981-03e5-484b-a3fb-b4a4f847245b">웹</a></div></div>
+
+<div class="card"><div class="wk">15주차</div>
+<h3>발표 및 종합</h3>
+<p>프로젝트 발표 · 동료 평가 · 말 사슬 다시 그리기 · <strong>관통하는 네 원리</strong> · 학기 검증 목록</p>
+<div class="links"><a class="btn pri" href="malgwahak_week15.html">열기</a>
+<a class="btn" href="https://claude.ai/code/artifact/c20baa82-67df-4bc2-8744-a6116c9c70cf">웹</a></div></div>
+
+</div>
+
+<h2><span class="n">Ⅴ</span>이 자료의 원칙</h2>
+
+<div class="box">
+  <div class="lb">✓ 검증이 붙은 수치는 실제로 재본 값이다</div>
+  <p>페이지 곳곳의 <strong>✓ 검증</strong> 표시는 문헌에서 옮겨 적은 값이 아니라
+     <strong>합성하고 되분석해 확인한 수치</strong>라는 뜻이다. 학기 전체에 <strong>40곳</strong>이 있다.</p>
+  <p>절반은 “잘 맞는다”이고 절반은 “크게 틀린다”이다. 그것이 정직한 그림이고,
+     <strong>도구가 조용히 틀리는 지점</strong>을 학생에게 보여주는 것이 이 수업의 방식이다.</p>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th>관통하는 네 원리</th><th>어디서 반복되나</th></tr></thead>
+<tbody>
+<tr><td><strong>① 측정은 정의와 설정의 함수다</strong></td><td>1·3·4·6·7·9·11·12·13·14주차 — <strong>열 번</strong></td></tr>
+<tr><td><strong>② 음원과 필터는 나뉜다</strong></td><td>5주차의 틀이 6–7주(음원)와 9–11주(필터)를 갈랐다</td></tr>
+<tr><td><strong>③ 숫자는 지각을 대신하지 못한다</strong></td><td>7주차의 결론이자 이 수업의 윤리적 입장</td></tr>
+<tr><td><strong>④ 지표는 값을 주지만 경계는 주지 않는다</strong></td><td>7·9·10·11·13·14주차가 같은 벽에 부딪힌다</td></tr>
+</tbody></table></div>
+
+<div class="box warn">
+  <div class="lb">바이브 코딩에 대해</div>
+  <p>학기 내내 <strong>12개의 미션</strong>에서 AI에게 코드를 시킨다. 금지하지 않는다.
+     대신 <strong>받은 코드의 결과가 맞는지 판단하는 법</strong>을 가르친다.</p>
+  <p>각 미션에는 <strong>확인 방법</strong>이 붙어 있다 — “/이/를 넣으면 F1이 300 근처로 나와야 한다”처럼.
+     AI가 자주 틀리는 여섯 지점은 15주차 §3.4에 정리되어 있고,
+     <strong>여섯 가지 모두 코드가 오류를 내지 않는다.</strong> 그냥 틀린 값을 준다.</p>
+</div>
+
+<div class="box">
+  <div class="lb">함께 쓰는 바깥 자료</div>
+  <p><strong>2–4주차</strong> — Physics Classroom(튜토리얼·Concept Builder·CalcPad)과
+     PhET(Sound Waves · Wave Interference · <strong>Fourier: Making Waves</strong>)</p>
+  <p><strong>5–7주차</strong> — <strong>NCVS Tutorials</strong>(Titze 교재에 대응하는 무료 미니 강의),
+     <strong>Pink Trombone</strong>(브라우저 성도 시뮬레이터), <strong>Seeing Speech</strong>(IPA 조음 MRI 영상)</p>
+  <p>주차별 배치는 <code>실습강의계획/바깥자료_연계표.md</code>에 정리되어 있다.</p>
+</div>
+
+<footer>
+  <p><strong>말과학 15주 강의자료</strong> · 2026년 개편판</p>
+  <p style="margin-top:6px">각 파일은 단독으로 열린다. 인터넷 연결이 없어도 소리와 그림이 모두 재생된다.<br>
+     “웹” 버튼은 온라인 판으로, 링크를 아는 사람과 공유할 수 있다.</p>
+  <p style="margin-top:12px;color:var(--accent);font-weight:700">
+     “이 값이 맞는지 당신은 어떻게 아는가?”</p>
+</footer>
+</div>

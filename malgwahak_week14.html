@@ -1,0 +1,516 @@
+<meta charset="utf-8">
+<title>말과학 14주차</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--surface2:#f4f2ec;--ink:#1c1f26;--ink2:#3d4550;--muted:#6b7480;
+--line:#e4e0d7;--line2:#d3cec3;--accent:#0f6f6a;--accent-soft:#e3f0ee;--accent-line:#9fcbc6;
+--warn:#b4451f;--warn-soft:#fbeee7;--warn-line:#e8bda6;--lab:#3b4fc4;--lab-soft:#eaecfb;--lab-line:#b9c1ee;
+--figbg:#fff;--shadow:0 1px 2px rgba(28,31,38,.05),0 4px 14px rgba(28,31,38,.05)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161a;--surface:#1b1e24;--surface2:#22262e;
+--ink:#e9e7e2;--ink2:#c7cbd2;--muted:#98a1ac;--line:#2c313a;--line2:#3a4049;--accent:#5cc9c0;--accent-soft:#14302e;
+--accent-line:#2f5d59;--warn:#e79268;--warn-soft:#33211a;--warn-line:#6b4331;--lab:#8ba3f7;--lab-soft:#1b2140;
+--lab-line:#39447a;--figbg:#f4f3ef;--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}}
+:root[data-theme="dark"]{--bg:#14161a;--surface:#1b1e24;--surface2:#22262e;--ink:#e9e7e2;--ink2:#c7cbd2;
+--muted:#98a1ac;--line:#2c313a;--line2:#3a4049;--accent:#5cc9c0;--accent-soft:#14302e;--accent-line:#2f5d59;
+--warn:#e79268;--warn-soft:#33211a;--warn-line:#6b4331;--lab:#8ba3f7;--lab-soft:#1b2140;--lab-line:#39447a;
+--figbg:#f4f3ef;--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK KR","Nanum Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+font-size:16px;line-height:1.8;letter-spacing:-.003em;-webkit-font-smoothing:antialiased}
+code,kbd,pre,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,"D2Coding","Malgun Gothic",monospace}
+.top{border-bottom:1px solid var(--line);background:var(--surface);padding:34px 24px 26px}
+.top-in{max-width:1180px;margin:0 auto}
+.crumb{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.top h1{margin:.35em 0 .1em;font-size:clamp(26px,4.2vw,40px);line-height:1.22;letter-spacing:-.02em;font-weight:700}
+.sub{color:var(--muted);font-size:15.5px;margin:0 0 20px;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.lab{background:var(--lab-soft);border-color:var(--lab-line);color:var(--lab)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:238px minmax(0,1fr);gap:52px}
+nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:30px 0 60px}
+nav.toc .tt{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px}
+nav.toc a{display:block;padding:5px 10px 5px 12px;color:var(--muted);text-decoration:none;font-size:13.5px;line-height:1.45;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+nav.toc a:hover{color:var(--ink);background:var(--surface2)}
+nav.toc a.lv1{font-weight:600;color:var(--ink2);margin-top:12px}
+nav.toc a.lv2{padding-left:22px;font-size:12.8px}
+nav.toc a.on{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft)}
+nav.toc .tools{margin:18px 0 6px;display:flex;flex-direction:column;gap:7px}
+.btn{font:inherit;font-size:12.6px;font-weight:500;cursor:pointer;background:var(--surface);color:var(--ink2);border:1px solid var(--line2);border-radius:7px;padding:7px 10px;text-align:left;transition:.13s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+main{padding:34px 0 110px;min-width:0}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;gap:0;padding:0 18px}
+nav.toc{position:static;max-height:none;padding:16px 0 0;border-bottom:1px solid var(--line)}
+nav.toc .list{display:none}nav.toc.open .list{display:block}.mobtoc{display:block!important}main{padding-top:24px}}
+.mobtoc{display:none;width:100%;margin-bottom:12px}
+section{scroll-margin-top:14px;margin-bottom:16px}
+h2.sec{display:flex;align-items:baseline;gap:14px;margin:56px 0 8px;font-size:clamp(21px,2.8vw,27px);letter-spacing:-.02em;line-height:1.3;font-weight:700;padding-top:22px;border-top:2px solid var(--ink)}
+h2.sec .num{font-size:14px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
+h2.sec.labsec{border-top-color:var(--lab)}h2.sec.labsec .num{color:var(--lab)}
+.sechint{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+h3{margin:38px 0 10px;font-size:17.5px;font-weight:700;letter-spacing:-.012em;line-height:1.45}
+h3 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:9px;font-size:15px}
+h4{margin:24px 0 6px;font-size:15px;font-weight:700;color:var(--ink2)}
+p{margin:0 0 14px;color:var(--ink2)}
+main strong{color:var(--ink);font-weight:600}
+ul,ol{margin:0 0 15px;padding-left:1.35em;color:var(--ink2)}
+li{margin-bottom:7px}li::marker{color:var(--muted)}
+a.ext{color:var(--accent);text-decoration:underline;text-underline-offset:2.5px}
+.goal{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:11px;padding:20px 22px;margin:0 0 30px}
+.goal .lb{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:9px}
+.goal ol{margin:0;padding-left:1.25em;color:var(--ink2)}
+.key{border-left:3px solid var(--accent);background:var(--surface);padding:15px 18px;margin:22px 0;border-radius:0 9px 9px 0;box-shadow:var(--shadow)}
+.key .lb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:5px}
+.key p:last-child{margin-bottom:0}
+.warn{border-left:3px solid var(--warn);background:var(--warn-soft);padding:15px 18px;margin:22px 0;border-radius:0 9px 9px 0}
+.warn .lb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--warn);margin-bottom:5px}
+.warn p:last-child{margin-bottom:0}
+.verified{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);padding:3px 9px;border-radius:999px;margin-bottom:10px}
+details.more{margin:16px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+details.more>summary{cursor:pointer;list-style:none;padding:12px 17px;font-size:14px;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:9px;user-select:none}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"+";font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:15px;width:15px;flex:none;text-align:center}
+details.more[open]>summary::before{content:"−"}
+details.more>summary:hover{background:var(--surface2)}
+details.more[open]>summary{border-bottom:1px solid var(--line);background:var(--surface2)}
+.more-body{padding:18px 19px 6px}.more-body>:last-child{margin-bottom:14px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:440px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+thead th{background:var(--surface2);font-weight:700;color:var(--ink);font-size:12.5px;white-space:nowrap;border-bottom:1px solid var(--line2)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+td strong{color:var(--ink)}.hl{color:var(--warn);font-weight:600}.ok{color:var(--accent);font-weight:600}
+.codewrap{position:relative;margin:18px 0}
+.codewrap .cap{font-size:12px;font-weight:600;color:var(--muted);padding:0 0 7px;display:flex;align-items:center;gap:8px}
+.codewrap .cap .tag{background:var(--surface2);border:1px solid var(--line);border-radius:5px;padding:2px 7px;font-size:11px;text-transform:uppercase;color:var(--ink2)}
+pre{margin:0;background:var(--surface2);border:1px solid var(--line);border-radius:9px;padding:15px 17px;overflow-x:auto;font-size:13px;line-height:1.62;color:var(--ink)}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+p code,li code,td code{background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.875em;color:var(--ink)}
+.copy{position:absolute;top:26px;right:9px;font:inherit;font-size:11.5px;font-weight:600;background:var(--surface);border:1px solid var(--line2);color:var(--muted);border-radius:6px;padding:4px 9px;cursor:pointer;opacity:0;transition:.14s}
+.codewrap:hover .copy,.copy:focus{opacity:1}
+.copy:hover,.copy.done{color:var(--accent);border-color:var(--accent)}.copy.done{opacity:1}
+.demo{border:1px solid var(--line);border-radius:11px;background:var(--surface);padding:17px 19px;margin:20px 0;box-shadow:var(--shadow)}
+.demo .dh{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.demo .dh .ic{width:21px;height:21px;flex:none;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:10.5px;font-weight:700}
+.demo .dh h4{margin:0;font-size:14.5px;color:var(--ink)}
+.demo>p{font-size:14px;margin:6px 0 13px}
+.arow{display:grid;grid-template-columns:minmax(115px,auto) minmax(0,1fr);gap:11px 15px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.arow:first-of-type{border-top:0}
+.arow .lbl{font-size:13px;font-weight:600;color:var(--ink)}
+.arow .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;line-height:1.4}
+.arow audio{width:100%;height:34px}.arow.bad .lbl{color:var(--warn)}
+@media(max-width:560px){.arow{grid-template-columns:1fr;gap:5px}}
+figure{margin:24px 0}
+.figbox{background:var(--figbg);border:1px solid var(--line);border-radius:10px;padding:11px;overflow-x:auto}
+.figbox img{display:block;width:100%;min-width:430px;height:auto;border-radius:4px}
+figcaption{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.6}
+figcaption b{color:var(--ink2)}
+.svgbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 14px;overflow-x:auto}
+.svgbox svg{display:block;width:100%;min-width:430px;height:auto}
+.steps{counter-reset:st;list-style:none;padding:0;margin:22px 0}
+.steps>li{counter-increment:st;position:relative;padding:0 0 0 46px;margin-bottom:26px}
+.steps>li::before{content:counter(st);position:absolute;left:0;top:1px;width:29px;height:29px;border-radius:8px;background:var(--lab-soft);border:1px solid var(--lab-line);color:var(--lab);display:grid;place-items:center;font-size:13px;font-weight:700}
+.steps>li>.st{font-weight:700;color:var(--ink);display:block;margin-bottom:5px;font-size:15.5px;padding-top:2px}
+.chk{list-style:none;padding:0;margin:14px 0}
+.chk li{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;font-size:14px}
+.chk input{margin-top:5px;flex:none;accent-color:var(--lab);width:15px;height:15px;cursor:pointer}
+.chk label{cursor:pointer;color:var(--ink2)}
+.chk input:checked+label{color:var(--muted);text-decoration:line-through}
+.mission{border:1px solid var(--lab-line);background:var(--lab-soft);border-radius:11px;padding:19px 21px;margin:26px 0}
+.mission .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--lab);margin-bottom:8px}
+.mission h4{margin:0 0 9px;font-size:16px;color:var(--ink)}
+.mission .prompt{background:var(--surface);border:1px solid var(--lab-line);border-radius:8px;padding:13px 15px;font-size:13.5px;color:var(--ink2);margin:12px 0;line-height:1.68}
+.mission p:last-child{margin-bottom:0}
+.formula{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:17px 19px;margin:20px 0;font-family:"JetBrains Mono",monospace;font-size:13.5px;line-height:2.05;color:var(--ink);overflow-x:auto}
+.formula .lbl{color:var(--accent);font-weight:600}
+.qa{border-top:1px solid var(--line);padding:17px 0}.qa:last-child{border-bottom:1px solid var(--line)}
+.qa .q{font-weight:700;color:var(--ink);margin-bottom:6px;font-size:14.8px}
+.qa .a{color:var(--ink2);font-size:14.3px;margin:0}
+footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
+@media print{nav.toc,.copy,.tools{display:none}.wrap{display:block}details.more{page-break-inside:avoid}details.more>summary::before{content:""}}
+</style>
+<style>
+.extres{border:1px solid var(--lab-line);background:var(--lab-soft);border-radius:11px;padding:17px 19px;margin:24px 0}
+.extres .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--lab);margin-bottom:10px}
+.extres table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:0}
+.extres td{padding:7px 10px 7px 0;border-bottom:1px solid var(--lab-line);vertical-align:top;color:var(--ink2)}
+.extres tr:last-child td{border-bottom:0}
+.extres td.k{white-space:nowrap;width:1%;font-weight:700;color:var(--lab);padding-right:16px}
+.extres td.k small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.extres a{color:var(--lab);text-decoration:underline;text-underline-offset:2.5px;font-weight:600}
+.extres .why{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.term{border-bottom:1px dotted var(--muted);cursor:help}
+</style>
+
+<header class="top"><div class="top-in">
+  <div class="crumb">말과학 · 14주차</div>
+  <h1>트랙별 프로젝트 워크숍</h1>
+  <p class="sub">강의가 아니라 <strong>작업실</strong>이다. 여러분은 이미 도구를 갖고 있다.
+     없는 것은 <strong>질문을 좁히는 능력</strong>이다.</p>
+  <div class="meta"><span class="chip"><b>3시간</b></span><span class="chip lab">2인 1조 또는 개인</span>
+    <span class="chip">임상 트랙 · 연구 트랙</span></div>
+</div></header>
+<div class="wrap">
+<nav class="toc" id="toc"><button class="btn mobtoc" id="mobBtn">☰ 목차 열기</button><div class="list">
+  <div class="tt">목차</div>
+  <a class="lv1" href="#s1">§1 · 연구 윤리와 재현성</a>
+  <a class="lv2" href="#s1-1">1.1 데이터 윤리</a>
+  <a class="lv2" href="#s1-2">1.2 재현 가능한 분석</a>
+  <a class="lv2" href="#s1-3">1.3 질문을 좁히기 ★</a>
+  <a class="lv2" href="#s1-4">1.4 이 규모로 뭘 할 수 있나 ★</a>
+  <a class="lv1" href="#s2">§2 · 임상 트랙</a>
+  <a class="lv1" href="#s3">§3 · 연구 트랙</a>
+  <a class="lv1" href="#s4">§4 · 시간 운영</a>
+  <a class="lv1" href="#s5">§5 · 공통 체크리스트</a>
+  <div class="tools"><button class="btn" id="expandAll">▾ 상세 전부 펼치기</button>
+  <button class="btn" id="themeBtn">◐ 화면 밝기 전환</button></div>
+</div></nav>
+<main>
+
+<div class="goal"><div class="lb">오늘 끝날 때 갖고 있어야 할 것</div><ol>
+  <li><b>한 문장으로 쓸 수 있는 질문</b></li>
+  <li><b>실제로 모인 자료</b> (없으면 즉시 질문을 줄인다)</li>
+  <li><b>그림 한 장</b> — 완성이 아니어도 좋다. 그려봐야 데이터가 이상한지 안다</li>
+</ol></div>
+
+<section id="s1">
+<h2 class="sec"><span class="num">§1</span>연구 윤리와 재현성</h2>
+<p class="sechint">도입 강의 30분 · 나머지는 전부 작업 시간이다</p>
+
+<h3 id="s1-1"><span class="n">1.1</span>데이터 윤리</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
+<tr><td><strong>동의</strong></td><td>녹음 전에 목적·보관기간·활용범위를 알리고 서면 동의를 받는다</td></tr>
+<tr><td><strong>익명화</strong></td><td>파일명에 실명 금지. 화자 ID로 바꾸고 <strong>대응표는 분리 보관</strong></td></tr>
+<tr><td>최소 수집</td><td>연구에 필요한 것만 모은다</td></tr>
+<tr><td class="hl"><strong>재식별 위험</strong></td><td class="hl">음성은 그 자체로 생체정보다. 원본 배포에 주의한다</td></tr>
+<tr><td>임상 자료</td><td>제공된 장애음성 샘플은 <strong>수업 외 반출 금지</strong></td></tr>
+</tbody></table></div>
+
+<h3 id="s1-2"><span class="n">1.2</span>재현 가능한 분석 — 학기 내내 강조한 것의 총정리</h3>
+<ul class="chk" data-key="w14repro">
+<li><input type="checkbox" id="o11"><label for="o11"><b>모든 설정값이 기록되어 있다</b> — pitch floor/ceiling, max formant, 창 길이, 하이패스, 쉼 임계값</label></li>
+<li><input type="checkbox" id="o12"><label for="o12"><b>코드를 다시 돌리면 같은 표가 나온다</b></label></li>
+<li><input type="checkbox" id="o13"><label for="o13"><b>이상치 처리 기준</b>이 사전에 정해져 있고 기술되어 있다</label></li>
+<li><input type="checkbox" id="o14"><label for="o14"><b>AI 사용 기록</b> — 프롬프트, 수정한 부분과 이유, 검증 방법</label></li>
+<li><input type="checkbox" id="o15"><label for="o15">데이터·코드·결과가 한 폴더에 정리되어 있다</label></li>
+</ul>
+<div class="codewrap"><div class="cap"><span class="tag">권장</span> 폴더 구조</div>
+<pre><code>프로젝트/
+├─ data/        원본 WAV, TextGrid (익명화된 것)
+├─ code/        분석 스크립트
+├─ output/      생성된 CSV, 그림
+└─ README.md    질문, 방법, 설정값, 실행 순서</code></pre>
+<button class="copy">복사</button></div>
+
+<h3 id="s1-3"><span class="n">1.3</span>질문을 좁히기 ★</h3>
+<div class="warn"><div class="lb">가장 흔한 실패</div>
+<p><strong>기술 부족이 아니라 질문이 너무 크다는 것이다.</strong></p>
+<p style="margin-top:9px">“한국어 파열음을 분석한다” — 이것은 질문이 아니다.<br>
+   “20대 서울 화자에서 평음과 격음의 VOT가 겹치는가” — 이것이 질문이다.</p></div>
+<div class="tw"><table><thead><tr><th>점검</th><th class="hl">이렇게 쓰면 안 된다</th><th class="ok">이렇게 쓴다</th></tr></thead><tbody>
+<tr><td><strong>측정 가능한가</strong></td><td>“발음이 좋다”</td><td>“모음 공간 면적(VSA)이 크다”</td></tr>
+<tr><td><strong>비교 대상이 있는가</strong></td><td>“마찰음을 본다”</td><td>“/ㅅ/과 /ㅆ/의 COG를 비교한다”</td></tr>
+<tr><td><strong>모을 수 있는가</strong></td><td>“60대 화자 30명”</td><td>“반 학생 16명”</td></tr>
+<tr><td><strong>예상이 있는가</strong></td><td>—</td><td>“F0 차이가 더 클 것이다. 세대 변화 문헌에 따라”</td></tr>
+</tbody></table></div>
+<p><strong>오늘 첫 15분에</strong> 각 조가 자기 질문을 한 문장으로 적고, 1분씩 발표한다.
+   위 네 가지를 그 자리에서 점검한다.</p>
+<h3 id="s1-4"><span class="n">1.4</span>이 규모로 무엇을 할 수 있나 ★</h3>
+<p>질문을 좁혔다면 다음 물음은 <strong>“우리가 모을 수 있는 자료로 그 질문에 답이 되는가”</strong>다.
+   반 규모는 대개 <strong>집단당 8~20명</strong>이다. 그 정도로 무엇이 잡히는지 미리 알고 시작하자.</p>
+<div class="tw"><table><thead><tr><th class="num">집단당 인원</th><th class="num">검정력 80 %가 되는 효과크기 d</th><th class="num">d = 0.5(중간)일 때 검정력</th><th class="num">d = 0.8(큼)일 때</th></tr></thead><tbody>
+<tr><td class="num">8명</td><td class="num hl"><strong>1.51</strong></td><td class="num hl">15 %</td><td class="num hl">32 %</td></tr>
+<tr><td class="num">10명</td><td class="num hl">1.33</td><td class="num hl">19 %</td><td class="num hl">40 %</td></tr>
+<tr><td class="num ok"><strong>16명</strong></td><td class="num"><strong>1.03</strong></td><td class="num hl">28 %</td><td class="num">59 %</td></tr>
+<tr><td class="num ok"><strong>20명</strong></td><td class="num">0.91</td><td class="num">34 %</td><td class="num">70 %</td></tr>
+<tr><td class="num">30명</td><td class="num">0.74</td><td class="num">48 %</td><td class="num ok">86 %</td></tr>
+<tr><td class="num">50명</td><td class="num">0.56</td><td class="num ok">70 %</td><td class="num ok">98 %</td></tr>
+</tbody></table></div>
+<div class="verified">✓ 검증</div>
+<div class="key">
+  <div class="lb">읽는 법</div>
+  <p><strong>집단당 16명이면 d가 1.03은 되어야</strong> 80 % 확률로 유의하게 나온다.
+     그런데 d = 1.0은 <strong>매우 큰</strong> 차이다 — 10주차에서 본
+     <strong>노년·청년 세대의 VOT 병합 정도가 딱 그 수준(d 4.25 → 1.02)</strong>이었다.</p>
+  <p style="margin-top:8px">뒤집어 말하면, <strong>중간 크기 효과(d = 0.5)는 16명으로 28 %밖에 못 잡는다.</strong>
+     실제로 차이가 있어도 <strong>열 번 중 일곱 번은 놓친다.</strong></p>
+</div>
+<div class="warn">
+  <div class="lb">그래서 프로젝트를 이렇게 설계한다</div>
+  <p><strong>① 큰 효과가 기대되는 질문을 고른다.</strong>
+     남녀 포먼트 차이, 평음–격음 VOT 차이처럼 <strong>이미 크다고 알려진 것</strong>이 안전하다.
+     미묘한 차이를 찾으려는 야심찬 질문일수록 <strong>“차이 없음”으로 끝난다.</strong></p>
+  <p style="margin-top:8px"><strong>② 화자 간 비교보다 화자 내 비교를 쓴다.</strong>
+     같은 사람이 두 조건을 다 수행하면(예: 낭독 vs 자유발화) 개인차가 상쇄되어
+     <strong>훨씬 적은 인원으로도 검출된다.</strong> 이 수업 규모에서는 이쪽이 거의 언제나 낫다.</p>
+  <p style="margin-top:8px"><strong>③ “유의하지 않았다”를 실패로 여기지 않는다.</strong>
+     위 표를 근거로 <strong>“이 표본으로는 d가 1 미만인 차이를 잡을 수 없었다”</strong>고 쓰면
+     그것이 정확한 보고다. 제한점 절에 이 표를 인용할 것.</p>
+</div>
+</section>
+
+<section id="s2">
+<h2 class="sec"><span class="num">§2</span>임상 트랙 — 음성·말장애 사례 분석</h2>
+<h3>제공 자료</h3>
+<ul>
+<li>익명화된 장애음성 샘플 세트 (음성장애 · 마비말장애 · 조음장애)</li>
+<li>정상 대조군 (성별·연령 대응)</li>
+<li>6~7주차에 모은 반 전체 규준 데이터</li>
+</ul>
+<h3>과제</h3>
+<div class="tw"><table><thead><tr><th class="num">단계</th><th>내용</th><th>쓰는 주차</th></tr></thead><tbody>
+<tr><td class="num">1</td><td><strong>음향 프로파일 산출</strong></td><td>음원 지표(6주) + 모음 공간(9주) + 말속도(12주) + DDK(12주)</td></tr>
+<tr><td class="num">2</td><td><strong>규준 대비 편차 정량화</strong></td><td>z점수 또는 백분위 — <strong>아래 주의사항을 먼저 읽을 것</strong></td></tr>
+<tr><td class="num">3</td><td>지표별 민감도 정리</td><td>어떤 지표가 어느 장애 유형에 반응하는가</td></tr>
+<tr><td class="num">4</td><td><strong>임상 보고서 작성</strong></td><td>아래 형식</td></tr>
+</tbody></table></div>
+<div class="codewrap"><div class="cap"><span class="tag">형식</span> 임상 보고서</div>
+<pre><code>1. 배경        연령 · 성별 · 주호소 (제공된 범위 안에서)
+2. 측정 절차   과제, 녹음 조건, 분석 설정값 전부
+3. 결과        표 + 그림. 규준과 나란히
+4. 해석        어떤 지표가 어떻게 벗어났고, 무엇을 시사하는가
+5. 제한점      측정의 한계, 결론을 내릴 수 없는 부분</code></pre>
+<button class="copy">복사</button></div>
+<div class="key"><div class="lb">채점에서 가장 크게 보는 것은 5번이다</div>
+<p><strong>무엇을 알 수 없는지 아는 것이, 무엇을 아는지 아는 것보다 임상적으로 중요하다.</strong></p></div>
+<h3>z점수를 낼 때 — 규준이 작으면 정상인이 이상해 보인다</h3>
+<p>2단계에서 “규준 대비 편차”를 z점수로 낸다. 계산 자체는 간단하다.</p>
+<div class="codewrap"><div class="cap"><span class="tag">Python</span> 규준 대비 z점수</div>
+<pre><code>import numpy as np
+import pandas as pd
+
+def z_against_norm(value, norm_values):
+    """norm_values: 규준 집단의 측정값 배열 (반 데이터)"""
+    ref = np.asarray(norm_values, dtype=float)
+    return (value - ref.mean()) / ref.std(ddof=1)
+
+norm = pd.read_csv("class_norms.csv")        # 6~7주차에 모은 반 데이터
+case = pd.read_csv("case_measures.csv")      # 사례 화자
+
+for col in ["cpps_dB", "jitter_local_pct", "vsa_Hz2", "artic_rate"]:
+    ref = norm.loc[norm.gender == case.gender[0], col]
+    z = z_against_norm(case[col][0], ref)
+    print(f"{col:<20} z = {z:+.2f}   (규준 n = {len(ref)})")</code></pre>
+<button class="copy">복사</button></div>
+<p><strong>문제는 규준 표본이 작다는 것이다.</strong> 반을 성별로 나누면 집단당 8~16명쯤 된다.
+   그 정도 표본으로 낸 평균과 표준편차는 <strong>그 자체가 흔들리는 추정치</strong>다.</p>
+<p><strong>완전히 정상인 사람</strong>을 규준과 같은 분포에서 뽑아 z점수를 매기는 일을
+   2만 번 되풀이해 봤다. 이론적으로는 <strong>5 %만</strong> |z| &gt; 2로 나와야 한다.</p>
+<div class="tw"><table><thead><tr><th class="num">규준 표본 크기</th><th class="num">|z| &gt; 2 로 찍히는 비율</th><th class="num">기대값</th><th class="num">z 분포의 실제 SD</th></tr></thead><tbody>
+<tr><td class="num hl">8명</td><td class="num hl"><strong>10.2 %</strong></td><td class="num">5 %</td><td class="num hl">1.25</td></tr>
+<tr><td class="num">12명</td><td class="num hl">8.1 %</td><td class="num">5 %</td><td class="num">1.15</td></tr>
+<tr><td class="num">16명</td><td class="num hl"><strong>7.1 %</strong></td><td class="num">5 %</td><td class="num">1.11</td></tr>
+<tr><td class="num">30명</td><td class="num">6.2 %</td><td class="num">5 %</td><td class="num">1.06</td></tr>
+<tr><td class="num">100명</td><td class="num ok">4.9 %</td><td class="num">5 %</td><td class="num ok">1.02</td></tr>
+</tbody></table></div>
+<div class="verified">✓ 검증</div>
+<div class="warn">
+  <div class="lb">규준 8명이면 오경보가 두 배가 된다</div>
+  <p><strong>정상인 열 명 중 한 명이 “이상”으로 찍힌다.</strong>
+     지표를 네 개 재면 <strong>정상인이 적어도 하나에서 걸릴 확률이 훨씬 커진다.</strong>
+     사례 하나에 지표 여러 개를 들이대면서 “이것도 벗어났고 저것도 벗어났다”고 쓰는 것이
+     이 트랙에서 가장 흔한 과잉 해석이다.</p>
+  <p style="margin-top:8px"><strong>보고할 때는 규준의 n을 반드시 함께 적는다.</strong>
+     “z = −2.3 (규준 n = 14)”처럼 쓰면 읽는 사람이 스스로 판단할 수 있다.
+     9주차 §3.4의 표본 크기 문제와 같은 이야기다.</p>
+</div>
+
+<h3>흔히 빠지는 함정</h3>
+<div class="tw"><table><thead><tr><th class="hl">함정</th><th>바로잡기</th></tr></thead><tbody>
+<tr><td>진단명을 단정한다</td><td>음향 분석은 진단하지 않는다 <em>(7주차 §5.2)</em></td></tr>
+<tr><td>지표 하나로 결론 낸다</td><td>다지표를 종합해야 한다</td></tr>
+<tr><td class="hl"><strong>z점수를 규준 n 없이 보고한다</strong></td><td>작은 규준에서는 정상인도 자주 벗어난다. <strong>n을 함께 적는다</strong></td></tr>
+<tr><td>규준을 그대로 인용한다</td><td>프로그램·과제가 다르면 못 쓴다 <em>(7주차 §2.3)</em></td></tr>
+<tr><td>Type 3 신호에 jitter를 적용한다</td><td>CPP로 대체한다 <em>(7주차 §2.5)</em></td></tr>
+</tbody></table></div>
+<div class="warn"><div class="lb">장애음성 샘플이 없다면</div>
+<p>익명화된 장애음성 샘플 확보가 이 트랙의 전제다. 없을 때의 선택지는 셋이다.</p>
+<div class="tw" style="margin-top:10px"><table><thead><tr><th>대안</th><th>장점</th><th class="hl">한계</th></tr></thead><tbody>
+<tr><td class="ok"><strong>① 장애 프로파일을 직접 합성</strong><br><small>학생이 이미 할 줄 안다</small></td><td class="ok">참값을 알고 있어 <strong>지표의 민감도를 정확히 잴 수 있다</strong></td><td class="hl">실제 병리의 복잡성이 없다</td></tr>
+<tr><td>② 공개 코퍼스<br><small>AI-Hub 한국어 음성 등</small></td><td>실제 발화</td><td class="hl">대개 장애음성이 아니고, 용량이 크며 별도 신청이 필요하다</td></tr>
+<tr><td>③ 연구 트랙만 운영</td><td>준비가 필요 없다</td><td class="hl">임상 지향 학생에게 아쉽다</td></tr>
+</tbody></table></div>
+<p style="margin-top:12px"><strong>①을 권한다.</strong> 학생들은 이미 6~7주차에서 jitter·shimmer·잡음을 넣어 음성을 만들었고,
+   9주차에서 포먼트를 지정해 모음을 합성했다. <strong>그 도구를 그대로 쓴다.</strong></p>
+<div class="codewrap"><div class="cap"><span class="tag">Python</span> 장애 유형별 프로파일 합성 — 참값을 알고 시작한다</div>
+<pre><code># 6~7주차의 합성 함수를 그대로 재사용한다
+PROFILES = {
+    "정상":       dict(jitter=0.003, shimmer=0.03, noise=0.00, vowel_scale=1.00, rate=1.00),
+    "음성장애":   dict(jitter=0.020, shimmer=0.12, noise=0.25, vowel_scale=1.00, rate=1.00),
+    "마비말장애": dict(jitter=0.010, shimmer=0.08, noise=0.10, vowel_scale=0.70, rate=0.65),
+    "조음장애":   dict(jitter=0.003, shimmer=0.03, noise=0.00, vowel_scale=0.65, rate=1.00),
+}
+# vowel_scale = 모음 공간 축소율 (1.0 = 정상)
+# rate        = 말속도 배율
+
+# 각 프로파일로 5명씩 만들되 개인차를 넣는다
+# -> 지표를 뽑아 "어떤 지표가 어떤 유형에 반응하는가"를 표로 정리한다
+</code></pre>
+<button class="copy">복사</button></div>
+<div class="key" style="margin-top:12px">
+  <div class="lb">합성으로 하면 오히려 더 잘 보이는 것</div>
+  <p><strong>지표별 민감도(3단계 과제)를 정확히 잴 수 있다.</strong>
+     실제 사례에서는 “무엇이 원인인지” 알 수 없지만,
+     합성에서는 <strong>내가 무엇을 망가뜨렸는지 알고 있다.</strong></p>
+  <p style="margin-top:8px">예를 들어 <strong>모음 공간만 줄이고 음원은 건드리지 않았을 때
+     jitter가 변하는지</strong>를 확인할 수 있다. 변한다면 그 지표는 <strong>특이도가 낮은 것</strong>이다.
+     이것은 실제 임상 자료로는 하기 어려운 실험이다.</p>
+  <p style="margin-top:8px"><strong>보고서에는 “합성 자료임”을 명시</strong>하고,
+     실제 병리와 다른 점을 제한점에 적는다.</p>
+</div></div>
+</section>
+
+<section id="s3">
+<h2 class="sec"><span class="num">§3</span>연구 트랙 — 미니 연구</h2>
+<h3>질문은 스스로 정한다</h3>
+<div class="tw"><table><thead><tr><th>주제</th><th>관련 주차</th><th class="num">난이도</th></tr></thead><tbody>
+<tr><td>성별·연령에 따른 모음 공간 차이</td><td>9주</td><td class="num">중</td></tr>
+<tr><td>낭독 vs 자유발화의 말속도·F0 변이</td><td>12주</td><td class="num ok">하</td></tr>
+<tr><td>마스크 착용이 마찰음 COG에 미치는 영향</td><td>11주</td><td class="num">중</td></tr>
+<tr><td><strong>한국어 파열음 삼중대립의 세대 간 단서 이동</strong></td><td>10주</td><td class="num hl">상</td></tr>
+<tr><td>/에/–/애/ 합류가 우리 반에서 진행되었는가</td><td>9주</td><td class="num">중</td></tr>
+<tr><td>방언 배경에 따른 어두 F0 패턴 차이</td><td>10·12주</td><td class="num hl">상</td></tr>
+<tr><td>VOT 범주 경계의 개인차와 그 요인</td><td>13주</td><td class="num">중</td></tr>
+<tr><td>외국인 학습자의 삼중대립 산출</td><td>10주</td><td class="num hl">상</td></tr>
+</tbody></table></div>
+<h3>산출물</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th>분량</th></tr></thead><tbody>
+<tr><td>학회 초록 형식</td><td>1쪽 (배경 · 방법 · 결과 · 논의)</td></tr>
+<tr><td>포스터</td><td>A1 또는 슬라이드 형식</td></tr>
+<tr><td>분석 코드</td><td>재현 가능한 상태로</td></tr>
+</tbody></table></div>
+<h3>통계 — 과하지 않게</h3>
+<p>이 수업은 통계 과목이 아니다. 아래 수준이면 충분하다.</p>
+<div class="tw"><table><thead><tr><th>상황</th><th>방법</th></tr></thead><tbody>
+<tr><td>두 집단 비교</td><td>t-검정 + <strong>효과크기(Cohen's d)</strong></td></tr>
+<tr><td>세 집단 이상</td><td>일원분산분석</td></tr>
+<tr><td>두 변수 관계</td><td>상관계수 + 산점도</td></tr>
+<tr><td>범주 예측</td><td>로지스틱 회귀 (13주차에서 이미 썼다)</td></tr>
+</tbody></table></div>
+<div class="key"><div class="lb">강조할 것</div>
+<p><strong>p값보다 효과크기와 그림이 중요하다.</strong>
+   표본이 20명 남짓인 수업 프로젝트에서 p값에 매달리지 말 것.</p>
+<p style="margin-top:9px">§1.4의 표가 그 이유다. <strong>집단당 20명이면 d = 0.91은 되어야</strong> 80 %로 잡힌다.
+   그보다 작은 차이는 <strong>실재하더라도 p &gt; .05로 나올 가능성이 더 크다.</strong>
+   그 상황에서 p값은 “차이가 없다”가 아니라 <strong>“이 표본으로는 모른다”</strong>는 뜻이다.</p></div>
+<div class="warn">
+  <div class="lb">보고 형식 — 이렇게 쓴다</div>
+  <p class="a" style="font-style:italic">“평음과 격음의 VOT 차이는 d = 0.62였으나 유의하지 않았다(t(30) = 1.75, p = .09).
+     집단당 16명 규모에서 80 % 검정력을 얻으려면 d ≈ 1.0이 필요하므로,
+     <strong>이 결과는 차이가 없다는 근거가 아니라 검출력이 부족했다는 뜻으로 해석해야 한다.</strong>”</p>
+  <p style="margin-top:9px"><strong>이렇게 쓰면 만점이다.</strong> 효과크기를 보고하고, 표본의 한계를 스스로 짚고,
+     결론을 데이터가 지지하는 범위 안에 두었다.</p>
+</div>
+</section>
+
+<section id="s4">
+<h2 class="sec"><span class="num">§4</span>시간 운영</h2>
+<div class="tw"><table><thead><tr><th class="num">시간</th><th>활동</th></tr></thead><tbody>
+<tr><td class="num">0:00–0:30</td><td>도입 강의 — 윤리, 재현성, 질문 좁히기, <strong>표본 크기의 현실(§1.4)</strong></td></tr>
+<tr><td class="num">0:30–0:45</td><td class="ok"><strong>조별 질문 발표 (1분씩)</strong> + 즉석 피드백</td></tr>
+<tr><td class="num">0:45–2:30</td><td>작업. 교수자 순회 지도</td></tr>
+<tr><td class="num">2:30–3:00</td><td>진행 상황 점검 · 15주차 발표 준비 안내</td></tr>
+</tbody></table></div>
+<h3>순회 지도 시 확인할 것</h3>
+<ul class="chk" data-key="w14check">
+<li><input type="checkbox" id="o21"><label for="o21">질문이 측정 가능한 형태인가</label></li>
+<li><input type="checkbox" id="o22"><label for="o22">자료가 실제로 모였는가 (없으면 즉시 축소 조정)</label></li>
+<li><input type="checkbox" id="o25"><label for="o25"><b>기대하는 효과가 이 표본으로 잡힐 크기인가</b> (§1.4) — 아니면 화자 내 비교로 바꾼다</label></li>
+<li><input type="checkbox" id="o23"><label for="o23">설정값을 기록하고 있는가</label></li>
+<li><input type="checkbox" id="o24"><label for="o24"><b>그림을 이미 하나라도 그려봤는가</b></label></li>
+</ul>
+<div class="warn"><div class="lb">가장 위험한 조</div>
+<p><strong>“분석은 다 했는데 그림을 아직 안 그렸다”는 조가 가장 위험하다.</strong>
+   그림을 그려봐야 데이터가 이상한지 알 수 있다. 초반에 반드시 한 장 그리게 할 것.</p></div>
+</section>
+
+<section id="s5">
+<h2 class="sec"><span class="num">§5</span>공통 체크리스트</h2>
+<p class="sechint">제출 전에 스스로 점검한다</p>
+<ul class="chk" data-key="w14final">
+<li><input type="checkbox" id="o31"><label for="o31">질문을 한 문장으로 쓸 수 있다</label></li>
+<li><input type="checkbox" id="o32"><label for="o32">무엇과 무엇을 비교하는지 분명하다</label></li>
+<li><input type="checkbox" id="o33"><label for="o33">측정 설정값을 전부 기록했다</label></li>
+<li><input type="checkbox" id="o34"><label for="o34">코드를 다시 돌리면 같은 결과가 나온다</label></li>
+<li><input type="checkbox" id="o35"><label for="o35">이상치를 어떻게 처리했는지 밝혔다</label></li>
+<li><input type="checkbox" id="o36"><label for="o36">AI가 생성한 코드를 검증한 방법을 기술했다</label></li>
+<li><input type="checkbox" id="o37"><label for="o37"><b>그림이 설명 없이도 읽히는가</b> — 축 라벨, 단위, 범례</label></li>
+<li><input type="checkbox" id="o38"><label for="o38">축 단위가 <b>비교에 맞는 척도</b>인가 — F0는 반음, 화자 간 포먼트는 정규화</label></li>
+<li><input type="checkbox" id="o39"><label for="o39"><b>개별 자료점이 보이는가</b> — 평균 막대만 그리면 n과 흩어짐이 숨는다</label></li>
+<li><input type="checkbox" id="o3a"><label for="o3a"><b>효과크기를 보고</b>했는가 (p값만 쓰지 않았는가)</label></li>
+<li><input type="checkbox" id="o3b"><label for="o3b">유의하지 않았다면 <b>검정력의 한계</b>로 서술했는가 (§1.4)</label></li>
+<li><input type="checkbox" id="o3c"><label for="o3c">z점수를 썼다면 <b>규준의 n</b>을 함께 적었는가</label></li>
+<li><input type="checkbox" id="o38b"><label for="o38b"><b>결론이 데이터가 지지하는 범위를 넘지 않는다</b></label></li>
+</ul>
+
+<h3>15주차 발표 안내</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th>내용</th></tr></thead><tbody>
+<tr><td>시간</td><td>조당 <strong>8분 발표 + 4분 질의</strong></td></tr>
+<tr><td>구성</td><td>질문 → 방법 → <strong>결과 그림</strong> → 해석 → 제한점</td></tr>
+<tr><td>제출</td><td>발표 자료 + 보고서 + 코드 + 데이터</td></tr>
+<tr><td>평가</td><td>산출물 20 % + 발표 10 % (전체 성적의 30 %)</td></tr>
+</tbody></table></div>
+<div class="key"><div class="lb">발표 준비 한마디</div>
+<p><strong>슬라이드를 글로 채우지 말 것.</strong> 그림 하나에 메시지 하나.
+   8분에 담을 수 있는 것은 <strong>결과 그림 두세 장</strong>이 전부다.</p></div>
+
+<footer><p>말과학 14주차 · 오늘은 강의가 아니라 작업실이다.
+   막히면 손을 들어 부르되, 먼저 <strong>질문을 한 문장으로 적어놓고</strong> 부를 것.</p></footer>
+</section>
+</main></div>
+
+<script>
+(function(){
+  document.querySelectorAll(".copy").forEach(function(b){
+    b.addEventListener("click",function(){
+      var pre=b.parentElement.querySelector("pre"); if(!pre) return;
+      var txt=pre.innerText;
+      var done=function(){b.textContent="복사됨";b.classList.add("done");
+        setTimeout(function(){b.textContent="복사";b.classList.remove("done");},1600);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done,function(){fb(txt,done);});
+      } else fb(txt,done);
+    });
+  });
+  function fb(txt,cb){try{var ta=document.createElement("textarea");ta.value=txt;
+    ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();
+    document.execCommand("copy");document.body.removeChild(ta);cb();}catch(e){}}
+  var ea=document.getElementById("expandAll"),open=false;
+  ea&&ea.addEventListener("click",function(){open=!open;
+    document.querySelectorAll("details.more").forEach(function(d){d.open=open;});
+    ea.textContent=open?"▴ 상세 전부 접기":"▾ 상세 전부 펼치기";});
+  var tb=document.getElementById("themeBtn");
+  tb&&tb.addEventListener("click",function(){var r=document.documentElement,cur=r.getAttribute("data-theme");
+    if(!cur){cur=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+    r.setAttribute("data-theme",cur==="dark"?"light":"dark");});
+  var mb=document.getElementById("mobBtn"),toc=document.getElementById("toc");
+  mb&&mb.addEventListener("click",function(){toc.classList.toggle("open");
+    mb.textContent=toc.classList.contains("open")?"✕ 목차 닫기":"☰ 목차 열기";});
+  toc&&toc.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
+    if(window.innerWidth<=900){toc.classList.remove("open");mb.textContent="☰ 목차 열기";}});});
+  var links={},targets=[];
+  document.querySelectorAll("nav.toc a[href^='#']").forEach(function(a){
+    var id=a.getAttribute("href").slice(1),el=document.getElementById(id);
+    if(el){links[id]=a;targets.push(el);}});
+  if("IntersectionObserver" in window&&targets.length){
+    var seen={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){seen[e.target.id]=e.isIntersecting;});
+      var act=null;
+      for(var i=0;i<targets.length;i++){if(seen[targets[i].id]){act=targets[i].id;break;}}
+      if(act)Object.keys(links).forEach(function(k){links[k].classList.toggle("on",k===act);});
+    },{rootMargin:"-8% 0px -72% 0px",threshold:0});
+    targets.forEach(function(t){io.observe(t);});}
+  var KEY="malgwahak-w14-checks",state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){state={};}
+  document.querySelectorAll(".chk input[type=checkbox]").forEach(function(cb){
+    if(state[cb.id])cb.checked=true;
+    cb.addEventListener("change",function(){state[cb.id]=cb.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}});});
+})();
+</script>

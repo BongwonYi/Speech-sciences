@@ -1,0 +1,485 @@
+<meta charset="utf-8">
+<title>말과학 15주차</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--surface2:#f4f2ec;--ink:#1c1f26;--ink2:#3d4550;--muted:#6b7480;
+--line:#e4e0d7;--line2:#d3cec3;--accent:#0f6f6a;--accent-soft:#e3f0ee;--accent-line:#9fcbc6;
+--warn:#b4451f;--warn-soft:#fbeee7;--warn-line:#e8bda6;--lab:#3b4fc4;--lab-soft:#eaecfb;--lab-line:#b9c1ee;
+--figbg:#fff;--shadow:0 1px 2px rgba(28,31,38,.05),0 4px 14px rgba(28,31,38,.05)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161a;--surface:#1b1e24;--surface2:#22262e;
+--ink:#e9e7e2;--ink2:#c7cbd2;--muted:#98a1ac;--line:#2c313a;--line2:#3a4049;--accent:#5cc9c0;--accent-soft:#14302e;
+--accent-line:#2f5d59;--warn:#e79268;--warn-soft:#33211a;--warn-line:#6b4331;--lab:#8ba3f7;--lab-soft:#1b2140;
+--lab-line:#39447a;--figbg:#f4f3ef;--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}}
+:root[data-theme="dark"]{--bg:#14161a;--surface:#1b1e24;--surface2:#22262e;--ink:#e9e7e2;--ink2:#c7cbd2;
+--muted:#98a1ac;--line:#2c313a;--line2:#3a4049;--accent:#5cc9c0;--accent-soft:#14302e;--accent-line:#2f5d59;
+--warn:#e79268;--warn-soft:#33211a;--warn-line:#6b4331;--lab:#8ba3f7;--lab-soft:#1b2140;--lab-line:#39447a;
+--figbg:#f4f3ef;--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK KR","Nanum Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+font-size:16px;line-height:1.8;letter-spacing:-.003em;-webkit-font-smoothing:antialiased}
+code,kbd,pre,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,"D2Coding","Malgun Gothic",monospace}
+.top{border-bottom:1px solid var(--line);background:var(--surface);padding:34px 24px 26px}
+.top-in{max-width:1180px;margin:0 auto}
+.crumb{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.top h1{margin:.35em 0 .1em;font-size:clamp(26px,4.2vw,40px);line-height:1.22;letter-spacing:-.02em;font-weight:700}
+.sub{color:var(--muted);font-size:15.5px;margin:0 0 20px;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.lab{background:var(--lab-soft);border-color:var(--lab-line);color:var(--lab)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:238px minmax(0,1fr);gap:52px}
+nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:30px 0 60px}
+nav.toc .tt{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px}
+nav.toc a{display:block;padding:5px 10px 5px 12px;color:var(--muted);text-decoration:none;font-size:13.5px;line-height:1.45;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+nav.toc a:hover{color:var(--ink);background:var(--surface2)}
+nav.toc a.lv1{font-weight:600;color:var(--ink2);margin-top:12px}
+nav.toc a.lv2{padding-left:22px;font-size:12.8px}
+nav.toc a.on{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft)}
+nav.toc .tools{margin:18px 0 6px;display:flex;flex-direction:column;gap:7px}
+.btn{font:inherit;font-size:12.6px;font-weight:500;cursor:pointer;background:var(--surface);color:var(--ink2);border:1px solid var(--line2);border-radius:7px;padding:7px 10px;text-align:left;transition:.13s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+main{padding:34px 0 110px;min-width:0}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;gap:0;padding:0 18px}
+nav.toc{position:static;max-height:none;padding:16px 0 0;border-bottom:1px solid var(--line)}
+nav.toc .list{display:none}nav.toc.open .list{display:block}.mobtoc{display:block!important}main{padding-top:24px}}
+.mobtoc{display:none;width:100%;margin-bottom:12px}
+section{scroll-margin-top:14px;margin-bottom:16px}
+h2.sec{display:flex;align-items:baseline;gap:14px;margin:56px 0 8px;font-size:clamp(21px,2.8vw,27px);letter-spacing:-.02em;line-height:1.3;font-weight:700;padding-top:22px;border-top:2px solid var(--ink)}
+h2.sec .num{font-size:14px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
+h2.sec.labsec{border-top-color:var(--lab)}h2.sec.labsec .num{color:var(--lab)}
+.sechint{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+h3{margin:38px 0 10px;font-size:17.5px;font-weight:700;letter-spacing:-.012em;line-height:1.45}
+h3 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:9px;font-size:15px}
+h4{margin:24px 0 6px;font-size:15px;font-weight:700;color:var(--ink2)}
+p{margin:0 0 14px;color:var(--ink2)}
+main strong{color:var(--ink);font-weight:600}
+ul,ol{margin:0 0 15px;padding-left:1.35em;color:var(--ink2)}
+li{margin-bottom:7px}li::marker{color:var(--muted)}
+a.ext{color:var(--accent);text-decoration:underline;text-underline-offset:2.5px}
+.goal{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:11px;padding:20px 22px;margin:0 0 30px}
+.goal .lb{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:9px}
+.goal ol{margin:0;padding-left:1.25em;color:var(--ink2)}
+.key{border-left:3px solid var(--accent);background:var(--surface);padding:15px 18px;margin:22px 0;border-radius:0 9px 9px 0;box-shadow:var(--shadow)}
+.key .lb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:5px}
+.key p:last-child{margin-bottom:0}
+.warn{border-left:3px solid var(--warn);background:var(--warn-soft);padding:15px 18px;margin:22px 0;border-radius:0 9px 9px 0}
+.warn .lb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--warn);margin-bottom:5px}
+.warn p:last-child{margin-bottom:0}
+.verified{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);padding:3px 9px;border-radius:999px;margin-bottom:10px}
+details.more{margin:16px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+details.more>summary{cursor:pointer;list-style:none;padding:12px 17px;font-size:14px;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:9px;user-select:none}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"+";font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--accent);font-size:15px;width:15px;flex:none;text-align:center}
+details.more[open]>summary::before{content:"−"}
+details.more>summary:hover{background:var(--surface2)}
+details.more[open]>summary{border-bottom:1px solid var(--line);background:var(--surface2)}
+.more-body{padding:18px 19px 6px}.more-body>:last-child{margin-bottom:14px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:440px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+thead th{background:var(--surface2);font-weight:700;color:var(--ink);font-size:12.5px;white-space:nowrap;border-bottom:1px solid var(--line2)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+td strong{color:var(--ink)}.hl{color:var(--warn);font-weight:600}.ok{color:var(--accent);font-weight:600}
+.codewrap{position:relative;margin:18px 0}
+.codewrap .cap{font-size:12px;font-weight:600;color:var(--muted);padding:0 0 7px;display:flex;align-items:center;gap:8px}
+.codewrap .cap .tag{background:var(--surface2);border:1px solid var(--line);border-radius:5px;padding:2px 7px;font-size:11px;text-transform:uppercase;color:var(--ink2)}
+pre{margin:0;background:var(--surface2);border:1px solid var(--line);border-radius:9px;padding:15px 17px;overflow-x:auto;font-size:13px;line-height:1.62;color:var(--ink)}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+p code,li code,td code{background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.875em;color:var(--ink)}
+.copy{position:absolute;top:26px;right:9px;font:inherit;font-size:11.5px;font-weight:600;background:var(--surface);border:1px solid var(--line2);color:var(--muted);border-radius:6px;padding:4px 9px;cursor:pointer;opacity:0;transition:.14s}
+.codewrap:hover .copy,.copy:focus{opacity:1}
+.copy:hover,.copy.done{color:var(--accent);border-color:var(--accent)}.copy.done{opacity:1}
+.demo{border:1px solid var(--line);border-radius:11px;background:var(--surface);padding:17px 19px;margin:20px 0;box-shadow:var(--shadow)}
+.demo .dh{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.demo .dh .ic{width:21px;height:21px;flex:none;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);display:grid;place-items:center;font-size:10.5px;font-weight:700}
+.demo .dh h4{margin:0;font-size:14.5px;color:var(--ink)}
+.demo>p{font-size:14px;margin:6px 0 13px}
+.arow{display:grid;grid-template-columns:minmax(115px,auto) minmax(0,1fr);gap:11px 15px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.arow:first-of-type{border-top:0}
+.arow .lbl{font-size:13px;font-weight:600;color:var(--ink)}
+.arow .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;line-height:1.4}
+.arow audio{width:100%;height:34px}.arow.bad .lbl{color:var(--warn)}
+@media(max-width:560px){.arow{grid-template-columns:1fr;gap:5px}}
+figure{margin:24px 0}
+.figbox{background:var(--figbg);border:1px solid var(--line);border-radius:10px;padding:11px;overflow-x:auto}
+.figbox img{display:block;width:100%;min-width:430px;height:auto;border-radius:4px}
+figcaption{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.6}
+figcaption b{color:var(--ink2)}
+.svgbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 14px;overflow-x:auto}
+.svgbox svg{display:block;width:100%;min-width:430px;height:auto}
+.steps{counter-reset:st;list-style:none;padding:0;margin:22px 0}
+.steps>li{counter-increment:st;position:relative;padding:0 0 0 46px;margin-bottom:26px}
+.steps>li::before{content:counter(st);position:absolute;left:0;top:1px;width:29px;height:29px;border-radius:8px;background:var(--lab-soft);border:1px solid var(--lab-line);color:var(--lab);display:grid;place-items:center;font-size:13px;font-weight:700}
+.steps>li>.st{font-weight:700;color:var(--ink);display:block;margin-bottom:5px;font-size:15.5px;padding-top:2px}
+.chk{list-style:none;padding:0;margin:14px 0}
+.chk li{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;font-size:14px}
+.chk input{margin-top:5px;flex:none;accent-color:var(--lab);width:15px;height:15px;cursor:pointer}
+.chk label{cursor:pointer;color:var(--ink2)}
+.chk input:checked+label{color:var(--muted);text-decoration:line-through}
+.mission{border:1px solid var(--lab-line);background:var(--lab-soft);border-radius:11px;padding:19px 21px;margin:26px 0}
+.mission .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--lab);margin-bottom:8px}
+.mission h4{margin:0 0 9px;font-size:16px;color:var(--ink)}
+.mission .prompt{background:var(--surface);border:1px solid var(--lab-line);border-radius:8px;padding:13px 15px;font-size:13.5px;color:var(--ink2);margin:12px 0;line-height:1.68}
+.mission p:last-child{margin-bottom:0}
+.formula{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:17px 19px;margin:20px 0;font-family:"JetBrains Mono",monospace;font-size:13.5px;line-height:2.05;color:var(--ink);overflow-x:auto}
+.formula .lbl{color:var(--accent);font-weight:600}
+.qa{border-top:1px solid var(--line);padding:17px 0}.qa:last-child{border-bottom:1px solid var(--line)}
+.qa .q{font-weight:700;color:var(--ink);margin-bottom:6px;font-size:14.8px}
+.qa .a{color:var(--ink2);font-size:14.3px;margin:0}
+footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
+@media print{nav.toc,.copy,.tools{display:none}.wrap{display:block}details.more{page-break-inside:avoid}details.more>summary::before{content:""}}
+</style>
+<style>
+.extres{border:1px solid var(--lab-line);background:var(--lab-soft);border-radius:11px;padding:17px 19px;margin:24px 0}
+.extres .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--lab);margin-bottom:10px}
+.extres table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:0}
+.extres td{padding:7px 10px 7px 0;border-bottom:1px solid var(--lab-line);vertical-align:top;color:var(--ink2)}
+.extres tr:last-child td{border-bottom:0}
+.extres td.k{white-space:nowrap;width:1%;font-weight:700;color:var(--lab);padding-right:16px}
+.extres td.k small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.extres a{color:var(--lab);text-decoration:underline;text-underline-offset:2.5px;font-weight:600}
+.extres .why{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.term{border-bottom:1px dotted var(--muted);cursor:help}
+</style>
+
+<header class="top"><div class="top-in">
+  <div class="crumb">말과학 · 15주차</div>
+  <h1>발표 및 종합</h1>
+  <p class="sub">한 학기를 닫는 시간이다. <strong>말 사슬 전체를 한 장으로 다시 그리는 것</strong>이 오늘의 목표다.</p>
+  <div class="meta"><span class="chip"><b>3시간</b></span>
+    <span class="chip lab">발표 90분 + 동료평가 30분 + 종합 40분</span></div>
+</div></header>
+<div class="wrap">
+<nav class="toc" id="toc"><button class="btn mobtoc" id="mobBtn">☰ 목차 열기</button><div class="list">
+  <div class="tt">목차</div>
+  <a class="lv1" href="#s1">§1 · 발표</a>
+  <a class="lv1" href="#s2">§2 · 동료 평가</a>
+  <a class="lv1" href="#s3">§3 · 종합 정리</a>
+  <a class="lv2" href="#s3-1">3.1 말 사슬 다시 그리기</a>
+  <a class="lv2" href="#s3-2">3.2 관통하는 네 원리 ★</a>
+  <a class="lv2" href="#s3-3">3.3 우리가 실제로 재본 것</a>
+  <a class="lv2" href="#s3-4">3.4 AI와 함께한 학기</a>
+  <a class="lv1" href="#s4">§4 · 그다음</a>
+  <a class="lv1" href="#s5">§5 · 마무리</a>
+  <div class="tools"><button class="btn" id="expandAll">▾ 상세 전부 펼치기</button>
+  <button class="btn" id="themeBtn">◐ 화면 밝기 전환</button></div>
+</div></nav>
+<main>
+
+<div class="goal"><div class="lb">오늘의 목표</div><ol>
+  <li>각 조가 <b>자기 질문에 답한 결과</b>를 8분 안에 전달한다.</li>
+  <li>1주차에 그렸던 <b>말 사슬을 다시 그리되</b>, 이번에는 각 고리에 우리가 배운 도구를 채워 넣는다.</li>
+  <li>학기 내내 되풀이된 <b>하나의 교훈</b>을 명시적으로 확인한다.</li>
+</ol></div>
+
+<section id="s1">
+<h2 class="sec"><span class="num">§1</span>발표</h2>
+<p class="sechint">90분 · 조당 8분 + 질의 4분</p>
+<div class="tw"><table><thead><tr><th>항목</th><th>기준</th></tr></thead><tbody>
+<tr><td>시간</td><td>8분 발표 + 4분 질의 <strong>엄수</strong></td></tr>
+<tr><td>구성</td><td>질문 → 방법 → <strong>결과 그림</strong> → 해석 → 제한점</td></tr>
+<tr><td>슬라이드</td><td>그림 하나에 메시지 하나. 글로 채우지 말 것</td></tr>
+</tbody></table></div>
+<div class="key"><div class="lb">현실적인 조언</div>
+<p><strong>8분에 담을 수 있는 것은 결과 그림 두세 장이다.</strong> 그 이상은 전달되지 않는다.</p></div>
+
+<h3>발표 평가 (10점)</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th class="num">배점</th></tr></thead><tbody>
+<tr><td>질문이 분명하고 측정 가능한가</td><td class="num">2</td></tr>
+<tr><td>방법(설정값 포함)이 재현 가능하게 제시되었는가</td><td class="num">2</td></tr>
+<tr><td class="ok"><strong>결과 그림이 설명 없이도 읽히는가</strong></td><td class="num ok"><strong>3</strong></td></tr>
+<tr><td>해석이 데이터가 지지하는 범위 안에 있는가</td><td class="num">2</td></tr>
+<tr><td>제한점을 스스로 지적했는가</td><td class="num">1</td></tr>
+</tbody></table></div>
+
+<h3>질의응답 — 이런 질문을 받게 된다</h3>
+<div class="tw"><table><thead><tr><th>질문</th><th>왜 묻는가</th></tr></thead><tbody>
+<tr><td>“이 설정값을 다르게 잡았다면 결과가 바뀌었을까요?”</td><td>학기 내내 반복한 교훈의 확인</td></tr>
+<tr><td>“표본이 두 배였다면 무엇이 달라졌을까요?”</td><td>결론의 강도를 스스로 가늠하게</td></tr>
+<tr><td class="ok"><strong>“이 결과로 말할 수 <em>없는</em> 것은 무엇인가요?”</strong></td><td class="ok"><strong>이 수업의 정신</strong></td></tr>
+<tr><td>“이 지표 말고 다른 지표를 썼다면요?”</td><td>지표 선택이 결과를 만든다는 자각</td></tr>
+</tbody></table></div>
+<p>비판이 아니라 <strong>확장을 유도하는 질문</strong>이다. 어떤 답을 하든,
+   설정과 정의가 결과를 만든다는 것을 스스로 말하게 되는 것이 목적이다.</p>
+</section>
+
+<section id="s2">
+<h2 class="sec"><span class="num">§2</span>동료 평가</h2>
+<p class="sechint">30분 · 점수는 매기지 않는다</p>
+<p>다른 조의 발표에 대해 세 문장만 쓴다.</p>
+<div class="tw"><table><thead><tr><th>항목</th><th>형식</th></tr></thead><tbody>
+<tr><td>가장 인상적이었던 점</td><td>한 문장</td></tr>
+<tr><td>더 알고 싶은 것</td><td>한 문장</td></tr>
+<tr><td>이 연구를 이어간다면 다음에 할 일</td><td>한 문장</td></tr>
+</tbody></table></div>
+<div class="key"><div class="lb">서술만 받는다</div>
+<p><strong>동료 간 서열화는 이 시간의 목적이 아니다.</strong>
+   수합한 피드백은 각 조에 그대로 전달한다.</p></div>
+<div class="tw"><table><thead><tr><th>운영</th><th>방법</th></tr></thead><tbody>
+<tr><td>수합</td><td>공유 문서나 종이 슬립. <strong>이름은 받지 않는다</strong></td></tr>
+<tr><td>발표 중 작성</td><td>다음 조가 준비하는 사이 <strong>1분씩</strong> 적게 한다. 몰아서 쓰면 기억이 뭉갠다</td></tr>
+<tr><td>전달</td><td>수업 후 각 조에 <strong>자기 조 것만</strong> 묶어 전달</td></tr>
+<tr><td>교수자 몫</td><td>“더 알고 싶은 것”에 반복해서 나온 항목은 <strong>다음 학기 강의 소재</strong>다</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="s3">
+<h2 class="sec"><span class="num">§3</span>종합 정리</h2>
+<p class="sechint">40분 · 이 수업의 마지막 강의. 이 시간은 줄이지 않는다</p>
+
+<h3 id="s3-1"><span class="n">3.1</span>말 사슬 다시 그리기</h3>
+<p>1주차에 그렸던 도식을 다시 그린다. 이번에는 각 고리에 <strong>우리가 배운 도구</strong>를 채워 넣는다.</p>
+<div class="svgbox"><svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="말 사슬 각 고리에 이 수업에서 배운 주차별 도구를 채워 넣은 지도"><text x="98.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">화자</text><text x="98.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">언어 층위</text><rect x="14" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="98.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">의미 · 어휘</text><text x="98.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">음운</text><text x="186" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="282.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">화자</text><text x="282.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">생리 층위</text><rect x="198" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="282.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">호흡 · 발성</text><text x="282.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">조음</text><rect x="202" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="282.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">6주 호흡·발성</text><text x="370" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="466.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent)">음향 층위</text><rect x="382" y="64" width="168" height="56" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/><text x="466.0" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">음  파</text><rect x="386" y="128" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="142" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">1–4주 신호와 분석</text><rect x="386" y="151" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="165" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">5주 음원-필터</text><rect x="386" y="174" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="188" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">6–7주 음원 측정</text><rect x="386" y="197" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="211" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">9–11주 필터 측정</text><rect x="386" y="220" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="234" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">12주 초분절</text><text x="554" y="97.0" font-size="15" fill="var(--line2)">→</text><text x="650.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">청자</text><text x="650.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">생리 층위</text><rect x="566" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="650.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">와우</text><text x="650.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">청신경</text><rect x="570" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="650.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">13주 청각</text><text x="738" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="834.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">청자</text><text x="834.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">언어 층위</text><rect x="750" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="834.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">음운</text><text x="834.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">어휘 · 의미</text><rect x="754" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="834.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">13주 범주적 지각</text><text x="470.0" y="318" text-anchor="middle" font-size="12.5" fill="var(--muted)">1주차에 그린 도식에, 한 학기 동안 배운 도구를 채워 넣은 것</text></svg></div><figcaption style="font-size:13px;color:var(--muted);margin-top:9px;line-height:1.6"><b>가운데 음향 층위에 도구가 몰려 있다.</b> 우리가 볼 수 있었던 것이 거기였기 때문이다. 양쪽 끝의 언어 층위는 이 수업에서 거의 다루지 않았다.</figcaption>
+<div class="key"><div class="lb">던질 질문</div>
+<p>1주차에 “음향 층위만이 비침습적으로 관찰할 수 있는 유일한 고리”라고 했다.
+   <strong>한 학기를 지낸 지금, 이 말에 동의하는가?</strong>
+   무엇을 볼 수 있었고 무엇을 볼 수 없었나?</p></div>
+
+<h3 id="s3-2"><span class="n">3.2</span>관통하는 네 원리 ★</h3>
+<h4>① 측정은 정의와 설정의 함수다</h4>
+<p>학기 내내 <strong>열 번</strong> 되풀이된 하나의 교훈이다.</p>
+<div class="tw"><table><thead><tr><th class="num">주차</th><th>같은 구조의 교훈</th></tr></thead><tbody>
+<tr><td class="num">1주</td><td>표본화율·비트를 안 적으면 재현되지 않는다</td></tr>
+<tr><td class="num">3주</td><td>기준 없는 dB는 의미가 없다</td></tr>
+<tr><td class="num">4주</td><td>창 길이가 스펙트로그램을 만든다</td></tr>
+<tr><td class="num">6주</td><td>Hz로 재면 없는 성별 차이가 생긴다</td></tr>
+<tr><td class="num">7주</td><td>pitch floor/ceiling이 jitter를 바꾼다</td></tr>
+<tr><td class="num">9주</td><td>max formant가 F2를 통째로 옮긴다</td></tr>
+<tr><td class="num">11주</td><td>하이패스가 COG를 바꾼다</td></tr>
+<tr><td class="num">12주</td><td>쉼 임계값이 <b>조음속도</b>를 정한다 (말속도는 안 변한다)</td></tr>
+<tr><td class="num">13주</td><td>ISI가 범주적으로 들리는 정도를 바꾼다</td></tr>
+<tr><td class="num">14주</td><td>규준의 크기가 “이상”의 기준을 정한다</td></tr>
+</tbody></table></div>
+<div class="key"><div class="lb">여기서 “아” 하는 순간이 오기를</div>
+<p>열 주차에 걸쳐 다른 얼굴로 나타났지만 <strong>전부 같은 이야기</strong>였다.</p>
+<p style="margin-top:8px">12주차 항목을 잘 볼 것. <strong>임계값을 바꾸면 조음속도는 25 %까지 움직이는데
+   말속도는 꿈쩍도 하지 않는다.</strong> 같은 “속도”라는 말을 쓰지만 서로 다른 것을 재고 있었다.
+   <strong>정의가 다르면 설정에 대한 반응도 다르다.</strong></p></div>
+
+<h4>② 음원과 필터는 나뉜다</h4>
+<div class="tw"><table><thead><tr><th>구간</th><th>보는 것</th><th>임상적 대응</th></tr></thead><tbody>
+<tr><td>6–7주차</td><td class="ok"><strong>음원</strong></td><td>음성장애</td></tr>
+<tr><td>9–11주차</td><td class="ok"><strong>필터</strong></td><td>조음장애</td></tr>
+</tbody></table></div>
+<p>5주차의 틀이 학기 후반을 둘로 갈랐고, 8주차 시험이 그 경계에 놓였다.</p>
+
+<h4>③ 숫자는 지각을 대신하지 못한다</h4>
+<p>7주차의 결론이자 이 수업의 윤리적 입장이다.
+   <strong>음향 분석은 기록하고 추적한다. 진단은 사람이 한다.</strong></p>
+
+<h4>④ 지표는 값을 주지만 경계는 주지 않는다</h4>
+<p>학기 후반에 반복해서 만난 벽이다. <strong>계산은 되는데 “그래서 얼마부터가 문제인가”에는 답이 없다.</strong></p>
+<div class="tw"><table><thead><tr><th class="num">주차</th><th>지표</th><th class="hl">경계는?</th></tr></thead><tbody>
+<tr><td class="num">7주</td><td>jitter · CPP 규준치</td><td class="hl">프로그램·과제·설정에 딸린 값이다</td></tr>
+<tr><td class="num">9주</td><td>Pillai 점수 (모음 합류)</td><td class="hl"><strong>공인된 경계값이 아예 없다</strong></td></tr>
+<tr><td class="num">10주</td><td>Cohen의 d (VOT 병합)</td><td class="hl">d = 1이어도 62 %가 겹친다</td></tr>
+<tr><td class="num">11주</td><td>하이패스 차단주파수</td><td class="hl">“맞는 값”이 없다. 안정되는 지점을 찾을 뿐</td></tr>
+<tr><td class="num">13주</td><td>범주성 지수</td><td class="hl">봉우리는 늘 0.75. 상대 비교만 가능</td></tr>
+<tr><td class="num">14주</td><td>p &lt; .05</td><td class="hl"><strong>표본 크기가 정한다</strong></td></tr>
+</tbody></table></div>
+<div class="key">
+  <div class="lb">그러면 무엇을 할 수 있나</div>
+  <p><strong>비교다.</strong> 절대 기준이 없을 때 남는 것은
+     <strong>같은 조건에서 잰 것끼리의 비교</strong>뿐이다 —
+     화자끼리, 세대끼리, 치료 전후끼리, 같은 사람의 다른 모음 쌍끼리.</p>
+  <p style="margin-top:8px">그래서 이 수업이 <strong>반 전체 데이터를 계속 모은 것</strong>이다.
+     바깥의 규준을 빌려오는 대신 <strong>우리 조건에서의 분포</strong>를 만들었다.
+     14주차에서 본 대로, 그 규준조차 작으면 위험하지만 —
+     <strong>적어도 어떤 조건에서 잰 것인지는 안다.</strong></p>
+</div>
+<div class="warn">
+  <div class="lb">이것이 ③과 이어진다</div>
+  <p>③에서 “숫자는 지각을 대신하지 못한다”고 했다. 왜 대신하지 못하는가.
+     <strong>숫자에는 경계가 없기 때문이다.</strong>
+     “CPP가 12 dB이다”는 사실이지만 “그러므로 병리적이다”는 사실이 아니다.
+     <strong>그 판단은 언제나 사람이, 맥락 속에서 한다.</strong></p>
+</div>
+
+<h3 id="s3-3"><span class="n">3.3</span>우리가 실제로 재본 것</h3>
+<p>이 수업 자료의 수치에는 <strong>✓ 검증</strong> 표시가 붙어 있었다.
+   문헌에서 옮겨 적은 것이 아니라 <strong>실제로 합성하고 되분석해 확인한 값</strong>이라는 뜻이다.
+   학기 전체에 <strong>26곳</strong>이 있었다. 대표적인 것을 모으면 이렇다.</p>
+<div class="tw"><table><thead><tr><th class="num">주차</th><th>확인한 것</th><th class="num">결과</th></tr></thead><tbody>
+<tr><td class="num">3주</td><td>위상 180°로 더하면 정말 상쇄되는가</td><td class="num ok">RMS = 0</td></tr>
+<tr><td class="num">3주</td><td>폐관의 배음이 1 : 3 : 5인가</td><td class="num ok">150 · 450 · 750 Hz</td></tr>
+<tr><td class="num">3주</td><td>진폭을 절반으로 하면 −6 dB인가</td><td class="num ok">0.00 / −6.00 / −12.00</td></tr>
+<tr><td class="num">5주</td><td>F0를 바꿔도 포먼트가 유지되는가</td><td class="num ok">F2 1096 / 1085 / 1087</td></tr>
+<tr><td class="num">8주</td><td>ceiling을 낮추면 옥타브 오류가 나는가</td><td class="num hl">218 → <b>109.0</b> (정확히 절반)</td></tr>
+<tr><td class="num">9주</td><td>F0가 높으면 포먼트가 얼마나 틀리나</td><td class="num hl">F1 오차 최대 <b>20.7 %</b></td></tr>
+<tr><td class="num">9주</td><td>표본이 적으면 Pillai가 부풀려지나</td><td class="num hl">합류인데 n=5 → <b>0.217</b></td></tr>
+<tr><td class="num">10주</td><td>VOT만으로 세 계열이 갈리나</td><td class="num hl">76.7 % → 둘 다 쓰면 <b>99.2 %</b></td></tr>
+<tr><td class="num">11주</td><td>하이패스가 COG를 얼마나 바꾸나</td><td class="num hl">3 278 → <b>7 085 Hz</b></td></tr>
+<tr><td class="num">11주</td><td>안티포먼트가 정말 골을 파는가</td><td class="num ok">해당 대역만 <b>−9.3 dB</b></td></tr>
+<tr><td class="num">12주</td><td>쉼만 늘려도 조음속도는 같은가</td><td class="num ok">3.89 vs <b>3.90</b></td></tr>
+<tr><td class="num">14주</td><td>16명으로 어떤 차이를 잡을 수 있나</td><td class="num hl">d ≥ <b>1.03</b> 이어야</td></tr>
+<tr><td class="num">14주</td><td>규준 8명이면 정상인이 몇 % 걸리나</td><td class="num hl"><b>10.2 %</b> (기대 5 %)</td></tr>
+</tbody></table></div>
+<div class="key">
+  <div class="lb">이 표가 말하는 것</div>
+  <p><strong>절반은 “잘 맞는다”이고 절반은 “크게 틀린다”이다.</strong>
+     그것이 정직한 그림이다. 도구는 조건이 맞으면 놀랍도록 정확하고,
+     조건이 어긋나면 <strong>조용히 그리고 크게</strong> 틀린다.</p>
+  <p style="margin-top:8px"><strong>“조용히”가 핵심이다.</strong> 옥타브 오류도, 하이패스를 안 건 COG도,
+     소표본 z점수도 <strong>오류 메시지를 내지 않는다.</strong> 그냥 그럴듯한 숫자를 준다.
+     <strong>그래서 스스로 확인하는 습관이 필요했다.</strong></p>
+</div>
+<div class="warn">
+  <div class="lb">여러분에게 남기는 실천 하나</div>
+  <p>새 도구를 쓰게 되거든 <strong>답을 아는 신호를 먼저 넣어보라.</strong>
+     150 Hz 순음을 넣어 150이 나오는지, 지정한 포먼트로 합성해 그 값이 회수되는지.
+     <strong>5분이면 되고, 이 습관 하나가 학기 내내 우리를 구했다.</strong></p>
+</div>
+
+<h3 id="s3-4"><span class="n">3.4</span>AI와 함께한 학기</h3>
+<p>한 학기 동안 <strong>열두 개의 바이브 코딩 미션</strong>(#01 ~ #12)을 했다. 되물어 볼 것.</p>
+<ul>
+<li>AI가 준 코드에서 찾아낸 오류 중 <strong>가장 인상적이었던 것</strong>은?</li>
+<li>프롬프트를 <strong>어떻게 쓸 때</strong> 원하는 결과가 나왔나?</li>
+<li><strong>검증값을 미리 계산해 두는 습관</strong>이 실제로 도움이 되었나?</li>
+<li>AI가 <strong>조용히 틀린</strong> 경우가 있었나? 어떻게 알아챘나?</li>
+</ul>
+<div class="tw"><table><thead><tr><th>미션에서 반복된 AI의 실수</th><th class="ok">알아채는 법</th></tr></thead><tbody>
+<tr><td>축 반전을 빠뜨린다 <em>(#08 모음 사각도)</em></td><td class="ok">/이/가 왼쪽 위에 오는가</td></tr>
+<tr><td>반음 변환을 빠뜨린다 <em>(#09)</em></td><td class="ok">성별로 두 덩어리가 생기는가</td></tr>
+<tr><td>병합에서 행을 조용히 잃는다 <em>(#07)</em></td><td class="ok">병합 뒤 행 수를 센다</td></tr>
+<tr><td>KlattGrid 포먼트를 3개만 지정한다 <em>(#05)</em></td><td class="ok">되분석해 F3가 맞는지 본다</td></tr>
+<tr><td>하이패스를 대역통과로 구현한다 <em>(#10)</em></td><td class="ok">COG가 엉뚱하게 올라간다</td></tr>
+<tr><td>전처리 조건 기록을 빠뜨린다 <em>(#10)</em></td><td class="ok">CSV에 주석 행이 있는가</td></tr>
+</tbody></table></div>
+<p><strong>공통점을 보라.</strong> 여섯 가지 모두 <strong>코드가 오류를 내지 않는다.</strong>
+   돌아가고, 그림도 나오고, 숫자도 나온다. <strong>틀렸을 뿐이다.</strong>
+   그래서 확인 방법이 언제나 <strong>“결과가 말이 되는가”</strong>였다.</p>
+<div class="key"><div class="lb">마무리 메시지</div>
+<p>도구는 계속 바뀐다. 3년 뒤에는 Praat도 Parselmouth도 다른 것으로 대체될 수 있다.
+   <strong>바뀌지 않는 것은 “이 숫자가 맞는지 어떻게 아는가”라는 질문이다.</strong>
+   그 질문을 던질 수 있으면 어떤 도구가 와도 쓸 수 있다.</p></div>
+</section>
+
+<section id="s4">
+<h2 class="sec"><span class="num">§4</span>그다음</h2>
+<p class="sechint">20분</p>
+<h3>이 다음에 갈 수 있는 곳</h3>
+<div class="tw"><table><thead><tr><th>방향</th><th>무엇을 더 배우나</th></tr></thead><tbody>
+<tr><td><strong>임상</strong></td><td>음성장애·마비말장애·조음음운장애 평가와 중재, 후두 영상, 공기역학 검사</td></tr>
+<tr><td><strong>연구</strong></td><td>실험음성학, 사회음성학, 음성 코퍼스 구축, 실험 설계와 통계</td></tr>
+<tr><td><strong>공학</strong></td><td>음성인식·합성, 화자인식, 딥러닝 기반 음성 처리</td></tr>
+<tr><td>인접</td><td>청각학, 심리언어학, 언어습득</td></tr>
+</tbody></table></div>
+<h3>도구의 다음 단계</h3>
+<div class="tw"><table><thead><tr><th>도구</th><th>쓰임</th></tr></thead><tbody>
+<tr><td><strong>Montreal Forced Aligner</strong></td><td>대량 음성의 자동 정렬 — TextGrid를 손으로 안 만들어도 된다</td></tr>
+<tr><td>openSMILE / VoiceSauce</td><td>대규모 음향 특징 추출</td></tr>
+<tr><td>R (phonR, tidyverse)</td><td>음성 데이터 통계와 시각화</td></tr>
+<tr><td>Whisper 등 ASR</td><td>전사 자동화</td></tr>
+</tbody></table></div>
+<div class="key">
+  <div class="lb">무엇부터 손대면 좋은가</div>
+  <p><strong>TextGrid를 손으로 만드는 데 지쳤다면 Montreal Forced Aligner</strong>가 첫 번째다.
+     9~12주차에 라벨링으로 쓴 시간을 생각하면 효용이 가장 크고,
+     <strong>여러분은 이미 정렬 결과가 맞는지 판단할 눈을 갖고 있다.</strong>
+     자동 정렬도 결국 <strong>눈으로 확인해야 한다는 점은 같다.</strong></p>
+  <p style="margin-top:8px">통계를 더 하고 싶다면 <strong>R보다 지금 쓰는 Python을 이어가는 편</strong>이
+     학습 비용이 적다. 필요한 것은 대개 <code>scipy.stats</code>와 <code>statsmodels</code>로 된다.</p>
+</div>
+<div class="key"><div class="lb">딥러닝 한마디</div>
+<p>요즘 음성 처리는 대부분 학습 기반이다. 그러나 <strong>무엇을 특징으로 쓸지,
+   결과가 말이 되는지 판단하는 것</strong>은 여전히 오늘 배운 지식을 필요로 한다.
+   음성인식이 쓰는 MFCC의 <strong>Mel 척도가 곧 13주차의 청각 척도</strong>다.</p></div>
+<h3>데이터 인계</h3>
+<ul>
+<li>올해 반 데이터를 동의 범위 안에서 익명화해 보관한다</li>
+<li>내년 수업의 규준 자료로 쓴다 — <strong>매년 쌓이면 자체 규준이 된다</strong> (7주차 §2.3의 실현)</li>
+<li>개인 음성 코퍼스는 각자 보관을 권한다</li>
+</ul>
+</section>
+
+<section id="s5">
+<h2 class="sec"><span class="num">§5</span>마무리</h2>
+<h3>성적 산출</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th class="num">비중</th></tr></thead><tbody>
+<tr><td>주차별 실습 과제 (12회, 최고 10회 반영)</td><td class="num">35 %</td></tr>
+<tr><td>중간 실기시험 (8주)</td><td class="num">20 %</td></tr>
+<tr><td>기말 프로젝트 (산출물 20 + 발표 10)</td><td class="num">30 %</td></tr>
+<tr><td class="ok"><strong>바이브 코딩 검증 로그</strong></td><td class="num ok"><strong>10 %</strong></td></tr>
+<tr><td>참여 · 페어실습 기여</td><td class="num">5 %</td></tr>
+</tbody></table></div>
+
+<h3>다음 학기를 위한 기록</h3>
+<p class="sechint">교수자용 — 지금 적어두지 않으면 잊는다</p>
+<ul class="chk" data-key="w15memo">
+<li><input type="checkbox" id="p11"><label for="p11"><b>시간 배분</b> — 실습이 넘친 주차 / 남은 주차</label></li>
+<li><input type="checkbox" id="p12"><label for="p12"><b>기술적 문제</b> — 설치 실패, 녹음 품질, 도구 오류</label></li>
+<li><input type="checkbox" id="p13"><label for="p13"><b>학생 반응</b> — 가장 잘 통한 데모, 가장 어려워한 개념</label></li>
+<li><input type="checkbox" id="p14"><label for="p14"><b>과제 난이도</b> — A/B/C 단계가 적절했나</label></li>
+<li><input type="checkbox" id="p15"><label for="p15"><b>자료 보완</b> — 실제 발화로 교체하면 좋을 합성 데모</label></li>
+<li><input type="checkbox" id="p16"><label for="p16">반 데이터 익명화 및 보관 완료</label></li>
+</ul>
+
+<div class="goal" style="margin-top:34px">
+  <div class="lb">마지막 슬라이드</div>
+  <p style="font-size:16px;line-height:1.9;margin-bottom:14px">
+     이 학기에 우리가 한 일은 <strong>“소리를 숫자로 바꾸는 법”</strong>을 배운 것이 아니다.<br>
+     <strong>그 숫자를 얼마나 믿어야 하는지 판단하는 법</strong>을 배운 것이다.</p>
+  <p style="font-size:19px;font-weight:700;color:var(--accent);margin:0">
+     “이 값이 맞는지 당신은 어떻게 아는가?”</p>
+</div>
+
+<footer><p>말과학 15주차 · 한 학기 동안 수고 많았습니다.</p></footer>
+</section>
+</main></div>
+
+<script>
+(function(){
+  document.querySelectorAll(".copy").forEach(function(b){
+    b.addEventListener("click",function(){
+      var pre=b.parentElement.querySelector("pre"); if(!pre) return;
+      var txt=pre.innerText;
+      var done=function(){b.textContent="복사됨";b.classList.add("done");
+        setTimeout(function(){b.textContent="복사";b.classList.remove("done");},1600);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done,function(){fb(txt,done);});
+      } else fb(txt,done);
+    });
+  });
+  function fb(txt,cb){try{var ta=document.createElement("textarea");ta.value=txt;
+    ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();
+    document.execCommand("copy");document.body.removeChild(ta);cb();}catch(e){}}
+  var ea=document.getElementById("expandAll"),open=false;
+  ea&&ea.addEventListener("click",function(){open=!open;
+    document.querySelectorAll("details.more").forEach(function(d){d.open=open;});
+    ea.textContent=open?"▴ 상세 전부 접기":"▾ 상세 전부 펼치기";});
+  var tb=document.getElementById("themeBtn");
+  tb&&tb.addEventListener("click",function(){var r=document.documentElement,cur=r.getAttribute("data-theme");
+    if(!cur){cur=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+    r.setAttribute("data-theme",cur==="dark"?"light":"dark");});
+  var mb=document.getElementById("mobBtn"),toc=document.getElementById("toc");
+  mb&&mb.addEventListener("click",function(){toc.classList.toggle("open");
+    mb.textContent=toc.classList.contains("open")?"✕ 목차 닫기":"☰ 목차 열기";});
+  toc&&toc.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){
+    if(window.innerWidth<=900){toc.classList.remove("open");mb.textContent="☰ 목차 열기";}});});
+  var links={},targets=[];
+  document.querySelectorAll("nav.toc a[href^='#']").forEach(function(a){
+    var id=a.getAttribute("href").slice(1),el=document.getElementById(id);
+    if(el){links[id]=a;targets.push(el);}});
+  if("IntersectionObserver" in window&&targets.length){
+    var seen={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){seen[e.target.id]=e.isIntersecting;});
+      var act=null;
+      for(var i=0;i<targets.length;i++){if(seen[targets[i].id]){act=targets[i].id;break;}}
+      if(act)Object.keys(links).forEach(function(k){links[k].classList.toggle("on",k===act);});
+    },{rootMargin:"-8% 0px -72% 0px",threshold:0});
+    targets.forEach(function(t){io.observe(t);});}
+  var KEY="malgwahak-w15-checks",state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){state={};}
+  document.querySelectorAll(".chk input[type=checkbox]").forEach(function(cb){
+    if(state[cb.id])cb.checked=true;
+    cb.addEventListener("change",function(){state[cb.id]=cb.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}});});
+})();
+</script>
