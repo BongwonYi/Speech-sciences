@@ -42,7 +42,9 @@ h2 .n{color:var(--accent);font-weight:700;margin-right:9px}
 .card:hover{border-color:var(--accent);transform:translateY(-1px)}
 .card .wk{font-size:11.5px;letter-spacing:.1em;font-weight:700;color:var(--accent);
   text-transform:uppercase}
-.card h3{margin:5px 0 7px;font-size:16px;letter-spacing:-.01em}
+.card h3{margin:5px 0 3px;font-size:16px;letter-spacing:-.01em}
+.card .en{margin:0 0 8px;font-size:12px;font-style:italic;color:var(--accent);
+  font-weight:500;line-height:1.45}
 .card p{margin:0 0 11px;font-size:13px;color:var(--muted);line-height:1.62}
 .card .links{display:flex;gap:7px;flex-wrap:wrap}
 a.btn{display:inline-block;font-size:12.5px;text-decoration:none;padding:5px 11px;
@@ -74,6 +76,8 @@ code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12
 <header><div class="in">
   <div class="crumb">실습 중심 개편 · 2026</div>
   <h1>말과학 — 15주 강의자료</h1>
+  <div style="margin:-6px 0 14px;font-size:16px;font-style:italic;color:var(--accent);font-weight:500">
+    Speech Sciences — A 15-Week Laboratory Course</div>
   <p class="sub">Praat과 Parselmouth로 <strong>직접 재고 확인하는</strong> 실습 중심 강의.
      각 주차는 이론과 실습이 한 페이지에 들어 있고, 페이지 안의 모든 수치는
      <strong>실제로 합성하고 되분석해 확인한 값</strong>이다.</p>
@@ -103,27 +107,31 @@ code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12
 
 <div class="card"><div class="wk">1주차</div>
 <h3>말과학과 디지털 오디오</h3>
+<p class="en">The Speech Chain, Measurement, and Digital Audio</p>
 <p>말 사슬 · 구성개념과 측정치 · 조작적 정의 · 표본화와 나이퀴스트 · 양자화 · 클리핑</p>
 <div class="links"><a class="btn pri" href="malgwahak_week01.html">열기</a>
-<a class="btn" href="https://claude.ai/code/artifact/bd331097-fa7b-4766-973b-7316386d65a4">웹</a></div></div>
+<a class="btn" href="https://claude.ai/code/artifact/139b1e61-e8fa-4909-b3d0-373c48ae68e4">웹</a></div></div>
 
 <div class="card"><div class="wk">2주차</div>
 <h3>소리의 물리 Ⅰ — 진동과 파동</h3>
+<p class="en">Acoustics I — Vibration and Waves</p>
 <p>훅의 법칙 · 단순조화운동 · 고유진동수 · 종파와 횡파 · 압력파 · 음속 · v = f λ</p>
 <div class="links"><a class="btn pri" href="malgwahak_week02.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/87abdab2-c41b-4948-ba58-61cc39a09639">웹</a></div></div>
 
 <div class="card"><div class="wk">3주차</div>
 <h3>소리의 물리 Ⅱ — 파동의 행동과 크기</h3>
+<p class="en">Acoustics II — Wave Behavior and Loudness</p>
 <p>중첩과 간섭 · 맥놀이 · 반사와 회절 · 정상파 · 관 공명 1:3:5 · 데시벨 · 등청감곡선</p>
 <div class="links"><a class="btn pri" href="malgwahak_week03.html">열기</a>
-<a class="btn" href="https://claude.ai/code/artifact/e95f03a9-782f-43d9-8da1-44e32ca5abdf">웹</a></div></div>
+<a class="btn" href="https://claude.ai/code/artifact/ed652b41-710d-44ad-9e82-628dcf1baf7b">웹</a></div></div>
 
 <div class="card"><div class="wk">4주차</div>
 <h3>복합파와 푸리에 분석</h3>
+<p class="en">Complex Waves and Fourier Analysis</p>
 <p>주기파와 비주기파 · 부분음·조화음·상음 · 푸리에 정리 · 주파수 해상도 · 협대역과 광대역</p>
 <div class="links"><a class="btn pri" href="malgwahak_week04.html">열기</a>
-<a class="btn" href="https://claude.ai/code/artifact/b973260e-a632-4a59-adb2-da6e47214663">웹</a></div></div>
+<a class="btn" href="https://claude.ai/code/artifact/9eeffcf3-7b75-4f03-a9b7-db529221ec7c">웹</a></div></div>
 
 </div>
 
@@ -133,24 +141,28 @@ code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12
 
 <div class="card"><div class="wk">5주차</div>
 <h3>성도 공명과 음원-필터 이론</h3>
+<p class="en">Vocal Tract Resonance and the Source-Filter Theory</p>
 <p>대역폭과 Q · 성도는 한쪽 열린 관 · 500·1500·2500 Hz · 섭동 이론 · 음원과 필터의 독립성</p>
 <div class="links"><a class="btn pri" href="malgwahak_week05.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/646e6d31-8838-4b21-b411-af343ee213c6">웹</a></div></div>
 
 <div class="card"><div class="wk">6주차</div>
 <h3>호흡과 발성, 그리고 음역</h3>
+<p class="en">Respiration, Phonation, and Vocal Range</p>
 <p>폐용적 · 성문하압 · 근탄성-공기역학 이론 · 발성 유형 · 성구 · MPT와 s/z · 반음 척도 · VRP</p>
 <div class="links"><a class="btn pri" href="malgwahak_week06.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/aa631f71-ac57-416c-9f1d-0d835b205357">웹</a></div></div>
 
 <div class="card"><div class="wk">7주차</div>
 <h3>음원 계측과 청지각 평가</h3>
+<p class="en">Voice Source Measurement and Auditory-Perceptual Evaluation</p>
 <p>F0 추출 설정 · jitter와 shimmer · 신호 유형 · HNR과 CPP · GRBAS와 CAPE-V · 신뢰도</p>
 <div class="links"><a class="btn pri" href="malgwahak_week07.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/a2d8b17a-0766-408b-8a03-17526c0339bc">웹</a></div></div>
 
 <div class="card exam"><div class="wk">8주차 · 시험</div>
 <h3>중간 실기시험</h3>
+<p class="en">Midterm Practical Examination</p>
 <p>1–7주차 전 범위 · <strong>모의고사 음원 7종과 설정별 정답표</strong> · 환경 점검 스크립트 · 흔한 실패</p>
 <div class="links"><a class="btn pri" href="malgwahak_week08.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/caedd7e8-7154-41e2-8334-3e17210f2f97">웹</a></div></div>
@@ -163,24 +175,28 @@ code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12
 
 <div class="card"><div class="wk">9주차</div>
 <h3>모음과 포먼트</h3>
+<p class="en">Vowel Acoustics — Formants and the Vowel Space</p>
 <p>모음 사각도 · 이중모음 · LPC와 max formant · 정규화(Lobanov) · VSA와 FCR · Pillai 합류 판정 · TextGrid</p>
 <div class="links"><a class="btn pri" href="malgwahak_week09.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/0e36afff-d956-499d-be8e-310b14dcad2a">웹</a></div></div>
 
 <div class="card"><div class="wk">10주차</div>
 <h3>파열음과 한국어 삼중대립</h3>
+<p class="en">Consonant Acoustics I — Stops and the Korean Three-Way Contrast</p>
 <p>VOT · <strong>포먼트 전이와 locus</strong> · velar pinch · 평음·경음·격음 · VOT 병합과 성조 발생 · 병합의 정량화</p>
 <div class="links"><a class="btn pri" href="malgwahak_week10.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/506969f1-52f3-493a-8fc4-a87c6122d3d7">웹</a></div></div>
 
 <div class="card"><div class="wk">11주차</div>
 <h3>마찰음과 공명자음</h3>
+<p class="en">Consonant Acoustics II — Fricatives, Affricates, and Sonorants</p>
 <p>난류 소음 · 스펙트럼 모멘트와 COG · 전처리 민감도 · 계수 효과 · 비음과 안티포먼트 · 유음</p>
 <div class="links"><a class="btn pri" href="malgwahak_week11.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/8d5a199b-f562-41d7-8c00-35c39bfbf4be">웹</a></div></div>
 
 <div class="card"><div class="wk">12주차</div>
 <h3>초분절 요소</h3>
+<p class="en">Suprasegmentals — Prosody, Speech Rate, and Fluency</p>
 <p>억양과 운율 구조 · 말 리듬과 리듬 지표 · 말속도와 조음속도 · 쉼 임계값 · 음절핵 검출 · DDK</p>
 <div class="links"><a class="btn pri" href="malgwahak_week12.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/e13e1a0e-6a3e-4b6f-983a-a1fec4fb55fb">웹</a></div></div>
@@ -193,18 +209,21 @@ code{background:var(--surface2);padding:1.5px 6px;border-radius:5px;font-size:12
 
 <div class="card"><div class="wk">13주차</div>
 <h3>말소리 지각</h3>
+<p class="en">Speech Perception</p>
 <p>말초 청각과 임계대역 · 범주적 지각의 두 조건 · 예측 판별 · 불변성 문제 · 말 명료도와 소음 속 지각</p>
 <div class="links"><a class="btn pri" href="malgwahak_week13.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/8412e1b0-e3ce-4593-84be-9dd61fd26873">웹</a></div></div>
 
 <div class="card"><div class="wk">14주차</div>
 <h3>트랙별 프로젝트 워크숍</h3>
+<p class="en">Project Workshop — Clinical and Research Tracks</p>
 <p>연구 윤리와 재현성 · 질문 좁히기 · <strong>표본 크기의 현실</strong> · z점수의 함정 · 임상 트랙 · 연구 트랙</p>
 <div class="links"><a class="btn pri" href="malgwahak_week14.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/0bc71981-03e5-484b-a3fb-b4a4f847245b">웹</a></div></div>
 
 <div class="card"><div class="wk">15주차</div>
 <h3>발표 및 종합</h3>
+<p class="en">Presentations and Synthesis</p>
 <p>프로젝트 발표 · 동료 평가 · 말 사슬 다시 그리기 · <strong>관통하는 네 원리</strong> · 학기 검증 목록</p>
 <div class="links"><a class="btn pri" href="malgwahak_week15.html">열기</a>
 <a class="btn" href="https://claude.ai/code/artifact/c20baa82-67df-4bc2-8744-a6116c9c70cf">웹</a></div></div>
