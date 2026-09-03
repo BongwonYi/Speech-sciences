@@ -1,0 +1,340 @@
+<meta charset="utf-8">
+<title>말과학고급세미나 연구 주제</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#F5F7F9;
+    --surface:#FFFFFF;
+    --ink:#131B24;
+    --muted:#5F6C7A;
+    --faint:#8894A2;
+    --rule:#DBE1E8;
+    --accent:#1A4C7A;
+    --accent-soft:#E7EDF4;
+    --signal:#9C5A15;
+    --signal-soft:#F4EBDF;
+    --serif:"Gowun Batang","Nanum Myeongjo",serif;
+    --sans:"IBM Plex Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+    --mono:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F141A;
+      --surface:#161D25;
+      --ink:#E3E9EF;
+      --muted:#96A2AF;
+      --faint:#6C7885;
+      --rule:#26303A;
+      --accent:#7EB3DE;
+      --accent-soft:#1B2833;
+      --signal:#D9A15C;
+      --signal-soft:#2B2317;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F141A;
+    --surface:#161D25;
+    --ink:#E3E9EF;
+    --muted:#96A2AF;
+    --faint:#6C7885;
+    --rule:#26303A;
+    --accent:#7EB3DE;
+    --accent-soft:#1B2833;
+    --signal:#D9A15C;
+    --signal-soft:#2B2317;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:56px 24px 96px}
+  @media (max-width:600px){.wrap{padding:36px 18px 64px}}
+
+  h1{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.9rem,5.2vw,2.7rem);line-height:1.25;
+    margin:0 0 32px;text-wrap:balance;letter-spacing:-.01em;
+    padding-bottom:22px;border-bottom:2px solid var(--ink)
+  }
+
+  h2{
+    font-family:var(--serif);font-weight:700;font-size:1.3rem;
+    margin:56px 0 20px;letter-spacing:-.01em
+  }
+
+  .topic{
+    display:grid;grid-template-columns:56px 1fr;gap:0 20px;
+    padding:30px 0;border-bottom:1px solid var(--rule)
+  }
+  @media (max-width:600px){
+    .topic{grid-template-columns:1fr;gap:0}
+  }
+  .num{
+    font-family:var(--mono);font-size:.9rem;color:var(--accent);
+    padding-top:.28em;font-variant-numeric:tabular-nums
+  }
+  @media (max-width:600px){.num{margin-bottom:6px}}
+  .topic h3{
+    font-family:var(--serif);font-weight:700;font-size:1.3rem;
+    margin:0 0 4px;letter-spacing:-.005em;text-wrap:balance
+  }
+  .en{
+    font-family:var(--mono);font-size:.72rem;color:var(--faint);
+    letter-spacing:.03em;margin:0 0 12px
+  }
+  .what{margin:0 0 16px;font-size:.98rem;color:var(--muted)}
+
+  dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;margin:0}
+  @media (max-width:600px){dl{grid-template-columns:1fr;gap:2px}}
+  dt{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;
+    color:var(--faint);padding-top:.32em;white-space:nowrap
+  }
+  @media (max-width:600px){dt{padding-top:.7em}}
+  dd{margin:0;font-size:.94rem}
+  dd.q{color:var(--ink);font-weight:500}
+  dd.tool{color:var(--accent)}
+  dd.kr{color:var(--muted)}
+  dd b{color:var(--ink);font-weight:600}
+
+  .chip{
+    display:inline-block;font-family:var(--mono);font-size:.68rem;
+    letter-spacing:.05em;padding:2px 7px;margin-right:7px;
+    vertical-align:1px;white-space:nowrap
+  }
+  .chip.have{background:var(--accent-soft);color:var(--accent)}
+  .chip.part{background:var(--accent-soft);color:var(--muted)}
+  .chip.gap{background:var(--signal-soft);color:var(--signal)}
+
+  .reserve{
+    background:var(--surface);border:1px solid var(--rule);padding:22px 24px;
+    display:flex;flex-direction:column;gap:14px
+  }
+  .r{display:grid;grid-template-columns:1fr;gap:2px}
+  .r b{font-weight:600;font-size:.96rem}
+  .r span{font-size:.9rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+  <h1>말과학고급세미나 연구 주제</h1>
+
+  <article class="topic">
+    <div class="num">01</div>
+    <div>
+      <h3>음성장애와 다변량 음향 지표</h3>
+      <p class="en">Voice Disorders and Multiparametric Acoustic Indices</p>
+      <p class="what">쉰 목소리를 숫자로 옮기는 일. 요즘은 지표 하나가 아니라 여섯 개를
+      합친 값(AVQI 같은)이 표준처럼 쓰인다. 그런데 그 합성값이 실제로 무엇을 재는지,
+      각 성분이 무엇을 보태는지는 생각보다 불투명하다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">여섯 개를 합친 지표에서 각 성분은 실제로 무엇을 보태는가.
+        그리고 그렇게 나온 값은 다른 프로그램·다른 언어로 어디까지 옮길 수 있는가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">합성 지표의 잉여성 분석 — 임상 지표 논문을 읽는 일반 기술이 된다</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip part">부분</span>연구는 많은데 절단값이
+        2.19에서 3.69까지 갈린다. 같은 연구실, 같은 문단인데도. 한국어판 CAPE-V는 없다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">02</div>
+    <div>
+      <h3>마비말장애와 말명료도</h3>
+      <p class="en">Dysarthria and Speech Intelligibility</p>
+      <p class="what">얼마나 알아들을 수 있는가를 재는 일. 임상에서 가장 자주 쓰는 말인데
+      재는 방법은 연구마다 다르다. 받아쓰기로 재기도 하고 척도로 평정하기도 하는데,
+      둘이 같은 것을 재는지가 최근 논쟁거리다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">명료도는 화자의 속성인가, 아니면 화자·청자·자극이 함께 만든 값인가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">일반화가능도 이론 — 평정자를 늘릴지 발화를 늘릴지 계산으로 정하는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip gap">공백</span>표준화된 명료도 검사가 없다.
+        게다가 한국어는 <b>어두</b> 자음이 명료도를 좌우한다는 국내 소견이 있어 영어권 결과와 반대다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">03</div>
+    <div>
+      <h3>말실행증의 감별 진단</h3>
+      <p class="en">Differential Diagnosis of Apraxia of Speech</p>
+      <p class="what">말소리를 <em>계획</em>하는 단계의 장애. 실어증의 음소착어나
+      마비말장애와 가르기가 어렵다. 지각적 인상으로 판단하는 학파와 몇 가지 수치로
+      가르려는 학파가 정면으로 갈려 있다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">진단 기준을 수치로 옮기면 감별이 선명해지는가, 오히려 경계가 사라지는가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">범주인가 연속체인가를 데이터로 묻는 법 — 군집·잠재계층 분석</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip gap">공백</span>영어권 지표의 핵심인 <b>어휘 강세</b>가
+        한국어에는 없다. 악센트구 실현으로 번역하는 작업 자체가 아직 안 되어 있다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">04</div>
+    <div>
+      <h3>아동 말소리장애의 음향적 평가</h3>
+      <p class="en">Acoustic Assessment of Childhood Speech Sound Disorder</p>
+      <p class="what">귀로는 "틀렸다"고 들리는 소리 안에 사실은 대조가 남아 있는 경우가 있다
+      (은닉 대조). 전사로는 안 보이고 음향으로만 보인다. 그렇다면 전사를 기준으로
+      삼아 온 그 많은 연구는 어떻게 되는가 — 이것이 지금 이 분야의 논쟁이다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">전사가 놓친 대조를 음향이 잡아낸다면, 전사를 준거로 삼은 연구들은 어떻게 되는가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">개인 내 통계와 평정자 맹검 — 집단 평균으로 주장할 수 없는 것을 다루는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip have">자료 있음</span>적률 분석과 자동평가 선행연구가
+        있다. 다만 한국어 마찰음 대조는 /s/–/s&#700;/라 영어의 /s/–/ʃ/와 축이 다르다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">05</div>
+    <div>
+      <h3>유창성장애의 측정과 성과 정의</h3>
+      <p class="en">Measuring Stuttering and Defining Outcomes</p>
+      <p class="what">말더듬을 무엇으로 재고, 치료가 성공했다는 것을 무엇으로 판정하는가.
+      관찰자가 세는 비유창성과 당사자가 보고하는 영향은 상관이 낮다.
+      어느 쪽을 성과로 볼 것인지를 두고 학술지 지면에서 실제 논쟁이 오갔다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">무엇이 치료 성과로 계산되어야 하는가 — 세어진 비유창성인가, 겪은 영향인가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">1차 성과의 사전 지정 — 구성개념을 결과보다 먼저 정의하는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip part">부분</span>P-FA-II가 법정 기본 도구로 자리잡고
+        있다. 반면 OASES 한국어판이 없어 <b>이 논쟁이 국내에선 아직 열리지 못했다.</b></dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">06</div>
+    <div>
+      <h3>공명장애와 비음치</h3>
+      <p class="en">Resonance Disorders and Nasalance</p>
+      <p class="what">구개열 등에서 코로 소리가 새는 문제. 비음측정기로 코와 입의
+      에너지 비율을 재는데, 최근 같은 화자가 <em>해부학적 변화 없이</em> 발성 방식만 바꿔
+      그 값을 크게 낮춘 연구가 나왔다. 수술 전후 비교에 치명적인 이야기다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">비음치는 연인두 기능을 재는가, 아니면 그저 구강·비강 에너지 비율을 재는가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">구인 타당도와 규준 이식 가능성 — 기계가 재는 것을 의심하는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip gap">공백</span>규준이 2014·2015년 것뿐인데 그 사이
+        장비 기종이 바뀌었다. 게다가 한국어는 <b>비음동화</b> 때문에 "비자음 없는 문단"을
+        만드는 것부터 어렵다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">07</div>
+    <div>
+      <h3>인공와우의 말지각과 말산출</h3>
+      <p class="en">Speech Perception and Production in Cochlear Implant Users</p>
+      <p class="what">듣는 방식이 바뀌면 말하는 방식도 바뀐다. 모음 공간이 좁아지고
+      마찰음 대조가 흐려지는데, 그것이 <em>듣기 경험이 부족해서</em>인지
+      <em>신호가 거칠어져서</em>인지를 가르는 것이 이 분야의 오랜 숙제다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">산출의 왜곡은 청각 경험의 부족 탓인가, 신호 열화 그 자체 탓인가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">시뮬레이션 통제군 설계 — 인과를 통계가 아니라 설계로 가르는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip have">자료 있음</span>국내 연구가 있다. 그리고
+        한국어만의 각도가 있다 — 젊은 세대의 평음·격음 구별 단서는 <b>F0</b>인데,
+        인공와우가 잘 못 전하는 것이 바로 그 F0다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">08</div>
+    <div>
+      <h3>신경퇴행성 질환의 음성 표지</h3>
+      <p class="en">Digital Speech Biomarkers for Neurodegenerative Disease</p>
+      <p class="what">말로 파킨슨병·ALS·치매를 조기에 잡으려는 연구. 최근 5년 증가폭이
+      가장 큰 영역이다. 논문마다 90%대 정확도를 보고하는데, 다른 데이터셋에 가져가면
+      우연 수준으로 떨어진다는 보고가 잇따르고 있다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">90%의 정확도가 다른 병원에서 50%가 된다면, 그것은 무엇을 잰 것인가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">일반화 검증과 데이터 누수 감사 — 기계학습 논문을 심사하는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip part">부분</span>영어에서 학습한 모형이 한국어로
+        옮겨지는지가 열린 질문이다. 국내 대화 말뭉치를 대조군 자료로 쓸 수 있다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">09</div>
+    <div>
+      <h3>생애주기 음성과 성확정 음성</h3>
+      <p class="en">Voice Across the Lifespan and Gender-Affirming Voice</p>
+      <p class="what">나이 들며 목소리가 변하는 것, 그리고 원하는 목소리로 바꾸는 일.
+      둘 다 "정상은 이 값"이라는 문장에 기대는데, 그 값이 어디서 왔는지 따져 보면
+      생각보다 근거가 얇다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">목표값은 누구의 규준에서 오는가. 그 규준을 임상 목표로 삼아도 되는가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">목표값과 규준의 정당화 — "정상"이라는 문장의 출처를 캐는 법</dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip gap">공백</span>연령·성별 층화 규준이 부족하다.
+        노화에 따른 f0 변화는 성별에 따라 방향이 반대인데, 인용되는 규준 대부분이 청년층 것이다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="topic">
+    <div class="num">10</div>
+    <div>
+      <h3>원격·모바일 측정의 타당도</h3>
+      <p class="en">Validity of Remote and Mobile Acoustic Measurement</p>
+      <p class="what">스마트폰이나 화상회의로 잰 값을 믿어도 되는가. "괜찮다"는 논문과
+      "왜곡된다"는 논문이 둘 다 있는데, 자세히 보면 <em>어떤 화자, 어떤 과제</em>에서
+      쟀는지가 다르다. 이 주제는 나머지 아홉의 전제를 흔든다.</p>
+      <dl>
+        <dt>묻는 질문</dt>
+        <dd class="q">"등가"라는 결론은 어떤 화자·어떤 과제에서만 참인가.</dd>
+        <dt>배우는 도구</dt>
+        <dd class="tool">등가성 검정 — <b>"차이가 없다"를 통계로 주장하는 법</b></dd>
+        <dt>한국어</dt>
+        <dd class="kr"><span class="chip gap">공백</span>검증 연구가 없다. 그런데
+        잡음 억제 기능이 건드리는 것이 하필 <b>삼중대립의 단서</b>다.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <h2>예비 주제</h2>
+  <div class="reserve">
+    <div class="r"><b>삼킴장애의 음향·생리 지표</b><span>말과학 방법이 말 바깥으로 넘어가는 사례. 준거 검사와의 진단 정확도를 다룬다.</span></div>
+    <div class="r"><b>자폐 스펙트럼의 운율</b><span>지표의 조작적 정의가 가장 안 잡힌 영역. 문화 의존성 문제가 크다.</span></div>
+    <div class="r"><b>이중언어·다문화 화자 평가의 편향</b><span>측정 불변성을 다룬다. 6·9번과 일부 겹친다.</span></div>
+    <div class="r"><b>후두적출 대체발성</b><span>규준이 아예 없는 집단에서 성과를 어떻게 잴 것인가. 논문 수가 적다.</span></div>
+    <div class="r"><b>실어증의 연결발화 분석</b><span>담화 표본 크기와 안정성. 말과학보다 언어 쪽으로 기운다.</span></div>
+  </div>
+
+</div>
