@@ -352,13 +352,38 @@ F1 = 1 × 350 / (4 × 0.175) = <strong>500 Hz</strong>
   <p style="margin-top:8px">거칠기 짝이 없는 근사가 실측과 맞는다는 것 —
      이것이 성도를 관으로 보는 모델의 가치다.</p>
 </div>
-<details class="more"><summary>왜 340이 아니라 350 m/s인가</summary><div class="more-body">
+<details class="more"><summary>음속을 350 m/s로 잡는 이유</summary><div class="more-body">
 <p>2주차 §2.4에서 음속이 온도에 따라 변한다고 했다. 대략 <strong>0 ℃에서 331 m/s, 1 ℃ 오를 때마다 0.6 m/s</strong> 증가한다.</p>
 <div class="formula">상온 20 ℃ : 331 + 0.6 × 20 = <strong>343 m/s</strong>
 <br>체온 37 ℃ : 331 + 0.6 × 37 ≈ <strong>353 m/s</strong></div>
 <p>성도 안은 <strong>체온에 가깝고 수증기로 포화되어 있어</strong> 바깥보다 음속이 빠르다.
-   문헌에서 350 또는 353을 쓰는 이유다. 34,000 cm/s로 계산하면 F1이 486 Hz가 되어
-   500이라는 깔끔한 값이 나오지 않는다.</p>
+   일반 음향학이 상온값 340~343을 쓰는 것과 달리 <strong>말과학은 체온을 반영한 값을 쓰는 것이 관례</strong>다.
+   문헌의 대표값은 Stevens(2000) <i>Acoustic Phonetics</i> p.138의
+   <strong>354 m/s(35,400 cm/s)</strong>이고, 우리가 쓰는 350은 여기서 내림한 값이다.</p>
+
+<p style="margin-top:12px">다만 <strong>350이라는 숫자가 유일하게 옳은 값인 것은 아니다.</strong>
+   500 · 1500 · 2500이라는 깔끔한 결과는 음속 하나가 아니라 <strong>음속과 성도 길이의 조합</strong>에서 나온다.</p>
+<div class="tw"><table>
+<thead><tr><th class="num">c</th><th class="num">L</th><th class="num">F1 = c/4L</th><th>쓰는 곳</th></tr></thead>
+<tbody>
+<tr><td class="num">350 m/s</td><td class="num">17.5 cm</td><td class="num"><strong>500 Hz</strong></td><td>이 강의</td></tr>
+<tr><td class="num">340 m/s</td><td class="num">17.0 cm</td><td class="num"><strong>500 Hz</strong></td><td>Coleman(Oxford) 강의자료</td></tr>
+<tr><td class="num">354 m/s</td><td class="num">17.7 cm</td><td class="num"><strong>500 Hz</strong></td><td>Stevens 값을 그대로 쓸 때</td></tr>
+<tr><td class="num">343 m/s</td><td class="num">17.5 cm</td><td class="num">490 Hz</td><td>상온값과 17.5를 섞은 경우</td></tr>
+</tbody></table></div>
+
+<p style="margin-top:12px"><strong>상온값 340으로도 500 Hz는 나온다.</strong>
+   성도 길이를 17 cm로 잡으면</p>
+<div class="formula">F1 = 340 ÷ (4 × 0.17) = <strong>500 Hz</strong>　　F2 = 1500 Hz　　F3 = 2500 Hz</div>
+<p>가 되어 우리와 똑같은 값이 된다. Oxford의 Coleman 강의자료가 실제로 이 조합을 쓴다.
+   그러니 <strong>“340은 틀리고 350이 맞다”가 아니다.</strong>
+   500이라는 목표값을 먼저 정해 놓고 거기에 맞는 (c, L) 쌍을 고르는 것이고, 저자마다 다른 쌍을 쓴다.
+   이 강의는 성인 남성 성도 길이(vocal tract length)로 흔히 인용되는 17.5 cm를 택했으므로 짝이 되는 350을 쓴다.</p>
+
+<p style="margin-top:12px">실무적으로 이 선택의 차이는 <strong>2 % 남짓</strong>이다.
+   균일관 근사 자체의 오차와 포먼트 측정의 화자 간 산포가 그보다 훨씬 크므로 어느 쪽을 써도 결론은 바뀌지 않는다.
+   중요한 것은 <strong>보고할 때 어떤 값을 썼는지 밝히는 것</strong>이다 —
+   이것이 학기 전체를 관통하는 원리 ① <em>측정은 정의와 설정의 함수다</em>의 한 사례다.</p>
 </div></details>
 
 <h3 id="s2-3"><span class="n">2.3</span>성도 길이가 다르면<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · vocal tract length</span></h3>
@@ -615,7 +640,8 @@ F1 = 1 × 350 / (4 × 0.175) = <strong>500 Hz</strong>
 <p>먼저 <strong>손으로 계산</strong>하고, 그다음 코드로 검산한다. 순서를 바꾸지 말 것.</p>
 <div class="codewrap">
   <div class="cap"><span class="tag">Python</span> 한쪽 열린 관의 공명주파수</div>
-  <pre><code>C = 35000.0   # 체온 공기 중 음속 (cm/s)
+  <pre><code>C = 35000.0   # 체온 공기 중 음속 (cm/s). L=17.5 cm와 짝을 이루는 값이다.
+              # Stevens(2000)는 35400을 쓴다 — 보고할 때 어느 쪽인지 밝힐 것.
 
 def tube_resonances(length_cm, n=3, c=C):
     """한쪽만 열린 균일 관: F_n = (2n-1)c / 4L"""
