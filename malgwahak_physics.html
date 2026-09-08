@@ -164,12 +164,18 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
      주차 수업이 빠르게 느껴질 때, 또는 수업 전에 미리 감을 잡고 싶을 때 읽는다.</p>
   <div class="meta"><span class="chip"><b>선수 · 보조</b> 자료</span>
     <span class="chip">2 · 3 · 4주차 대응</span>
-    <span class="chip lab"><b>위젯</b> 6종 · 직접 조작</span>
+    <span class="chip lab"><b>위젯</b> 8종 · 직접 조작</span>
     <span class="chip">준비물 <b>헤드폰</b></span></div>
 </div></header>
 <div class="wrap">
 <nav class="toc" id="toc"><button class="btn mobtoc" id="mobBtn">☰ 목차 열기</button><div class="list">
   <div class="tt">목차</div>
+  <a class="lv1" href="#s0">§0 · 숫자를 다루는 법</a>
+  <a class="lv2" href="#s0-1">0.1 과학적 표기법</a>
+  <a class="lv2" href="#s0-2">0.2 단위 접두어</a>
+  <a class="lv2" href="#s0-3">0.3 단위 변환</a>
+  <a class="lv2" href="#s0-4">0.4 유효숫자 ★</a>
+  <a class="lv2" href="#s0-5">0.5 자릿수 감각</a>
   <a class="lv1" href="#s1">§1 · 진동</a>
   <a class="lv2" href="#s1-1">1.1 흔들리려면 둘이 필요하다</a>
   <a class="lv2" href="#s1-2">1.2 왜 하필 사인파인가</a>
@@ -219,6 +225,7 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <li><b>v = f λ</b> — 셋 중 둘을 알면 나머지가 따라 나온다.</li>
 <li>관의 <b>길이</b>가 그 관이 잘 울리는 <b>주파수</b>를 정한다. 성도도 관이다.</li>
 <li>모든 복잡한 소리는 <b>사인파의 합</b>으로 쪼갤 수 있다.</li>
+<li>Praat이 준 숫자를 <b>어디까지 적을지</b> 판단할 수 있다 — 결과의 정밀도는 측정의 정밀도를 넘지 못한다.</li>
 </ol></div>
 
 <div class="key"><div class="lb">이 자료는 무엇이고, 무엇이 아닌가</div>
@@ -244,6 +251,215 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <tr><td class="k">읽을거리</td><td><a href="https://www.physicsclassroom.com/class/sound">Physics Classroom · Sound Waves and Music</a> — 레슨 1~5</td></tr>
 <tr><td class="k">자가 점검</td><td><a href="https://www.physicsclassroom.com/Concept-Builders/Waves-and-Sound/Wave-Basics">Concept Builder · Wave Basics</a> 외 — 자동 채점</td></tr>
 </table></div>
+
+<section id="s0">
+<h2 class="sec"><span class="num">§0</span>숫자를 다루는 법<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　working with numbers</span></h2>
+<p class="sechint">물리 이야기를 시작하기 전에 · 이미 편한 사람은 §1로 건너뛰어도 된다</p>
+
+<div class="tldr">말과학은 <b>재는 학문</b>이다. 그런데 재고 나면 숫자를 <b>어떻게 적을지</b>가 바로 문제가 된다.</div>
+
+<div class="key"><div class="lb">이 절이 왜 앞에 있나</div>
+<p>말과학에서 만나는 숫자는 <strong>0.00002부터 44100까지</strong> 걸쳐 있다.
+   그리고 Praat은 물어보지도 않고 <strong>소수점 아래 여섯 자리</strong>를 뱉는다.
+   이 두 가지를 다루는 법을 모르면, 물리를 아무리 잘 이해해도
+   <strong>보고서에서 무너진다.</strong></p>
+<p style="margin-top:9px">특히 <strong>§0.4 유효숫자</strong>는 이 자료에서 실무적으로 가장 자주 쓰이는 절이다.
+   나머지가 지루하면 거기만 읽어도 된다.</p></div>
+
+<h3 id="s0-1"><span class="n">0.1</span>큰 수와 작은 수 — 과학적 표기법<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · scientific notation</span></h3>
+
+<p>사람이 겨우 들을 수 있는 소리의 음압은 <strong>0.00002 파스칼</strong>이다.
+   0이 몇 개인지 세어 보라. 이런 숫자를 계속 쓰다 보면 반드시 하나를 빠뜨린다.</p>
+
+<p>그래서 <strong>10의 거듭제곱</strong>으로 자릿수를 따로 떼어 적는다.</p>
+
+<div class="formula"><span class="lbl">과학적 표기법</span>　C × 10<sup>n</sup>
+<br>
+<br>　　C — <strong>1 이상 10 미만</strong>의 수 　(2.5는 되고, 25나 0.25는 안 된다)
+<br>　　n — 정수. <strong>소수점을 몇 칸 옮겼는가</strong>
+<br>
+<br>　　0.00002 　→　<strong>2 × 10<sup>−5</sup></strong>　　소수점을 오른쪽으로 5칸 → 지수는 음수
+<br>　　44100 　　→　<strong>4.41 × 10<sup>4</sup></strong>　　소수점을 왼쪽으로 4칸 → 지수는 양수</div>
+
+<div class="ana"><div class="lb">방향을 헷갈리지 않는 법</div>
+<p>규칙을 외우지 말고 <strong>말이 되는지 확인</strong>하면 된다.
+   0.00002는 <strong>작은 수</strong>다. 그러니 지수도 <strong>음수</strong>여야 한다.
+   44100은 큰 수이니 지수는 양수다. 방향을 반대로 썼으면 크기가 터무니없어지므로 바로 보인다.</p></div>
+
+<p>말과학에서 만나는 숫자들을 두 형식으로 나란히 놓아 보면 감이 온다.</p>
+
+<div class="tw"><table>
+<thead><tr><th>무엇</th><th class="num">일반 표기</th><th class="num">과학적 표기</th></tr></thead>
+<tbody>
+<tr><td>청력 문턱 음압 (0 dB SPL의 기준)</td><td class="num">0.00002 Pa</td><td class="num">2 × 10<sup>−5</sup> Pa</td></tr>
+<tr><td>성대 한 주기 (F0 = 125 Hz일 때)</td><td class="num">0.008 s</td><td class="num">8 × 10<sup>−3</sup> s</td></tr>
+<tr><td>VOT (한국어 격음)</td><td class="num">0.07 s</td><td class="num">7 × 10<sup>−2</sup> s</td></tr>
+<tr><td>성도 길이</td><td class="num">0.175 m</td><td class="num">1.75 × 10<sup>−1</sup> m</td></tr>
+<tr><td>제1포먼트</td><td class="num">500 Hz</td><td class="num">5 × 10<sup>2</sup> Hz</td></tr>
+<tr><td>표본율 (CD 음질)</td><td class="num">44100 Hz</td><td class="num">4.41 × 10<sup>4</sup> Hz</td></tr>
+</tbody></table></div>
+
+<h3 id="s0-2"><span class="n">0.2</span>단위 접두어<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · metric prefixes</span></h3>
+
+<p>과학적 표기법을 쓰는 대신, 자릿수를 <strong>단위 앞에 글자로 붙여</strong> 표현할 수도 있다.
+   <strong>ms</strong>, <strong>kHz</strong>, <strong>μPa</strong>의 m·k·μ가 그것이다.</p>
+
+<div class="tw"><table>
+<thead><tr><th>접두어</th><th>기호</th><th class="num">배수</th><th>말과학에서 만나는 곳</th></tr></thead>
+<tbody>
+<tr><td>메가 mega</td><td class="num">M</td><td class="num">10<sup>6</sup></td><td>파일 크기 (MB)</td></tr>
+<tr><td><strong>킬로</strong> kilo</td><td class="num"><strong>k</strong></td><td class="num">10<sup>3</sup></td><td><strong>kHz</strong> — 마찰음 대역, 표본율</td></tr>
+<tr><td>센티 centi</td><td class="num">c</td><td class="num">10<sup>−2</sup></td><td>cm — 성도 길이</td></tr>
+<tr><td><strong>밀리</strong> milli</td><td class="num"><strong>m</strong></td><td class="num">10<sup>−3</sup></td><td><strong>ms</strong> — VOT, 지속시간, 분석창</td></tr>
+<tr><td><strong>마이크로</strong> micro</td><td class="num"><strong>μ</strong></td><td class="num">10<sup>−6</sup></td><td><strong>μPa</strong> — 음압의 기준값</td></tr>
+</tbody></table></div>
+
+<div class="warn"><div class="lb">대소문자가 다르면 다른 뜻이다</div>
+<p><strong>m은 밀리(10<sup>−3</sup>), M은 메가(10<sup>6</sup>)</strong>다. 10억 배 차이다.
+   <strong>k는 소문자</strong>가 표준이다 — <span class="mono">kHz</span>가 맞고 <span class="mono">KHz</span>는 틀렸다.
+   Hz의 H는 사람 이름(Hertz)에서 왔으므로 <strong>항상 대문자</strong>다.</p></div>
+
+<p>아래 위젯에서 세 표기법이 <strong>같은 숫자를 가리킨다</strong>는 것을 확인해 보자.</p>
+
+<div class="wg" id="wg7">
+  <div class="wh"><span class="ic">7</span><h4>표기법 변환기 — 세 가지가 같은 수다</h4><span class="tag">위젯</span></div>
+  <div class="wb">
+    <canvas id="c7" width="880" height="270"></canvas>
+    <div class="ctl">
+      <label for="r7c">앞의 수 C</label><input type="range" id="r7c" min="100" max="999" value="200"><output id="o7c"></output>
+      <label for="r7n">지수 n</label><input type="range" id="r7n" min="-6" max="5" value="-5"><output id="o7n"></output>
+    </div>
+    <div class="wbtns"><button class="wbtn" id="b7p1">청력 문턱 음압</button>
+      <button class="wbtn" id="b7p2">성대 한 주기</button>
+      <button class="wbtn" id="b7p3">성도 길이</button>
+      <button class="wbtn" id="b7p4">제1포먼트</button>
+      <button class="wbtn" id="b7p5">표본율</button></div>
+    <div class="readout" id="ro7"></div>
+    <p class="hint">지수 슬라이더만 움직여 보라. <b>숫자의 생김새는 그대로인데 자릿수만 옮겨 다닌다.</b>
+       아래 수직선은 <b>한 칸이 10배</b>인 눈금이다 — 말과학이 다루는 범위가 얼마나 넓은지 보인다.</p>
+  </div>
+</div>
+
+<h3 id="s0-3"><span class="n">0.3</span>단위 변환에서 틀리는 자리<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · unit conversion</span></h3>
+
+<p>계산 자체는 맞는데 답이 100배 틀리는 일이 자주 생긴다.
+   원인은 거의 항상 <strong>단위를 섞은 것</strong>이다.</p>
+
+<div class="warn"><div class="lb">말과학에서 실제로 자주 나는 사고</div>
+<p>성도 길이는 <strong>cm</strong>로 말하고, 음속은 <strong>m/s</strong>로 말한다.
+   그대로 <span class="mono">350 ÷ (4 × 17.5)</span>를 계산하면 <strong>5 Hz</strong>가 나온다.
+   500 Hz의 100분의 1이다.</p>
+<p style="margin-top:9px">막는 법은 하나 — <strong>계산에 넣기 전에 단위를 통일한다.</strong>
+   17.5 cm를 <strong>0.175 m</strong>로 바꾼 다음 넣는다.</p></div>
+
+<p>변환은 <strong>1을 곱하는 것</strong>이라고 생각하면 실수가 없다.
+   1 m = 100 cm이므로 <span class="mono">(1 m / 100 cm)</span>는 값이 1인 분수다.
+   1을 곱하는 것이니 크기는 안 변하고 <strong>단위만 갈린다.</strong></p>
+
+<div class="formula">17.5 cm × ( 1 m / 100 cm ) = <strong>0.175 m</strong>
+<br>　　　　　　　　　　　　cm이 위아래에서 지워진다
+<br>
+<br>8 ms × ( 1 s / 1000 ms ) = <strong>0.008 s</strong>
+<br>2.5 kHz × ( 1000 Hz / 1 kHz ) = <strong>2500 Hz</strong></div>
+
+<div class="ana"><div class="lb">방향이 맞는지 확인하는 법</div>
+<p>없애고 싶은 단위가 <strong>분모</strong>에 오도록 분수를 세운다.
+   cm를 없애려면 cm이 아래에 있어야 한다. 그러면 위아래로 지워진다.</p>
+<p style="margin-top:9px">그리고 <strong>답의 크기를 본다.</strong> cm를 m로 바꿨으면 숫자는 <strong>작아져야</strong> 한다.
+   17.5 → 0.175. 커졌다면 뒤집어 곱한 것이다.</p></div>
+
+<h3 id="s0-4"><span class="n">0.4</span>유효숫자 — Praat이 준 숫자를 어디까지 적나 ★<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · significant digits</span></h3>
+
+<p>여기가 <strong>이 절에서 가장 자주 쓸 내용</strong>이다.</p>
+
+<p>Praat에서 포먼트를 재면 이런 것이 나온다.</p>
+
+<div class="formula">F1 = <strong>512.3847261</strong> Hz</div>
+
+<p>학생들은 이걸 <strong>그대로 옮겨 적는다.</strong> 그런데 이 숫자는 정직하지 않다.
+   소수점 아래 일곱 자리는 <strong>Praat이 계산기라서 나온 것</strong>이지,
+   그만큼 정확하게 쟀다는 뜻이 아니다.</p>
+
+<div class="key"><div class="lb">유효숫자의 원칙 — 한 줄</div>
+<p><strong>결과의 정밀도는 측정의 정밀도를 넘을 수 없다.</strong></p></div>
+
+<p>포먼트는 LPC 분석의 <strong>창 길이와 차수를 바꾸기만 해도</strong> 수십 Hz가 움직인다.
+   그런 값을 0.0000001 Hz까지 적는 것은 <strong>없는 정밀도를 지어내는 일</strong>이다.
+   읽는 사람에게 잘못된 신뢰를 준다는 점에서, 이건 단순한 미관 문제가 아니다.</p>
+
+<div class="tw"><table>
+<thead><tr><th>측정치</th><th>Praat 원본</th><th>이렇게 적는다</th><th>왜 거기까지인가</th></tr></thead>
+<tbody>
+<tr><td>포먼트 F1·F2</td><td class="num">512.3847261</td><td class="num"><strong class="ok">512 Hz</strong></td><td>설정만 바꿔도 수십 Hz 움직인다</td></tr>
+<tr><td>기본주파수 F0</td><td class="num">187.2649183</td><td class="num"><strong class="ok">187.3 Hz</strong></td><td>한 발화 안에서도 몇 Hz씩 흔들린다</td></tr>
+<tr><td>지속시간 · VOT</td><td class="num">0.0721384</td><td class="num"><strong class="ok">72 ms</strong></td><td>경계를 손으로 찍는 오차가 몇 ms다</td></tr>
+<tr><td>지터 jitter (local)</td><td class="num">0.4237%</td><td class="num"><strong class="ok">0.42%</strong></td><td>표본이 바뀌면 이 자리부터 흔들린다</td></tr>
+<tr><td>HNR</td><td class="num">18.34726</td><td class="num"><strong class="ok">18.3 dB</strong></td><td>dB는 소수점 한 자리면 충분하다</td></tr>
+</tbody></table></div>
+
+<div class="warn"><div class="lb">이 표는 절대 기준이 아니다</div>
+<p>학문 분야와 학술지마다 관례가 조금씩 다르다.
+   위 값은 <strong>이 강의에서 쓰는 관례</strong>이고, 8주차 실기시험의 허용 오차도 여기에 맞춰 놓았다.
+   다른 데 보고할 때는 <strong>그쪽 관례를 확인</strong>할 것.</p></div>
+
+<div class="ana"><div class="lb">반올림은 마지막에 한 번만</div>
+<p>중간 계산에서 미리 반올림하면 오차가 쌓인다.
+   <strong>계산은 다 끝내고, 보고할 때 한 번만</strong> 자리를 줄인다.
+   코드로 할 때도 계산 중에는 그대로 두고 <span class="mono">print</span>에서만 자릿수를 지정하는 게 좋다.</p></div>
+
+<div class="wg" id="wg8">
+  <div class="wh"><span class="ic">8</span><h4>유효숫자 — 어디까지 적을 것인가</h4><span class="tag">위젯</span></div>
+  <div class="wb">
+    <canvas id="c8" width="880" height="250"></canvas>
+    <div class="wbtns"><button class="wbtn on" id="b8f1">포먼트 F1</button>
+      <button class="wbtn" id="b8f0">기본주파수 F0</button>
+      <button class="wbtn" id="b8dur">지속시간 · VOT</button>
+      <button class="wbtn" id="b8jit">지터 jitter</button></div>
+    <div class="ctl">
+      <label for="r8d">적을 자릿수</label><input type="range" id="r8d" min="1" max="9" value="3"><output id="o8d"></output>
+    </div>
+    <div class="readout" id="ro8"></div>
+    <p class="hint">슬라이더를 오른쪽 끝까지 밀어 보라. 숫자는 계속 늘어나지만
+       <b>회색으로 바뀌는 자리부터는 측정이 뒷받침하지 못하는 자리</b>다.
+       왼쪽 끝으로 밀면 반대로 <b>있는 정보를 버리게</b> 된다.</p>
+  </div>
+</div>
+
+<h3 id="s0-5"><span class="n">0.5</span>자릿수 감각 — 답이 말이 되는가<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · order of magnitude</span></h3>
+
+<p>계산 실수를 잡는 가장 빠른 방법은 검산이 아니라
+   <strong>“이 크기가 말이 되나?”라고 한 번 묻는 것</strong>이다.</p>
+
+<p>그러려면 <strong>대략의 크기를 외워 두어야</strong> 한다. 정확한 값이 아니라 자릿수만.</p>
+
+<div class="tw"><table>
+<thead><tr><th>무엇</th><th class="num">있을 법한 범위</th><th>이러면 뭔가 잘못됐다</th></tr></thead>
+<tbody>
+<tr><td>F0 (성인)</td><td class="num">80 ~ 300 Hz</td><td class="hl">30 Hz · 900 Hz</td></tr>
+<tr><td>F1</td><td class="num">250 ~ 900 Hz</td><td class="hl">50 Hz · 3000 Hz</td></tr>
+<tr><td>F2</td><td class="num">700 ~ 2500 Hz</td><td class="hl">F1보다 작다</td></tr>
+<tr><td>모음 하나의 길이</td><td class="num">50 ~ 300 ms</td><td class="hl">3 ms · 2초</td></tr>
+<tr><td>VOT</td><td class="num">0 ~ 120 ms</td><td class="hl">음수 아닌데 500 ms</td></tr>
+<tr><td>지터 (정상 음성)</td><td class="num">1% 미만</td><td class="hl">40%</td></tr>
+<tr><td>성도 길이</td><td class="num">10 ~ 18 cm</td><td class="hl">2 cm · 1 m</td></tr>
+</tbody></table></div>
+
+<div class="ana"><div class="lb">이것이 AI 코드를 검증하는 첫 번째 방어선이다</div>
+<p>이 강의는 코드를 AI에게 시키고 <strong>결과를 Praat 값과 교차 검증</strong>하게 한다.
+   그런데 교차 검증 이전에, <strong>나온 숫자가 애초에 말이 되는지</strong>부터 봐야 한다.</p>
+<p style="margin-top:9px">F1이 3000 Hz로 나왔다면 Praat과 대조할 필요도 없다.
+   <strong>이미 틀렸다.</strong> 단위를 섞었거나, 창 설정이 잘못됐거나, 엉뚱한 구간을 쟀거나 셋 중 하나다.</p></div>
+
+<div class="lead">1주차 측정과 조작적 정의 · 8주차 실기시험 허용 오차 · 14주차 결과 보고</div>
+
+<div class="extres"><div class="lb">이 절의 바깥 자료 — Physics Classroom</div><table>
+<tr><td class="k">읽을거리</td><td><a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Scientific-Notation">Scientific Notation</a> · <a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Significant-Digits">Significant Digits</a> · <a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Significant-Digits-Revisited">Significant Digits Revisited</a><br>
+Chemistry Tutorial 쪽에 있어 찾기 어렵지만 내용은 물리·말과학과 똑같다</td></tr>
+<tr><td class="k">자가 점검</td><td><a href="https://www.physicsclassroom.com/Concept-Builders/Chemistry/Measurement">Concept Builder · Measurement and Numbers</a><br>
+<a href="https://www.physicsclassroom.com/Concept-Builders/Chemistry/Significant-Digits">Concept Builder · Significant Digits and Measurement</a><br>
+자동 채점. 계기를 읽어 <strong>몇 자리까지 적을지</strong> 판단하는 문항이 특히 좋다</td></tr>
+</table></div>
+</section>
 
 <section id="s1">
 <h2 class="sec"><span class="num">§1</span>진동 — 모든 소리의 출발점<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　vibration</span></h2>
@@ -560,7 +776,9 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <div class="warn"><div class="lb">단위를 조심할 것</div>
 <p>이 식에서 <strong>길이 단위를 섞으면</strong> 답이 100배씩 틀어진다.
    v를 m/s로 넣었으면 λ도 m으로 나온다. cm가 필요하면 마지막에 ×100 하는 것이 안전하다.
-   말과학에서는 성도 길이를 cm로 말하고 음속을 m/s로 말하는 일이 잦으니 특히 조심.</p></div>
+   말과학에서는 성도 길이를 cm로 말하고 음속을 m/s로 말하는 일이 잦으니 특히 조심.</p>
+<p style="margin-top:9px">막는 방법은 <a class="ext" href="#s0-3"><strong>§0.3 단위 변환</strong></a>에 있다 —
+   계산에 넣기 전에 <strong>먼저 통일</strong>한다.</p></div>
 
 <h3 id="s2-5"><span class="n">2.5</span>무엇이 음속을 정하나<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · the speed of sound</span></h3>
 
@@ -645,7 +863,8 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 
 <h3 id="s3-2"><span class="n">3.2</span>왜 로그를 쓰나<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · why a logarithmic scale</span></h3>
 
-<p><strong>로그(log)</strong>는 “0이 몇 개냐”를 세는 도구다. 그게 전부다.</p>
+<p><strong>로그(log)</strong>는 “0이 몇 개냐”를 세는 도구다. 그게 전부다.
+   <a class="ext" href="#s0-1">§0.1</a>에서 본 <strong>10의 거듭제곱의 지수</strong>를 그대로 읽어 내는 것이라고 봐도 된다.</p>
 
 <div class="formula">log 10 = 1　　log 100 = 2　　log 1,000 = 3　　log 1,000,000 = 6
 <br>
@@ -1182,6 +1401,10 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <div class="tw"><table>
 <thead><tr><th>이 자료</th><th>개념</th><th>쓰이는 주차</th><th>거기서 하는 일</th></tr></thead>
 <tbody>
+<tr><td class="num">§0.1–0.2</td><td>과학적 표기법 · 단위 접두어</td><td class="num">1주차 · 2주차 · 3주차</td><td>μPa · ms · kHz를 읽고 쓰기</td></tr>
+<tr><td class="num">§0.3</td><td>단위 변환</td><td class="num"><strong>5주차</strong></td><td>cm ↔ m — 성도 공명 계산의 단골 사고</td></tr>
+<tr><td class="num"><strong>§0.4</strong></td><td><strong>유효숫자</strong></td><td class="num"><strong>7~15주차 전부</strong></td><td><strong>Praat 값을 보고서에 옮겨 적을 때마다</strong></td></tr>
+<tr><td class="num">§0.5</td><td>자릿수 감각</td><td class="num">전 주차</td><td>AI가 준 코드의 결과가 말이 되는지 먼저 보기</td></tr>
 <tr><td class="num">§1.1–1.2</td><td>복원력 · 관성 · 단진동</td><td class="num">2주차 · <strong>6주차</strong></td><td>성대 진동의 근탄성-공기역학 이론</td></tr>
 <tr><td class="num">§1.3</td><td>주파수 · 주기 · 진폭</td><td class="num">2주차 · <strong>7주차</strong></td><td>F0 추출, 주기 단위의 섭동 지표</td></tr>
 <tr><td class="num">§1.4</td><td><strong>고유진동수</strong></td><td class="num">2주차 · <strong>5주차</strong> · 6주차</td><td>포먼트의 정체, 성구 전환</td></tr>
@@ -1205,6 +1428,10 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <thead><tr><th>한국어</th><th>English</th><th>이 자료</th><th>메모</th></tr></thead>
 <tbody>
 <tr><td>말과학</td><td><strong>speech sciences</strong></td><td class="num">—</td><td>복수형이다</td></tr>
+<tr><td>과학적 표기법</td><td>scientific notation</td><td class="num">§0.1</td><td>지수 표기법이라고도</td></tr>
+<tr><td>단위 접두어</td><td>metric prefix</td><td class="num">§0.2</td><td>k · m · μ</td></tr>
+<tr><td>유효숫자</td><td><strong>significant digits</strong></td><td class="num">§0.4</td><td>significant figures로도 쓴다</td></tr>
+<tr><td>자릿수 · 크기 차수</td><td>order of magnitude</td><td class="num">§0.5</td><td></td></tr>
 <tr><td>진동</td><td>vibration</td><td class="num">§1</td><td></td></tr>
 <tr><td>복원력</td><td>restoring force</td><td class="num">§1.1</td><td></td></tr>
 <tr><td>관성</td><td>inertia</td><td class="num">§1.1</td><td></td></tr>
@@ -1235,10 +1462,15 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <tr><td>음원-필터 이론</td><td>source-filter theory</td><td class="num">§6.3</td><td>5주차의 핵심</td></tr>
 </tbody></table></div>
 
-<h3 id="s7-3"><span class="n">C</span>자주 막히는 여섯 지점<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · common misconceptions</span></h3>
+<h3 id="s7-3"><span class="n">C</span>자주 막히는 일곱 지점<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · common misconceptions</span></h3>
 
 <p>본문에 흩어져 있던 <strong>오해</strong>들을 한자리에 모았다.
-   시험 전에 이 여섯 개만 다시 확인해도 충분하다.</p>
+   시험 전에 이 일곱 개만 다시 확인해도 충분하다.</p>
+
+<div class="qa"><div class="q">⓪ Praat이 준 숫자를 그대로 적으면 정확한 보고다?</div>
+<p class="a"><strong>반대다.</strong> 소수점 아래 일곱 자리는 Praat이 계산기라서 나온 것이지
+   그만큼 정확히 쟀다는 뜻이 아니다. <strong>없는 정밀도를 주장하는 것</strong>은 반올림보다 나쁘다.
+   → §0.4</p></div>
 
 <div class="qa"><div class="q">① 소리가 나면 공기가 입에서 귀로 날아간다?</div>
 <p class="a"><strong>아니다.</strong> 공기 알갱이는 제자리에서 앞뒤로 떨 뿐이고,
@@ -1275,8 +1507,11 @@ border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin-top:12px;
 <a href="https://phet.colorado.edu/en/simulations/fourier-making-waves">PhET · Fourier: Making Waves</a> — §6의 본격판</td></tr>
 <tr><td class="k">읽을거리</td><td><a href="https://www.physicsclassroom.com/class/sound">Physics Classroom · Sound Waves and Music</a><br>
 레슨 1~2 → §1·§2 　레슨 3 → §4 　레슨 4~5 → §5</td></tr>
+<tr><td class="k">숫자 다루기</td><td><a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Scientific-Notation">Scientific Notation</a> · <a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Significant-Digits">Significant Digits</a> · <a href="https://www.physicsclassroom.com/Chemistry-Tutorial/Measurement-and-Units/Significant-Digits-Revisited">Significant Digits Revisited</a><br>
+<strong>Chemistry Tutorial 아래</strong>에 있어 못 찾기 쉽다. 내용은 말과학에 그대로 쓰인다 → §0</td></tr>
 <tr><td class="k">자가 점검</td><td><a href="https://www.physicsclassroom.com/Concept-Builders/Waves-and-Sound/Wave-Basics">Wave Basics</a> · <a href="https://www.physicsclassroom.com/Concept-Builders/Waves-and-Sound/Wavelength">Wavelength</a> · <a href="https://www.physicsclassroom.com/Concept-Builders/Waves-and-Sound/Wave-Interference">Wave Interference</a> · <a href="https://www.physicsclassroom.com/Concept-Builders/Waves-and-Sound/Name-That-Harmonic-Closed-End">Name That Harmonic — Closed-End</a><br>
-마지막 것이 <strong>§5.4와 직결</strong>된다. 꼭 풀어 볼 것</td></tr>
+마지막 것이 <strong>§5.4와 직결</strong>된다. 꼭 풀어 볼 것<br>
+숫자 쪽은 <a href="https://www.physicsclassroom.com/Concept-Builders/Chemistry/Measurement">Measurement and Numbers</a> · <a href="https://www.physicsclassroom.com/Concept-Builders/Chemistry/Significant-Digits">Significant Digits and Measurement</a></td></tr>
 <tr><td class="k">성도 만져 보기</td><td><a href="https://dood.al/pinktrombone/">Pink Trombone</a> — 브라우저에서 성도 단면을 마우스로 좁혀 본다<br>
 교육용 근사라 값은 부정확하다. <strong>감만</strong> 잡을 것</td></tr>
 </table></div>
@@ -1798,6 +2033,213 @@ try{(function(){
   $('b6p1').addEventListener('click',function(){preset([1,.5,.33,.25,.2,.17])});
   $('b6p2').addEventListener('click',function(){preset([1,0,.33,0,.2,0])});
   $('b6p3').addEventListener('click',function(){preset([1,.5,.25,.13,.07,.04])});
+  upd();
+})()}catch(e){}
+
+/* ══════════ 위젯 7 · 표기법 변환기 ══════════ */
+try{(function(){
+  var cv=$('c7'), c=cv.getContext('2d');
+  var rc=$('r7c'), rn=$('r7n'), ro=$('ro7');
+  var PRE=[[6,'M','메가','B'],[3,'k','킬로','Hz'],[0,'','',''],
+           [-3,'m','밀리','s'],[-6,'μ','마이크로','Pa']];
+  var MARKS=[
+    {v:2e-5,  t:'청력 문턱 음압 20 μPa'},
+    {v:8e-3,  t:'성대 한 주기 8 ms'},
+    {v:7e-2,  t:'격음 VOT 70 ms'},
+    {v:1.75e-1,t:'성도 길이 0.175 m'},
+    {v:5e2,   t:'제1포먼트 500 Hz'},
+    {v:4.41e4,t:'표본율 44100 Hz'}
+  ];
+  function digits(){ return String(rc.value) }          /* 항상 세 자리 */
+  function C(){ return (+rc.value)/100 }
+  function N(){ return +rn.value }
+  function decimalStr(){
+    var d=digits(), n=N(), s;
+    if(n>=2)      s=d+new Array(n-2+1).join('0');
+    else if(n===1)s=d.slice(0,2)+'.'+d.slice(2);
+    else if(n===0)s=d.slice(0,1)+'.'+d.slice(1);
+    else          s='0.'+new Array(-n).join('0')+d;
+    if(s.indexOf('.')>=0) s=s.replace(/0+$/,'').replace(/\.$/,'');
+    return s;
+  }
+  function prefixStr(){
+    var n=N(), e=Math.floor(n/3)*3;
+    if(e>6)e=6; if(e<-6)e=-6;
+    var mant=C()*Math.pow(10,n-e), p=null;
+    for(var i=0;i<PRE.length;i++) if(PRE[i][0]===e) p=PRE[i];
+    if(!p) return null;
+    var ms=mant.toPrecision(3);
+    /* 소수점이 있을 때만 뒤의 0을 뗀다 — 안 그러면 500이 5가 된다 */
+    if(ms.indexOf('.')>=0) ms=ms.replace(/0+$/,'').replace(/\.$/,'');
+    return {m:ms, sym:p[1], name:p[2], eg:p[3]};
+  }
+  function value(){ return C()*Math.pow(10,N()) }
+  function upd(){
+    $('o7c').textContent=C().toFixed(2);
+    $('o7n').textContent=(N()>=0?'+':'')+N();
+    var pf=prefixStr(), v=value();
+    var near=null;
+    MARKS.forEach(function(m){ if(Math.abs(Math.log10(v/m.v))<0.02) near=m });
+    ro.innerHTML='과학적 표기 <b>'+C().toFixed(2)+' × 10<sup>'+N()+'</sup></b>'+
+      '　·　일반 표기 <b>'+decimalStr()+'</b>'+
+      (pf? (pf.sym
+            ? '　·　접두어로 <b>'+pf.m+' '+pf.name+'('+pf.sym+')</b> — 예: <b>'+pf.m+' '+pf.sym+pf.eg+'</b>'
+            : '　·　이 크기에는 <b>붙는 접두어가 없다</b> — 그냥 '+pf.m) : '')+
+      (near? '<br><span class="warnv">이 크기 → '+near.t+'</span>' : '');
+    draw();
+  }
+  function draw(){
+    clr(cv,c);
+    var W=cv.width, X0=44, XW=W-88;
+    /* 세 표기 */
+    var d=digits(), n=N();
+    c.textAlign='left';
+    c.font='700 30px "JetBrains Mono",monospace'; c.fillStyle=P.acc;
+    var big=C().toFixed(2)+' × 10';
+    c.fillText(big,X0,52);
+    var bw=c.measureText(big).width;
+    c.font='700 20px "JetBrains Mono",monospace';
+    c.fillText(String(n),X0+bw+2,40);
+    txt(c,'과학적 표기법 · scientific notation',X0,74,P.muted,12);
+    var mid=X0+XW*0.40;
+    c.font='700 26px "JetBrains Mono",monospace'; c.fillStyle=P.ink;
+    c.fillText(decimalStr(),mid,50);
+    txt(c,'일반 표기 · decimal',mid,74,P.muted,12);
+    var pf=prefixStr(), rgt=X0+XW*0.74;
+    if(pf){
+      c.font='700 26px "JetBrains Mono",monospace'; c.fillStyle=P.lab;
+      c.fillText(pf.m+' '+(pf.sym||'—'),rgt,50);
+      txt(c,(pf.sym? '예: '+pf.m+' '+pf.sym+pf.eg+' 　— '+pf.name+'는 단위 앞에 붙는 글자다'
+                   : '접두어 없음 · no prefix'),rgt,74,P.muted,11.5);
+    }
+    /* 로그 수직선 */
+    var ly=168, lo=-6, hi=6;
+    function px(v){ return X0+(Math.log(v)/Math.LN10-lo)/(hi-lo)*XW }
+    line(c,X0,ly,X0+XW,ly,P.line2,2);
+    for(var e=lo;e<=hi;e++){
+      var X=X0+(e-lo)/(hi-lo)*XW;
+      line(c,X,ly-6,X,ly+6,P.line2,1);
+      txt(c,'10'+(e<0?'⁻':'')+String(Math.abs(e)).replace(/[0-9]/g,function(ch){
+        return '⁰¹²³⁴⁵⁶⁷⁸⁹'[+ch]}),X,ly+22,P.muted,11,'center');
+    }
+    txt(c,'한 칸이 10배 — 말과학이 다루는 범위',X0,ly-34,P.muted,12);
+    /* 눈금 표시 */
+    MARKS.forEach(function(m,i){
+      var X=px(m.v);
+      line(c,X,ly-14,X,ly-4,P.muted,1);
+      c.save(); c.translate(X, ly-18); c.rotate(-Math.PI/4);
+      txt(c,m.t,0,0,P.muted,10.5,'left'); c.restore();
+    });
+    /* 현재 값 */
+    var v=value(), cx=px(v);
+    c.beginPath(); c.arc(cx,ly,7,0,TAU); c.fillStyle=P.acc; c.fill();
+    c.beginPath(); c.arc(cx,ly,7,0,TAU); c.strokeStyle=P.fig; c.lineWidth=2; c.stroke();
+    txt(c,'지금 여기',cx,ly+42,P.acc,11.5,'center',true);
+  }
+  [rc,rn].forEach(function(r){r.addEventListener('input',upd)});
+  function preset(cc,nn){rc.value=cc;rn.value=nn;upd()}
+  $('b7p1').addEventListener('click',function(){preset(200,-5)});
+  $('b7p2').addEventListener('click',function(){preset(800,-3)});
+  $('b7p3').addEventListener('click',function(){preset(175,-1)});
+  $('b7p4').addEventListener('click',function(){preset(500,2)});
+  $('b7p5').addEventListener('click',function(){preset(441,4)});
+  upd();
+})()}catch(e){}
+
+/* ══════════ 위젯 8 · 유효숫자 ══════════ */
+try{(function(){
+  var cv=$('c8'), c=cv.getContext('2d');
+  var rd=$('r8d'), ro=$('ro8');
+  var CASES={
+    f1 :{raw:'512.3847261', unit:'Hz', ok:3, what:'포먼트 F1',
+         why:'LPC 창 길이와 차수를 바꾸기만 해도 수십 Hz가 움직인다'},
+    f0 :{raw:'187.2649183', unit:'Hz', ok:4, what:'기본주파수 F0',
+         why:'한 발화 안에서도 몇 Hz씩 흔들린다'},
+    dur:{raw:'72.1384', unit:'ms', ok:2, what:'지속시간 · VOT',
+         why:'스펙트로그램에서 경계를 손으로 찍는 오차가 몇 ms다'},
+    jit:{raw:'0.4237', unit:'%', ok:2, what:'지터 jitter (local)',
+         why:'표본이 조금만 달라져도 이 자리부터 값이 바뀐다'}
+  };
+  var cur='f1';
+  function sigIndexes(s){          /* 각 문자의 유효숫자 순번 (아니면 -1) */
+    var out=[], k=0, seen=false;
+    for(var i=0;i<s.length;i++){
+      var ch=s[i];
+      if(ch==='.'){ out.push(-1); continue }
+      if(!seen && ch==='0'){ out.push(-1); continue }   /* 앞의 0은 유효숫자가 아니다 */
+      seen=true; out.push(k++);
+    }
+    return out;
+  }
+  function reported(d){
+    var C0=CASES[cur], v=parseFloat(C0.raw), s=v.toPrecision(d);
+    if(s.indexOf('e')>=0) s=String(+s);
+    return s;
+  }
+  function upd(){
+    var d=+rd.value, C0=CASES[cur];
+    $('o8d').textContent=d+'자리';
+    var verdict, cls;
+    if(d<C0.ok){ verdict='<span class="warnv">부족</span> — 실제로 확보한 정보를 버리고 있다'; }
+    else if(d===C0.ok){ verdict='<b>적절</b> — 이 강의에서 쓰는 관례와 같다'; }
+    else{ verdict='<span class="warnv">과잉</span> — 측정이 뒷받침하지 못하는 자리를 지어내고 있다'; }
+    ro.innerHTML='<b>'+C0.what+'</b> → 보고할 값 <b>'+reported(d)+' '+C0.unit+'</b>'+
+      '　·　권장 <b>'+C0.ok+'자리</b>　·　'+verdict+
+      '<br><span style="color:var(--muted)">'+C0.why+'</span>';
+    draw();
+  }
+  function draw(){
+    clr(cv,c);
+    var W=cv.width, X0=44, d=+rd.value, C0=CASES[cur];
+    var s=C0.raw, idx=sigIndexes(s);
+    txt(c,'Praat이 준 원본',X0,32,P.muted,12);
+    /* 자릿수 색칠 */
+    c.font='700 34px "JetBrains Mono",monospace'; c.textAlign='left';
+    var x=X0;
+    for(var i=0;i<s.length;i++){
+      var k=idx[i], col;
+      if(k<0)              col=(0<d)?P.ink:P.line2;        /* 소수점·앞의 0 */
+      else if(k>=d)        col=P.line2;                    /* 안 적는 자리 */
+      else if(k<C0.ok)     col=P.acc;                      /* 적절히 보고 */
+      else                 col=P.warn;                     /* 지어낸 정밀도 */
+      c.fillStyle=col; c.fillText(s[i],x,74);
+      var cw=c.measureText(s[i]).width;
+      if(k>=0&&k<d&&k>=C0.ok){ line(c,x,80,x+cw,80,P.warn,2) }
+      if(k>=0&&k<d&&k<C0.ok){ line(c,x,80,x+cw,80,P.acc,2) }
+      x+=cw;
+    }
+    c.font='700 20px "JetBrains Mono",monospace'; c.fillStyle=P.muted;
+    c.fillText(' '+C0.unit,x,74);
+    /* 범례 */
+    var ly=112;
+    [[P.acc,'측정이 뒷받침하는 자리 — 적어도 된다'],
+     [P.warn,'지어낸 정밀도 — 적으면 안 된다'],
+     [P.line2,'지금 버리고 있는 자리']].forEach(function(L,i){
+      var lx=X0+i*268;
+      c.fillStyle=L[0]; c.fillRect(lx,ly-8,11,11);
+      txt(c,L[1],lx+17,ly+2,P.muted,11.5);
+    });
+    /* 보고값 */
+    var by=150, bw=W-X0*2;
+    c.fillStyle=(d===C0.ok)?P.acc:P.warn; c.globalAlpha=.10;
+    c.fillRect(X0,by,bw,66); c.globalAlpha=1;
+    c.strokeStyle=(d===C0.ok)?P.acc:P.warn; c.lineWidth=1.4; c.strokeRect(X0,by,bw,66);
+    txt(c,'이렇게 보고한다',X0+18,by+22,P.muted,12);
+    c.font='700 30px "JetBrains Mono",monospace'; c.textAlign='left';
+    c.fillStyle=(d===C0.ok)?P.acc:P.warn;
+    c.fillText(reported(d)+' '+C0.unit,X0+18,by+54);
+    txt(c,(d<C0.ok?'정보를 버렸다':d===C0.ok?'적절하다':'없는 정밀도를 주장하고 있다'),
+        X0+bw-18,by+50,(d===C0.ok)?P.acc:P.warn,14,'right',true);
+    txt(c,'권장 '+C0.ok+'자리',X0+bw-18,by+26,P.muted,11.5,'right');
+  }
+  function sw(k){ cur=k;
+    ['f1','f0','dur','jit'].forEach(function(n){
+      $('b8'+n).classList.toggle('on',n===k) });
+    upd();
+  }
+  ['f1','f0','dur','jit'].forEach(function(k){
+    $('b8'+k).addEventListener('click',function(){sw(k)}) });
+  rd.addEventListener('input',upd);
   upd();
 })()}catch(e){}
 
