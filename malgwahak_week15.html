@@ -134,6 +134,7 @@ footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:v
 footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
 @media print{nav.toc,.copy,.tools{display:none}.wrap{display:block}details.more{page-break-inside:avoid}details.more>summary::before{content:""}}
 </style>
+<style>main pre code{border:0;background:none;padding:0;font-size:inherit;color:inherit}</style>
 <style>
 .extres{border:1px solid var(--lab-line);background:var(--lab-soft);border-radius:11px;padding:17px 19px;margin:24px 0}
 .extres .lb{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--lab);margin-bottom:10px}
@@ -147,164 +148,191 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
 .term{border-bottom:1px dotted var(--muted);cursor:help}
 </style>
 
+<style>
+.flow{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:0 0 30px}
+.flow .tk{border:1px solid var(--line);border-radius:11px;padding:15px 17px;background:var(--surface)}
+.flow .tk .lb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.flow .tk p{font-size:14px;margin:0}
+.flow .tA{border-color:var(--accent-line)}.flow .tA .lb{color:var(--accent)}
+.flow .tB{border-color:var(--lab-line)}.flow .tB .lb{color:var(--lab)}
+.flow .ar{display:grid;place-items:center;color:var(--muted);font-size:20px}
+@media(max-width:640px){.flow{grid-template-columns:1fr}.flow .ar{transform:rotate(90deg)}}
+.trk{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:5px;padding:1px 7px;margin-right:6px;vertical-align:2px}
+.trk.a{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line)}
+.trk.b{background:var(--lab-soft);color:var(--lab);border:1px solid var(--lab-line)}
+.slot{border:1.5px dashed var(--line2);border-radius:10px;padding:14px 17px;margin:16px 0;background:var(--surface)}
+.slot .lb{font-size:11.5px;letter-spacing:.1em;font-weight:700;color:var(--muted);margin-bottom:6px}
+.slot td.fill{color:var(--muted);font-style:italic}
+a.dl{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:8px;padding:8px 13px;text-decoration:none;margin:4px 0 10px}
+a.dl:hover{border-color:var(--accent)}
+h2.sec.bsec{border-top-color:var(--lab)}h2.sec.bsec .num{color:var(--lab)}
+</style>
+
+
 <header class="top"><div class="top-in">
   <div class="crumb">말과학 · 15주차</div>
   <h1>발표 및 종합</h1>
   <div style="margin:-4px 0 12px;font-size:15px;font-style:italic;letter-spacing:.01em;color:var(--accent);font-weight:500">Presentations and Synthesis</div>
-  <p class="sub">한 학기를 닫는 시간이다. <strong>말 사슬 전체를 한 장으로 다시 그리는 것</strong>이 오늘의 목표다.</p>
+  <p class="sub">한 학기를 마무리하는 시간이다. 각 조가 합성 자료로 검증한 절차와 실제 녹음에서 얻은 결과를 함께 발표하고,
+     1주차에 그렸던 말 사슬을 이번에는 한 학기 동안 배운 도구로 채워 다시 그린다.</p>
   <div class="meta"><span class="chip"><b>3시간</b></span>
-    <span class="chip lab">발표 90분 + 동료평가 30분 + 종합 40분</span></div>
+    <span class="chip lab">발표 90분 + 동료 평가 30분 + 종합 40분</span><span class="chip">각 조 A 검증 → B 결과</span></div>
 </div></header>
 <div class="wrap">
 <nav class="toc" id="toc"><button class="btn mobtoc" id="mobBtn">☰ 목차 열기</button><div class="list">
   <div class="tt">목차</div>
   <a class="lv1" href="#s1">§1 · 발표</a>
+  <a class="lv2" href="#s1-1">1.1 발표 구성 — A와 B</a>
+  <a class="lv2" href="#s1-2">1.2 발표 평가</a>
+  <a class="lv2" href="#s1-3">1.3 질의응답</a>
   <a class="lv1" href="#s2">§2 · 동료 평가</a>
   <a class="lv1" href="#s3">§3 · 종합 정리</a>
   <a class="lv2" href="#s3-1">3.1 말 사슬 다시 그리기</a>
   <a class="lv2" href="#s3-2">3.2 관통하는 네 원리 ★</a>
-  <a class="lv2" href="#s3-3">3.3 우리가 실제로 재본 것</a>
+  <a class="lv2" href="#s3-3">3.3 우리가 실제로 재 본 것</a>
   <a class="lv2" href="#s3-4">3.4 AI와 함께한 학기</a>
   <a class="lv1" href="#s4">§4 · 그다음</a>
   <a class="lv1" href="#s5">§5 · 마무리</a>
+  <a class="lv1" href="#s6">부록</a>
   <div class="tools"><button class="btn" id="expandAll">▾ 상세 전부 펼치기</button>
   <button class="btn" id="themeBtn">◐ 화면 밝기 전환</button></div>
 </div></nav>
 <main>
 
-<div class="goal"><div class="lb">오늘의 목표</div><ol>
-  <li>각 조가 <b>자기 질문에 답한 결과</b>를 8분 안에 전달한다.</li>
-  <li>1주차에 그렸던 <b>말 사슬을 다시 그리되</b>, 이번에는 각 고리에 우리가 배운 도구를 채워 넣는다.</li>
-  <li>학기 내내 되풀이된 <b>하나의 교훈</b>을 명시적으로 확인한다.</li>
+<div class="goal"><div class="lb">이번 주를 마치면 설명할 수 있어야 할 것</div><ol>
+  <li>우리 조가 던진 질문과 그 답을, 단계 A의 검증 결과와 단계 B의 실제 녹음 결과를 근거로 8분 안에 설명할 수 있다.</li>
+  <li>1주차의 말 사슬 위에 한 학기 동안 배운 도구를 채워 넣고, 어느 고리를 볼 수 있었고 어느 고리를 볼 수 없었는지 말할 수 있다.</li>
+  <li>학기 내내 되풀이된 네 원리를 들고, 합성음에서 검증한 절차만 실제 녹음에 쓰는 이유를 그 원리와 이어 설명할 수 있다.</li>
 </ol></div>
+
+<div class="flow">
+  <div class="tk tA"><div class="lb">단계 A · 합성 자료로 검증</div><p>각 조는 정답을 아는 합성 자료에서 분석 절차가 맞는 값을 돌려주는지 먼저 확인했다. 발표에서는 이 검증 결과를 한 장으로 보여 준다.</p></div>
+  <div class="ar">→</div>
+  <div class="tk tB"><div class="lb">단계 B · 실제 녹음 결과</div><p>같은 절차를 실제 녹음에 적용해 얻은 결과가 발표의 중심이다. A에서는 없던 문제가 B에서 무엇이었는지, 그래서 결론이 어디까지 갈 수 있는지를 함께 말한다.</p></div>
+</div>
 
 <section id="s1">
 <h2 class="sec"><span class="num">§1</span>발표<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　presentations</span></h2>
-<p class="sechint">90분 · 조당 8분 + 질의 4분</p>
+<p class="sechint">90분 · 조당 8분 발표 + 4분 질의</p>
+
+<h3 id="s1-1"><span class="n">1.1</span>발표 구성 — A와 B를 함께 보인다<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · structure: stage A and stage B</span></h3>
 <div class="tw"><table><thead><tr><th>항목</th><th>기준</th></tr></thead><tbody>
-<tr><td>시간</td><td>8분 발표 + 4분 질의 <strong>엄수</strong></td></tr>
-<tr><td>구성</td><td>질문 → 방법 → <strong>결과 그림</strong> → 해석 → 제한점</td></tr>
-<tr><td>슬라이드</td><td>그림 하나에 메시지 하나. 글로 채우지 말 것</td></tr>
+<tr><td>시간</td><td>8분 발표와 4분 질의를 지킨다</td></tr>
+<tr><td>구성</td><td>질문 → 방법 → 단계 A 검증 → 단계 B 결과 그림 → 해석 → 제한점</td></tr>
+<tr><td>A와 B</td><td>A의 검증 결과(정답과의 차이) 한 장과 B의 결과 그림을 함께 보이고, 둘 사이에서 무엇이 달라졌는지 한 문장으로 말한다</td></tr>
+<tr><td>슬라이드</td><td>그림 하나에 메시지 하나를 담고, 글로 채우지 않는다</td></tr>
 </tbody></table></div>
 <div class="key"><div class="lb">현실적인 조언</div>
-<p><strong>8분에 담을 수 있는 것은 결과 그림 두세 장이다.</strong> 그 이상은 전달되지 않는다.</p></div>
+<p>8분에 담을 수 있는 것은 A 검증 한 장과 결과 그림 두세 장이 전부다. 그보다 많이 넣으면 듣는 사람에게 전달되지 않는다.</p>
+<p style="margin-top:8px">A와 B 사이에서 달라진 점은 실패담이 아니라 결과의 일부다. 합성음에서는 ±5 % 안에서 맞던 포먼트가 자발화에서는 토큰마다 크게 흩어졌다거나, 합성 프로파일에서는 순서를 정확히 따르던 CPPS가 청지각 평정과는 느슨하게만 맞았다는 식의 발견이 그 조의 결론이 어디까지 갈 수 있는지를 정해 준다.</p></div>
 
-<h3>발표 평가 (10점)</h3>
+<h3 id="s1-2"><span class="n">1.2</span>발표 평가 (10점)<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · presentation rubric</span></h3>
 <div class="tw"><table><thead><tr><th>항목</th><th class="num">배점</th></tr></thead><tbody>
-<tr><td>질문이 분명하고 측정 가능한가</td><td class="num">2</td></tr>
+<tr><td>질문이 분명하고 측정 가능한가</td><td class="num">1</td></tr>
 <tr><td>방법(설정값 포함)이 재현 가능하게 제시되었는가</td><td class="num">2</td></tr>
+<tr><td>단계 A의 검증 결과와 단계 B의 결과를 함께 보이고, 둘 사이에서 달라진 점을 설명했는가</td><td class="num">2</td></tr>
 <tr><td class="ok"><strong>결과 그림이 설명 없이도 읽히는가</strong></td><td class="num ok"><strong>3</strong></td></tr>
-<tr><td>해석이 데이터가 지지하는 범위 안에 있는가</td><td class="num">2</td></tr>
+<tr><td>해석이 데이터가 지지하는 범위 안에 있는가</td><td class="num">1</td></tr>
 <tr><td>제한점을 스스로 지적했는가</td><td class="num">1</td></tr>
 </tbody></table></div>
 
-<h3>질의응답 — 이런 질문을 받게 된다</h3>
+<h3 id="s1-3"><span class="n">1.3</span>질의응답 — 이런 질문을 받게 된다<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · Q&amp;A</span></h3>
 <div class="tw"><table><thead><tr><th>질문</th><th>왜 묻는가</th></tr></thead><tbody>
-<tr><td>“이 설정값을 다르게 잡았다면 결과가 바뀌었을까요?”</td><td>학기 내내 반복한 교훈의 확인</td></tr>
-<tr><td>“표본이 두 배였다면 무엇이 달라졌을까요?”</td><td>결론의 강도를 스스로 가늠하게</td></tr>
-<tr><td class="ok"><strong>“이 결과로 말할 수 <em>없는</em> 것은 무엇인가요?”</strong></td><td class="ok"><strong>이 수업의 정신</strong></td></tr>
-<tr><td>“이 지표 말고 다른 지표를 썼다면요?”</td><td>지표 선택이 결과를 만든다는 자각</td></tr>
+<tr><td>“이 설정값을 다르게 잡았다면 결과가 바뀌었을까요?”</td><td>학기 내내 반복한 교훈을 확인하려고</td></tr>
+<tr><td>“합성 자료에서는 맞았는데 실제 녹음에서 달라진 것은 무엇인가요?”</td><td>A에서 B로 넘어갈 때 무엇을 새로 검증했는지 말하게 하려고</td></tr>
+<tr><td>“표본이 두 배였다면 무엇이 달라졌을까요?”</td><td>결론의 강도를 스스로 가늠하게 하려고</td></tr>
+<tr><td class="ok"><strong>“이 결과로 말할 수 <em>없는</em> 것은 무엇인가요?”</strong></td><td class="ok">이 수업이 가장 중요하게 여기는 질문이다</td></tr>
+<tr><td>“이 지표 말고 다른 지표를 썼다면요?”</td><td>지표를 무엇으로 고르느냐가 결과를 만든다는 점을 자각하게 하려고</td></tr>
 </tbody></table></div>
-<p>비판이 아니라 <strong>확장을 유도하는 질문</strong>이다. 어떤 답을 하든,
-   설정과 정의가 결과를 만든다는 것을 스스로 말하게 되는 것이 목적이다.</p>
+<p>모두 비판하려는 질문이 아니라 생각을 넓히도록 이끄는 질문이다. 어떤 답을 하든 설정과 정의가 결과를 만든다는 점을 발표자가 스스로 말하게 되는 것이 목적이다.</p>
 </section>
 
 <section id="s2">
 <h2 class="sec"><span class="num">§2</span>동료 평가<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　peer feedback</span></h2>
 <p class="sechint">30분 · 점수는 매기지 않는다</p>
-<p>다른 조의 발표에 대해 세 문장만 쓴다.</p>
+<p>다른 조의 발표마다 세 문장만 쓴다.</p>
 <div class="tw"><table><thead><tr><th>항목</th><th>형식</th></tr></thead><tbody>
 <tr><td>가장 인상적이었던 점</td><td>한 문장</td></tr>
 <tr><td>더 알고 싶은 것</td><td>한 문장</td></tr>
-<tr><td>이 연구를 이어간다면 다음에 할 일</td><td>한 문장</td></tr>
+<tr><td>이 연구를 이어 간다면 다음에 할 일</td><td>한 문장</td></tr>
 </tbody></table></div>
 <div class="key"><div class="lb">서술만 받는다</div>
-<p><strong>동료 간 서열화는 이 시간의 목적이 아니다.</strong>
-   수합한 피드백은 각 조에 그대로 전달한다.</p></div>
+<p>동료끼리 서열을 매기는 것은 이 시간의 목적이 아니다. 모은 피드백은 손대지 않고 각 조에 그대로 전달한다.</p></div>
 <div class="tw"><table><thead><tr><th>운영</th><th>방법</th></tr></thead><tbody>
-<tr><td>수합</td><td>공유 문서나 종이 슬립. <strong>이름은 받지 않는다</strong></td></tr>
-<tr><td>발표 중 작성</td><td>다음 조가 준비하는 사이 <strong>1분씩</strong> 적게 한다. 몰아서 쓰면 기억이 뭉갠다</td></tr>
-<tr><td>전달</td><td>수업 후 각 조에 <strong>자기 조 것만</strong> 묶어 전달</td></tr>
-<tr><td>교수자 몫</td><td>“더 알고 싶은 것”에 반복해서 나온 항목은 <strong>다음 학기 강의 소재</strong>다</td></tr>
+<tr><td>수합</td><td>공유 문서나 종이 슬립을 쓰고, 이름은 받지 않는다</td></tr>
+<tr><td>발표 중 작성</td><td>다음 조가 준비하는 사이에 1분씩 적게 한다. 몰아서 쓰면 기억이 뭉개진다</td></tr>
+<tr><td>전달</td><td>수업이 끝난 뒤 각 조에 자기 조에 관한 것만 묶어 전달한다</td></tr>
+<tr><td>교수자 몫</td><td>“더 알고 싶은 것”에 반복해서 나온 항목은 다음 학기 강의 소재로 쓴다</td></tr>
 </tbody></table></div>
 </section>
 
 <section id="s3">
 <h2 class="sec"><span class="num">§3</span>종합 정리<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　synthesis</span></h2>
-<p class="sechint">40분 · 이 수업의 마지막 강의. 이 시간은 줄이지 않는다</p>
+<p class="sechint">40분 · 이 수업의 마지막 강의이므로 이 시간은 줄이지 않는다</p>
 
-<h3 id="s3-1"><span class="n">3.1</span>말 사슬 다시 그리기</h3>
-<p>1주차에 그렸던 도식을 다시 그린다. 이번에는 각 고리에 <strong>우리가 배운 도구</strong>를 채워 넣는다.</p>
+<h3 id="s3-1"><span class="n">3.1</span>말 사슬 다시 그리기<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · the speech chain revisited</span></h3>
+<p>1주차에 그렸던 도식을 다시 그린다. 이번에는 각 고리 아래에 우리가 배운 도구를 채워 넣는다.</p>
 <div class="svgbox"><svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="말 사슬 각 고리에 이 수업에서 배운 주차별 도구를 채워 넣은 지도"><text x="98.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">화자</text><text x="98.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">언어 층위</text><rect x="14" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="98.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">의미 · 어휘</text><text x="98.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">음운</text><text x="186" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="282.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">화자</text><text x="282.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">생리 층위</text><rect x="198" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="282.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">호흡 · 발성</text><text x="282.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">조음</text><rect x="202" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="282.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">6주 호흡·발성</text><text x="370" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="466.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent)">음향 층위</text><rect x="382" y="64" width="168" height="56" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/><text x="466.0" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">음  파</text><rect x="386" y="128" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="142" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">1–4주 신호와 분석</text><rect x="386" y="151" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="165" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">5주 음원-필터</text><rect x="386" y="174" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="188" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">6–7주 음원 측정</text><rect x="386" y="197" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="211" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">9–11주 필터 측정</text><rect x="386" y="220" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="466.0" y="234" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">12주 초분절</text><text x="554" y="97.0" font-size="15" fill="var(--line2)">→</text><text x="650.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">청자</text><text x="650.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">생리 층위</text><rect x="566" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="650.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">와우</text><text x="650.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">청신경</text><rect x="570" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="650.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">13주 청각</text><text x="738" y="108.0" font-size="15" fill="var(--line2)">→</text><text x="834.0" y="24" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">청자</text><text x="834.0" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">언어 층위</text><rect x="750" y="64" width="168" height="78" rx="9" fill="var(--surface2)" stroke="var(--line2)" stroke-width="1"/><text x="834.0" y="90" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">음운</text><text x="834.0" y="112" text-anchor="middle" font-size="12.5" font-weight="400" fill="var(--ink2)">어휘 · 의미</text><rect x="754" y="150" width="160" height="19" rx="5" fill="var(--surface)" stroke="var(--accent-line)" stroke-width="1"/><text x="834.0" y="164" text-anchor="middle" font-size="11.5" fill="var(--accent)" font-weight="600">13주 범주적 지각</text><text x="470.0" y="318" text-anchor="middle" font-size="12.5" fill="var(--muted)">1주차에 그린 도식에, 한 학기 동안 배운 도구를 채워 넣은 것</text></svg></div><figcaption style="font-size:13px;color:var(--muted);margin-top:9px;line-height:1.6"><b>가운데 음향 층위에 도구가 몰려 있다.</b> 우리가 볼 수 있었던 것이 거기였기 때문이다. 양쪽 끝의 언어 층위는 이 수업에서 거의 다루지 않았다.</figcaption>
 <div class="key"><div class="lb">던질 질문</div>
-<p>1주차에 “음향 층위만이 비침습적으로 관찰할 수 있는 유일한 고리”라고 했다.
-   <strong>한 학기를 지낸 지금, 이 말에 동의하는가?</strong>
-   무엇을 볼 수 있었고 무엇을 볼 수 없었나?</p></div>
+<p>1주차에 “음향 층위는 비침습적으로 관찰할 수 있는 유일한 고리”라고 했다. 한 학기를 지낸 지금 이 말에 동의하는가. 무엇을 볼 수 있었고, 무엇을 볼 수 없었는가.</p></div>
 
-<h3 id="s3-2"><span class="n">3.2</span>관통하는 네 원리 ★</h3>
+<h3 id="s3-2"><span class="n">3.2</span>관통하는 네 원리 ★<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · four principles</span></h3>
 <h4>① 측정은 정의와 설정의 함수다</h4>
-<p>학기 내내 <strong>열 번</strong> 되풀이된 하나의 교훈이다.</p>
+<p>학기 내내 열 번이나 되풀이된 교훈이다. 주차마다 다른 모습으로 나타났지만 구조는 같았다.</p>
 <div class="tw"><table><thead><tr><th class="num">주차</th><th>같은 구조의 교훈</th></tr></thead><tbody>
-<tr><td class="num">1주</td><td>표본화율·비트를 안 적으면 재현되지 않는다</td></tr>
-<tr><td class="num">3주</td><td>기준 없는 dB는 의미가 없다</td></tr>
-<tr><td class="num">4주</td><td>창 길이가 스펙트로그램을 만든다</td></tr>
+<tr><td class="num">1주</td><td>표본화율과 비트 수를 적지 않으면 재현되지 않는다</td></tr>
+<tr><td class="num">3주</td><td>기준이 없는 dB는 의미가 없다</td></tr>
+<tr><td class="num">4주</td><td>창 길이가 스펙트로그램의 모양을 정한다</td></tr>
 <tr><td class="num">6주</td><td>Hz로 재면 없는 성별 차이가 생긴다</td></tr>
 <tr><td class="num">7주</td><td>pitch floor/ceiling이 jitter를 바꾼다</td></tr>
 <tr><td class="num">9주</td><td>max formant가 F2를 통째로 옮긴다</td></tr>
 <tr><td class="num">11주</td><td>하이패스가 COG를 바꾼다</td></tr>
-<tr><td class="num">12주</td><td>쉼 임계값이 <b>조음속도</b>를 정한다 (말속도는 안 변한다)</td></tr>
+<tr><td class="num">12주</td><td>쉼 임계값이 조음속도를 정한다 (말속도는 변하지 않는다)</td></tr>
 <tr><td class="num">13주</td><td>ISI가 범주적으로 들리는 정도를 바꾼다</td></tr>
-<tr><td class="num">14주</td><td>규준의 크기가 “이상”의 기준을 정한다</td></tr>
+<tr><td class="num">14주</td><td>규준의 크기가 '이상'의 기준을 정한다</td></tr>
 </tbody></table></div>
 <div class="key"><div class="lb">여기서 “아” 하는 순간이 오기를</div>
-<p>열 주차에 걸쳐 다른 얼굴로 나타났지만 <strong>전부 같은 이야기</strong>였다.</p>
-<p style="margin-top:8px">12주차 항목을 잘 볼 것. <strong>임계값을 바꾸면 조음속도는 25 %까지 움직이는데
-   말속도는 꿈쩍도 하지 않는다.</strong> 같은 “속도”라는 말을 쓰지만 서로 다른 것을 재고 있었다.
-   <strong>정의가 다르면 설정에 대한 반응도 다르다.</strong></p></div>
+<p>열 주차에 걸쳐 다른 얼굴로 나타났지만 모두 같은 이야기였다.</p>
+<p style="margin-top:8px">12주차 항목을 다시 보자. 쉼 임계값을 바꾸면 조음속도는 25 %까지 움직이는데 말속도는 전혀 변하지 않는다. 둘 다 '속도'라고 부르지만 서로 다른 것을 재고 있었기 때문이다. 정의가 다르면 설정에 반응하는 방식도 다르다.</p></div>
 
 <h4>② 음원과 필터는 나뉜다</h4>
 <div class="tw"><table><thead><tr><th>구간</th><th>보는 것</th><th>임상적 대응</th></tr></thead><tbody>
 <tr><td>6–7주차</td><td class="ok"><strong>음원</strong></td><td>음성장애</td></tr>
 <tr><td>9–11주차</td><td class="ok"><strong>필터</strong></td><td>조음장애</td></tr>
 </tbody></table></div>
-<p>5주차의 틀이 학기 후반을 둘로 갈랐고, 8주차 시험이 그 경계에 놓였다.</p>
+<p>5주차에 배운 음원-필터 이론(<em>source-filter theory</em>)의 틀이 학기 후반을 둘로 갈랐고, 8주차 시험이 그 경계에 놓였다. 14주차 임상 트랙의 합성 프로파일에서도 음원만 바꾼 프로파일은 모음 공간이 그대로였고, 모음 공간만 줄인 프로파일은 음원 지표가 그대로였다.</p>
 
 <h4>③ 숫자는 지각을 대신하지 못한다</h4>
-<p>7주차의 결론이자 이 수업의 윤리적 입장이다.
-   <strong>음향 분석은 기록하고 추적한다. 진단은 사람이 한다.</strong></p>
+<p>7주차의 결론이자 이 수업이 지키는 윤리적 입장이다. 음향 분석은 기록하고 추적하는 도구이고, 진단은 사람이 한다.</p>
 
 <h4>④ 지표는 값을 주지만 경계는 주지 않는다</h4>
-<p>학기 후반에 반복해서 만난 벽이다. <strong>계산은 되는데 “그래서 얼마부터가 문제인가”에는 답이 없다.</strong></p>
+<p>학기 후반에 거듭 부딪힌 벽이다. 계산은 할 수 있는데 “그래서 얼마부터가 문제인가”라는 물음에는 지표가 답하지 않는다.</p>
 <div class="tw"><table><thead><tr><th class="num">주차</th><th>지표</th><th class="hl">경계는?</th></tr></thead><tbody>
-<tr><td class="num">7주</td><td>jitter · CPP 규준치</td><td class="hl">프로그램·과제·설정에 딸린 값이다</td></tr>
+<tr><td class="num">7주</td><td>jitter · CPP 규준치</td><td class="hl">프로그램, 과제, 설정에 딸린 값이다</td></tr>
 <tr><td class="num">9주</td><td>Pillai 점수 (모음 합류)</td><td class="hl"><strong>공인된 경계값이 아예 없다</strong></td></tr>
 <tr><td class="num">10주</td><td>Cohen의 d (VOT 병합)</td><td class="hl">d = 1이어도 62 %가 겹친다</td></tr>
-<tr><td class="num">11주</td><td>하이패스 차단주파수</td><td class="hl">“맞는 값”이 없다. 안정되는 지점을 찾을 뿐</td></tr>
-<tr><td class="num">13주</td><td>범주성 지수</td><td class="hl">봉우리는 늘 0.75. 상대 비교만 가능</td></tr>
+<tr><td class="num">11주</td><td>하이패스 차단주파수</td><td class="hl">'맞는 값'은 없고, 값이 안정되는 지점을 찾을 뿐이다</td></tr>
+<tr><td class="num">13주</td><td>범주성 지수</td><td class="hl">봉우리는 늘 0.75여서 상대 비교만 할 수 있다</td></tr>
 <tr><td class="num">14주</td><td>p &lt; .05</td><td class="hl"><strong>표본 크기가 정한다</strong></td></tr>
 </tbody></table></div>
 <div class="key">
   <div class="lb">그러면 무엇을 할 수 있나</div>
-  <p><strong>비교다.</strong> 절대 기준이 없을 때 남는 것은
-     <strong>같은 조건에서 잰 것끼리의 비교</strong>뿐이다 —
-     화자끼리, 세대끼리, 치료 전후끼리, 같은 사람의 다른 모음 쌍끼리.</p>
-  <p style="margin-top:8px">그래서 이 수업이 <strong>반 전체 데이터를 계속 모은 것</strong>이다.
-     바깥의 규준을 빌려오는 대신 <strong>우리 조건에서의 분포</strong>를 만들었다.
-     14주차에서 본 대로, 그 규준조차 작으면 위험하지만 —
-     <strong>적어도 어떤 조건에서 잰 것인지는 안다.</strong></p>
+  <p>남는 것은 비교다. 절대 기준이 없을 때 할 수 있는 일은 같은 조건에서 잰 것끼리 비교하는 것뿐이다. 화자끼리, 세대끼리, 치료 전후끼리, 같은 사람의 다른 모음 쌍끼리 비교하는 식이다.</p>
+  <p style="margin-top:8px">이 수업이 반 전체의 데이터를 계속 모으려 한 것도 그 때문이다. 바깥의 규준을 빌려 오는 대신 우리 조건에서 얻은 분포를 만들고자 했다. 14주차에서 본 대로 그 규준조차 작으면 위험하지만, 적어도 어떤 조건에서 잰 것인지는 알 수 있다.</p>
 </div>
 <div class="warn">
-  <div class="lb">이것이 ③과 이어진다</div>
-  <p>③에서 “숫자는 지각을 대신하지 못한다”고 했다. 왜 대신하지 못하는가.
-     <strong>숫자에는 경계가 없기 때문이다.</strong>
-     “CPP가 12 dB이다”는 사실이지만 “그러므로 병리적이다”는 사실이 아니다.
-     <strong>그 판단은 언제나 사람이, 맥락 속에서 한다.</strong></p>
+  <div class="lb">④는 ③과 이어진다</div>
+  <p>③에서 숫자는 지각을 대신하지 못한다고 했다. 왜 대신하지 못하는가. 숫자에는 경계가 없기 때문이다. “CPP가 12 dB이다”는 사실이지만 “그러므로 병리적이다”는 사실이 아니며, 그 판단은 언제나 사람이 맥락 속에서 한다.</p>
+</div>
+<div class="key" style="border-left-color:var(--lab)">
+  <div class="lb" style="color:var(--lab)">이번 학기의 실천 — 합성음에서 검증한 절차만 실제 녹음에 쓴다</div>
+  <p>이번 학기의 실습은 대부분 두 단계로 진행했다. 실습 A에서는 입력값을 아는 합성음으로 절차를 익히고, 실습 B에서는 같은 절차를 실제 녹음에 적용했다. 이 순서는 네 원리 가운데 둘과 맞닿아 있다.</p>
+  <p style="margin-top:8px">A는 원리 ①을 손으로 확인하는 자리였다. 정답을 알고 있으니 max formant 하나, pitch ceiling 하나를 바꿨을 때 값이 얼마나 달라지는지를 오차로 잴 수 있었다. 반대로 B는 원리 ③과 이어진다. 실제 녹음에는 정답이 없어서 임상가의 청지각 평정, 연구진이 공개한 값, 짝이 잰 값과 맞춰 볼 수밖에 없었고, 숫자의 의미는 결국 사람의 판단과 견주어야 정해졌다.</p>
+  <p style="margin-top:8px">그래서 순서가 중요하다. A를 통과했다고 B의 결과가 맞는다는 보장은 없지만, A를 통과하지 못한 절차로 얻은 B의 숫자는 믿을 근거가 아예 없다. 합성음에서 검증한 절차만 실제 녹음에 쓴다는 원칙은 이 둘을 한 문장으로 묶은 것이다.</p>
 </div>
 
-<h3 id="s3-3"><span class="n">3.3</span>우리가 실제로 재본 것</h3>
-<p>이 수업 자료의 수치에는 <strong>✓ 검증</strong> 표시가 붙어 있었다.
-   문헌에서 옮겨 적은 것이 아니라 <strong>실제로 합성하고 되분석해 확인한 값</strong>이라는 뜻이다.
-   학기 전체에 <strong>26곳</strong>이 있었다. 대표적인 것을 모으면 이렇다.</p>
+<h3 id="s3-3"><span class="n">3.3</span>우리가 실제로 재 본 것<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · what we actually verified</span></h3>
+<p>이 수업 자료의 수치에는 ✓ 검증 표시가 붙어 있었다. 문헌에서 옮겨 적은 값이 아니라 실제로 합성하고 되분석하거나 직접 계산해서 확인한 값이라는 뜻이다. 실습 A의 정답 상자도 모두 이런 값이었다. 학기 전체에 걸쳐 수십 곳에 이 표시가 있었고, 대표적인 것을 모으면 다음과 같다.</p>
 <div class="tw"><table><thead><tr><th class="num">주차</th><th>확인한 것</th><th class="num">결과</th></tr></thead><tbody>
 <tr><td class="num">3주</td><td>위상 180°로 더하면 정말 상쇄되는가</td><td class="num ok">RMS = 0</td></tr>
 <tr><td class="num">3주</td><td>폐관의 배음이 1 : 3 : 5인가</td><td class="num ok">150 · 450 · 750 Hz</td></tr>
@@ -322,27 +350,21 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
 </tbody></table></div>
 <div class="key">
   <div class="lb">이 표가 말하는 것</div>
-  <p><strong>절반은 “잘 맞는다”이고 절반은 “크게 틀린다”이다.</strong>
-     그것이 정직한 그림이다. 도구는 조건이 맞으면 놀랍도록 정확하고,
-     조건이 어긋나면 <strong>조용히 그리고 크게</strong> 틀린다.</p>
-  <p style="margin-top:8px"><strong>“조용히”가 핵심이다.</strong> 옥타브 오류도, 하이패스를 안 건 COG도,
-     소표본 z점수도 <strong>오류 메시지를 내지 않는다.</strong> 그냥 그럴듯한 숫자를 준다.
-     <strong>그래서 스스로 확인하는 습관이 필요했다.</strong></p>
+  <p>절반은 잘 맞았고 절반은 크게 틀렸다. 그것이 정직한 그림이다. 도구는 조건이 맞으면 놀라울 만큼 정확하지만, 조건이 어긋나면 아무 경고 없이 크게 틀린다.</p>
+  <p style="margin-top:8px">경고가 없다는 점이 가장 위험하다. 옥타브 오류도, 하이패스를 걸지 않은 COG도, 작은 규준으로 낸 z점수도 오류 메시지를 내지 않고 그럴듯한 숫자를 내놓을 뿐이다. 그래서 스스로 확인하는 습관이 필요했다.</p>
 </div>
 <div class="warn">
   <div class="lb">여러분에게 남기는 실천 하나</div>
-  <p>새 도구를 쓰게 되거든 <strong>답을 아는 신호를 먼저 넣어보라.</strong>
-     150 Hz 순음을 넣어 150이 나오는지, 지정한 포먼트로 합성해 그 값이 회수되는지.
-     <strong>5분이면 되고, 이 습관 하나가 학기 내내 우리를 구했다.</strong></p>
+  <p>새 도구를 쓰게 되면 답을 아는 신호를 먼저 넣어 본다. 150 Hz 순음을 넣어 150이 나오는지, 지정한 포먼트로 합성한 소리에서 그 값이 회수되는지 확인하는 데는 5분이면 충분하다. 이번 학기 실습 A가 매주 한 일이 바로 이것이었고, 이 습관 하나가 학기 내내 우리를 여러 번 구했다.</p>
 </div>
 
-<h3 id="s3-4"><span class="n">3.4</span>AI와 함께한 학기</h3>
-<p>한 학기 동안 <strong>열두 개의 바이브 코딩 미션</strong>(#01 ~ #12)을 했다. 되물어 볼 것.</p>
+<h3 id="s3-4"><span class="n">3.4</span>AI와 함께한 학기<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · a semester with AI</span></h3>
+<p>한 학기 동안 열두 개의 바이브 코딩 미션(#01 ~ #12)을 했다. 다음 물음을 스스로 되짚어 보자.</p>
 <ul>
-<li>AI가 준 코드에서 찾아낸 오류 중 <strong>가장 인상적이었던 것</strong>은?</li>
-<li>프롬프트를 <strong>어떻게 쓸 때</strong> 원하는 결과가 나왔나?</li>
-<li><strong>검증값을 미리 계산해 두는 습관</strong>이 실제로 도움이 되었나?</li>
-<li>AI가 <strong>조용히 틀린</strong> 경우가 있었나? 어떻게 알아챘나?</li>
+<li>AI가 준 코드에서 찾아낸 오류 가운데 가장 인상적이었던 것은 무엇인가?</li>
+<li>프롬프트를 어떻게 쓸 때 원하는 결과가 나왔나?</li>
+<li>합성음으로 검증값을 먼저 확인하는 습관이 실제로 도움이 되었나?</li>
+<li>AI가 오류 메시지 없이 틀린 경우가 있었나? 어떻게 알아챘나?</li>
 </ul>
 <div class="tw"><table><thead><tr><th>미션에서 반복된 AI의 실수</th><th class="ok">알아채는 법</th></tr></thead><tbody>
 <tr><td>축 반전을 빠뜨린다 <em>(#08 모음 사각도)</em></td><td class="ok">/이/가 왼쪽 위에 오는가</td></tr>
@@ -352,88 +374,116 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
 <tr><td>하이패스를 대역통과로 구현한다 <em>(#10)</em></td><td class="ok">COG가 엉뚱하게 올라간다</td></tr>
 <tr><td>전처리 조건 기록을 빠뜨린다 <em>(#10)</em></td><td class="ok">CSV에 주석 행이 있는가</td></tr>
 </tbody></table></div>
-<p><strong>공통점을 보라.</strong> 여섯 가지 모두 <strong>코드가 오류를 내지 않는다.</strong>
-   돌아가고, 그림도 나오고, 숫자도 나온다. <strong>틀렸을 뿐이다.</strong>
-   그래서 확인 방법이 언제나 <strong>“결과가 말이 되는가”</strong>였다.</p>
+<p>여섯 가지의 공통점은 코드가 오류를 내지 않는다는 데 있다. 코드는 돌아가고 그림도 숫자도 나오는데, 다만 틀렸을 뿐이다. 그래서 알아채는 방법도 언제나 결과가 말이 되는지 확인하는 것이었고, 가장 확실한 확인은 정답을 아는 합성음에 먼저 돌려 보는 것이었다.</p>
 <div class="key"><div class="lb">마무리 메시지</div>
-<p>도구는 계속 바뀐다. 3년 뒤에는 Praat도 Parselmouth도 다른 것으로 대체될 수 있다.
-   <strong>바뀌지 않는 것은 “이 숫자가 맞는지 어떻게 아는가”라는 질문이다.</strong>
-   그 질문을 던질 수 있으면 어떤 도구가 와도 쓸 수 있다.</p></div>
+<p>도구는 계속 바뀐다. 3년 뒤에는 Praat도 Parselmouth도 다른 것으로 대체되어 있을지 모른다. 바뀌지 않는 것은 “이 숫자가 맞는지 어떻게 아는가”라는 질문이다. 그 질문을 던질 수 있으면 어떤 도구가 와도 쓸 수 있다.</p></div>
 </section>
 
 <section id="s4">
 <h2 class="sec"><span class="num">§4</span>그다음<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　where to go next</span></h2>
 <p class="sechint">20분</p>
-<h3>이 다음에 갈 수 있는 곳</h3>
+<h3>이 다음에 갈 수 있는 곳<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · next directions</span></h3>
 <div class="tw"><table><thead><tr><th>방향</th><th>무엇을 더 배우나</th></tr></thead><tbody>
-<tr><td><strong>임상</strong></td><td>음성장애·마비말장애·조음음운장애 평가와 중재, 후두 영상, 공기역학 검사</td></tr>
+<tr><td><strong>임상</strong></td><td>음성장애·마비말장애·조음음운장애의 평가와 중재, 후두 영상, 공기역학 검사</td></tr>
 <tr><td><strong>연구</strong></td><td>실험음성학, 사회음성학, 음성 코퍼스 구축, 실험 설계와 통계</td></tr>
 <tr><td><strong>공학</strong></td><td>음성인식·합성, 화자인식, 딥러닝 기반 음성 처리</td></tr>
-<tr><td>인접</td><td>청각학, 심리언어학, 언어습득</td></tr>
+<tr><td>인접 분야</td><td>청각학, 심리언어학, 언어습득</td></tr>
 </tbody></table></div>
-<h3>도구의 다음 단계</h3>
+<h3>도구의 다음 단계<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · next tools</span></h3>
 <div class="tw"><table><thead><tr><th>도구</th><th>쓰임</th></tr></thead><tbody>
-<tr><td><strong>Montreal Forced Aligner</strong></td><td>대량 음성의 자동 정렬 — TextGrid를 손으로 안 만들어도 된다</td></tr>
+<tr><td><strong>Montreal Forced Aligner</strong></td><td>대량 음성의 자동 정렬. TextGrid를 손으로 만들지 않아도 된다</td></tr>
 <tr><td>openSMILE / VoiceSauce</td><td>대규모 음향 특징 추출</td></tr>
 <tr><td>R (phonR, tidyverse)</td><td>음성 데이터 통계와 시각화</td></tr>
 <tr><td>Whisper 등 ASR</td><td>전사 자동화</td></tr>
 </tbody></table></div>
 <div class="key">
   <div class="lb">무엇부터 손대면 좋은가</div>
-  <p><strong>TextGrid를 손으로 만드는 데 지쳤다면 Montreal Forced Aligner</strong>가 첫 번째다.
-     9~12주차에 라벨링으로 쓴 시간을 생각하면 효용이 가장 크고,
-     <strong>여러분은 이미 정렬 결과가 맞는지 판단할 눈을 갖고 있다.</strong>
-     자동 정렬도 결국 <strong>눈으로 확인해야 한다는 점은 같다.</strong></p>
-  <p style="margin-top:8px">통계를 더 하고 싶다면 <strong>R보다 지금 쓰는 Python을 이어가는 편</strong>이
-     학습 비용이 적다. 필요한 것은 대개 <code>scipy.stats</code>와 <code>statsmodels</code>로 된다.</p>
+  <p>TextGrid를 손으로 만드는 데 지쳤다면 Montreal Forced Aligner가 첫 번째다. 9~12주차에 라벨링으로 쓴 시간을 생각하면 효용이 가장 크고, 여러분은 이미 정렬 결과가 맞는지 판단할 눈을 갖고 있다. 자동 정렬도 결국 눈으로 확인해야 한다는 점은 같다. 정답 TextGrid가 있는 합성음에 먼저 돌려 보는 것도 좋은 시작이다.</p>
+  <p style="margin-top:8px">통계를 더 하고 싶다면 R로 넘어가기보다 지금 쓰는 Python을 이어 가는 편이 학습 비용이 적다. 필요한 것은 대개 <code>scipy.stats</code>와 <code>statsmodels</code>로 할 수 있다.</p>
 </div>
 <div class="key"><div class="lb">딥러닝 한마디</div>
-<p>요즘 음성 처리는 대부분 학습 기반이다. 그러나 <strong>무엇을 특징으로 쓸지,
-   결과가 말이 되는지 판단하는 것</strong>은 여전히 오늘 배운 지식을 필요로 한다.
-   음성인식이 쓰는 MFCC의 <strong>Mel 척도가 곧 13주차의 청각 척도</strong>다.</p></div>
-<h3>데이터 인계</h3>
+<p>요즘 음성 처리는 대부분 학습 기반이다. 그래도 무엇을 특징으로 쓸지, 결과가 말이 되는지 판단하는 일에는 여전히 이 수업에서 배운 지식이 필요하다. 음성인식이 쓰는 MFCC의 Mel 척도가 곧 13주차에 배운 청각 척도다.</p></div>
+<h3>이번 학기에 쓴 공개 음성 자료<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · public speech databases</span></h3>
+<p>실습 B와 14주차 프로젝트에서 쓴 공개 자료를 모아 둔다. 졸업 논문이나 다음 연구를 시작할 때 출발점이 될 수 있다. 쓰기 전에 각 자료의 이용 조건을 다시 확인한다.</p>
+<div class="tw"><table><thead><tr><th>자료</th><th>내용</th><th>이용 조건</th></tr></thead><tbody>
+<tr><td>Hillenbrand 외 (1995)</td><td>미국 영어 hVd 12모음, 남·여·남아·여아, 연구진의 포먼트 측정표</td><td>MIT 라이선스 (GitHub)</td></tr>
+<tr><td>서울 코퍼스 (OpenSLR 113)</td><td>서울말 화자 40명의 인터뷰 자발화, 음소 단위 TextGrid</td><td>CC BY-NC 2.0</td></tr>
+<tr><td>PVQD</td><td>지속 모음과 CAPE-V 문장, 임상가의 CAPE-V·GRBAS 평정</td><td>Mendeley Data, 라이선스는 페이지에서 확인</td></tr>
+<tr><td>VOICED (PhysioNet)</td><td>병리 150명, 정상 58명의 지속 /a/, 8 kHz</td><td>PhysioNet 이용 조건 확인</td></tr>
+<tr><td>Saarbrücken Voice Database</td><td>2000명 이상의 음성과 EGG</td><td>사용자 계정 필요</td></tr>
+<tr><td>UCLASS</td><td>말더듬 화자의 녹음, 일부 전사</td><td>연구·교육 목적 무료, 출처와 Wellcome Trust 지원 명시</td></tr>
+</tbody></table></div>
+<h3>데이터 인계<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · data handover</span></h3>
 <ul>
-<li>올해 반 데이터를 동의 범위 안에서 익명화해 보관한다</li>
-<li>내년 수업의 규준 자료로 쓴다 — <strong>매년 쌓이면 자체 규준이 된다</strong> (7주차 §2.3의 실현)</li>
-<li>개인 음성 코퍼스는 각자 보관을 권한다</li>
+<li>올해 반 데이터와 교수자 녹음은 동의한 범위 안에서 익명화해 보관한다</li>
+<li>내년 수업의 규준 자료로 쓴다. 매년 쌓이면 자체 규준이 된다 (7주차 §2.3의 실현)</li>
+<li>공개 DB의 파일은 다시 배포하지 않고, 쓴 파일의 목록과 출처만 남긴다</li>
+<li>개인 음성 코퍼스는 각자 보관하기를 권한다</li>
 </ul>
 </section>
 
 <section id="s5">
 <h2 class="sec"><span class="num">§5</span>마무리<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　closing</span></h2>
-<h3>성적 산출</h3>
+<h3>성적 산출<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · grading</span></h3>
 <div class="tw"><table><thead><tr><th>항목</th><th class="num">비중</th></tr></thead><tbody>
 <tr><td>주차별 실습 과제 (12회, 최고 10회 반영)</td><td class="num">35 %</td></tr>
 <tr><td>중간 실기시험 (8주)</td><td class="num">20 %</td></tr>
 <tr><td>기말 프로젝트 (산출물 20 + 발표 10)</td><td class="num">30 %</td></tr>
 <tr><td class="ok"><strong>바이브 코딩 검증 로그</strong></td><td class="num ok"><strong>10 %</strong></td></tr>
-<tr><td>참여 · 페어실습 기여</td><td class="num">5 %</td></tr>
+<tr><td>참여 · 페어 실습 기여</td><td class="num">5 %</td></tr>
 </tbody></table></div>
 
-<h3>다음 학기를 위한 기록</h3>
-<p class="sechint">교수자용 — 지금 적어두지 않으면 잊는다</p>
+<h3>다음 학기를 위한 기록<span style="font-weight:400;color:var(--muted);font-size:0.78em"> · notes for next term</span></h3>
+<p class="sechint">교수자용 — 지금 적어 두지 않으면 잊는다</p>
 <ul class="chk" data-key="w15memo">
-<li><input type="checkbox" id="p11"><label for="p11"><b>시간 배분</b> — 실습이 넘친 주차 / 남은 주차</label></li>
-<li><input type="checkbox" id="p12"><label for="p12"><b>기술적 문제</b> — 설치 실패, 녹음 품질, 도구 오류</label></li>
-<li><input type="checkbox" id="p13"><label for="p13"><b>학생 반응</b> — 가장 잘 통한 데모, 가장 어려워한 개념</label></li>
-<li><input type="checkbox" id="p14"><label for="p14"><b>과제 난이도</b> — A/B/C 단계가 적절했나</label></li>
-<li><input type="checkbox" id="p15"><label for="p15"><b>자료 보완</b> — 실제 발화로 교체하면 좋을 합성 데모</label></li>
+<li><input type="checkbox" id="p11"><label for="p11">시간 배분 — 실습이 넘친 주차와 시간이 남은 주차, A와 B의 비율이 적절했는지</label></li>
+<li><input type="checkbox" id="p12"><label for="p12">기술적 문제 — 설치 실패, 녹음 품질, 도구 오류</label></li>
+<li><input type="checkbox" id="p13"><label for="p13">학생 반응 — 가장 잘 통한 데모, 가장 어려워한 개념</label></li>
+<li><input type="checkbox" id="p14"><label for="p14">과제 난이도 — A/B/C 단계가 적절했나</label></li>
+<li><input type="checkbox" id="p15"><label for="p15">B 자료 — 내려받은 공개 DB와 교수자 녹음의 현황, 녹음이 가능해지면 학생 녹음으로 바꿀 단계</label></li>
+<li><input type="checkbox" id="p17"><label for="p17">A 자료 — 주차별 합성음 묶음과 정답 상자가 최신 판과 맞는지 점검</label></li>
 <li><input type="checkbox" id="p16"><label for="p16">반 데이터 익명화 및 보관 완료</label></li>
 </ul>
 
 <div class="goal" style="margin-top:34px">
   <div class="lb">마지막 슬라이드</div>
   <p style="font-size:16px;line-height:1.9;margin-bottom:14px">
-     이 학기에 우리가 한 일은 <strong>“소리를 숫자로 바꾸는 법”</strong>을 배운 것이 아니다.<br>
-     <strong>그 숫자를 얼마나 믿어야 하는지 판단하는 법</strong>을 배운 것이다.</p>
+     이 학기에 우리가 배운 것은 소리를 숫자로 바꾸는 법이 아니라,<br>
+     <strong>그 숫자를 얼마나 믿어야 하는지 판단하는 법</strong>이었다.</p>
   <p style="font-size:19px;font-weight:700;color:var(--accent);margin:0">
      “이 값이 맞는지 당신은 어떻게 아는가?”</p>
 </div>
+</section>
 
-
+<section id="s6">
+<h2 class="sec"><span class="num">부록</span>용어와 자주 나오는 질문<span style="font-weight:400;color:var(--muted);font-size:0.62em;letter-spacing:0">　glossary &amp; FAQ</span></h2>
 <h3>용어 대조표 <span style="font-weight:400;color:var(--muted);font-size:14px">· Korean – English</span></h3>
-<div class="key" style="margin-bottom:16px"><div class="lb">이 표를 쓰는 법</div><p><strong>말과학은 영어로 speech sciences 다.</strong> 교과서도 논문도 Praat의 메뉴도 전부 영어이므로, 한국어 용어만 알면 <strong>자료를 찾을 수가 없다.</strong></p><p style="margin-top:8px">본문에서 용어가 처음 나올 때 괄호로 영어를 함께 적어 두었다. 이 표는 그것을 한자리에 모은 것이다. <strong>검색할 때는 영어로 하는 편이 압도적으로 낫다.</strong></p></div><div class="tw"><table><thead><tr><th>한국어</th><th>English</th><th>메모</th></tr></thead><tbody><tr><td><strong>말 사슬</strong></td><td><em>speech chain</em></td><td>1주차의 그림을 다시 그린다</td></tr><tr><td><strong>음원-필터 이론</strong></td><td><em>source-filter theory</em></td><td>학기 후반을 둘로 갈랐다</td></tr><tr><td><strong>강제 정렬</strong></td><td><em>forced alignment</em></td><td>Montreal Forced Aligner</td></tr><tr><td><strong>음향 특징 추출</strong></td><td><em>acoustic feature extraction</em></td><td>openSMILE · VoiceSauce</td></tr><tr><td><strong>자동 음성 인식</strong></td><td><em>automatic speech recognition (ASR)</em></td><td>Whisper 등</td></tr><tr><td><strong>MFCC</strong></td><td><em>mel-frequency cepstral coefficients</em></td><td>Mel 척도 = 청각 척도</td></tr></tbody></table></div>
-<footer><p>말과학 15주차 · 한 학기 동안 수고 많았습니다.</p></footer>
+<div class="key" style="margin-bottom:16px"><div class="lb">이 표를 쓰는 법</div><p>말과학은 영어로 speech sciences다. 교과서와 논문, Praat의 메뉴가 모두 영어이므로 한국어 용어만 알아서는 자료를 찾기 어렵다.</p><p style="margin-top:8px">본문에서 용어가 처음 나올 때 괄호로 영어를 함께 적어 두었고, 이 표는 그것을 한자리에 모은 것이다. 자료를 검색할 때는 영어로 찾는 편이 훨씬 낫다.</p></div><div class="tw"><table><thead><tr><th>한국어</th><th>English</th><th>메모</th></tr></thead><tbody><tr><td><strong>말 사슬</strong></td><td><em>speech chain</em></td><td>1주차의 그림을 다시 그린다</td></tr><tr><td><strong>음원-필터 이론</strong></td><td><em>source-filter theory</em></td><td>학기 후반을 둘로 갈랐다</td></tr><tr><td><strong>합성음</strong></td><td><em>synthetic speech</em></td><td>실습 A</td></tr><tr><td><strong>되분석</strong></td><td><em>re-analysis</em></td><td>만든 소리를 다시 재어 입력값과 비교</td></tr><tr><td><strong>정답을 아는 자료</strong></td><td><em>known-answer data · ground truth</em></td><td></td></tr><tr><td><strong>검증</strong></td><td><em>validation</em></td><td></td></tr><tr><td><strong>청지각 평정</strong></td><td><em>auditory-perceptual rating</em></td><td>CAPE-V · GRBAS</td></tr><tr><td><strong>평가자 간 일치도</strong></td><td><em>inter-rater agreement</em></td><td>실습 B의 검증 기준</td></tr><tr><td><strong>동료 평가</strong></td><td><em>peer feedback</em></td><td>서술만 받는다</td></tr><tr><td><strong>평가 기준표</strong></td><td><em>rubric</em></td><td></td></tr><tr><td><strong>강제 정렬</strong></td><td><em>forced alignment</em></td><td>Montreal Forced Aligner</td></tr><tr><td><strong>음향 특징 추출</strong></td><td><em>acoustic feature extraction</em></td><td>openSMILE · VoiceSauce</td></tr><tr><td><strong>자동 음성 인식</strong></td><td><em>automatic speech recognition (ASR)</em></td><td>Whisper 등</td></tr><tr><td><strong>MFCC</strong></td><td><em>mel-frequency cepstral coefficients</em></td><td>Mel 척도 = 청각 척도</td></tr><tr><td><strong>공개 음성 데이터베이스</strong></td><td><em>public speech database · corpus</em></td><td>이용 조건을 확인한다</td></tr></tbody></table></div>
+
+<h3>자주 나오는 질문</h3>
+<div class="qa"><div class="q">합성음으로 연습한 것이 실제 측정에 정말 도움이 되었나요?</div>
+<p class="a">절차를 익히고 도구를 검증하는 데는 합성음이 가장 좋았다. 정답을 알기 때문에 내 측정이나 코드가 틀렸을 때 곧바로 알 수 있었다. 다만 합성음은 실제 목소리보다 훨씬 깨끗해서, 토큰마다 달라지는 값이나 동시조음, 잡음 같은 문제는 실제 녹음에서만 만났다. 그래서 매주 A와 B를 모두 했다.</p></div>
+<div class="qa"><div class="q">B의 결과가 기대와 달랐는데, 발표에서 A 결과까지 보여야 하나요?</div>
+<p class="a">그렇다. A의 검증 결과가 있어야 B의 결과가 절차의 문제인지 자료의 성질인지 가를 수 있다. A를 통과했는데 B가 기대와 다르다면, 그 차이 자체가 이 조가 발견한 것이다. 무엇이 달라졌는지 한 문장으로 말하면 평가 기준표의 A·B 항목을 채운다.</p></div>
+<div class="qa"><div class="q">수업이 끝난 뒤에도 공개 음성 자료를 써도 되나요?</div>
+<p class="a">각 자료의 이용 조건을 따르면 된다. 서울 코퍼스처럼 비영리 조건이 붙은 자료가 있고, Saarbrücken처럼 계정이 필요한 자료도 있다. 장애음성 자료는 화자를 추측하거나 다시 배포하지 않는다는 원칙이 수업 밖에서도 그대로 적용된다.</p></div>
+<h3>흔한 오해 바로잡기</h3>
+<div class="tw"><table><thead><tr><th>흔한 생각</th><th>실제로는</th></tr></thead><tbody>
+<tr><td>합성음에서 맞았으니 실제 녹음에서도 맞는다</td><td>합성음은 깨끗하다. 실제 녹음에서 다시 확인해야 하고, 그 차이를 함께 보고한다</td></tr>
+<tr><td>A 검증은 B를 하기 위한 준비일 뿐이라 발표할 필요가 없다</td><td>A의 결과가 B의 숫자를 얼마나 믿어도 되는지 알려 준다. 발표에서 한 장으로 보인다</td></tr>
+<tr><td>음향 지표가 기준을 넘으면 병리다</td><td>지표에는 경계가 없다. 판단은 사람이 맥락 속에서 한다 (원리 ③·④)</td></tr>
+<tr><td>오류 메시지가 없으면 코드가 맞다</td><td>AI의 실수 여섯 가지는 모두 오류 없이 틀렸다. 정답을 아는 신호를 먼저 넣어 본다</td></tr>
+</tbody></table></div>
+
+<footer><p><strong>참고문헌과 자료</strong></p>
+<p>Cesari, U. et al. (2018). A new database of healthy and pathological voices. <em>Computers &amp; Electrical Engineering, 68</em>, 310–321. 자료: VOICED, PhysioNet<br>
+   Hillenbrand, J., Getty, L. A., Clark, M. J., &amp; Wheeler, K. (1995). Acoustic characteristics of American English vowels. <em>JASA, 97</em>(5), 3099–3111.<br>
+   Howell, P., Davis, S., &amp; Bartrip, J. (2009). The University College London Archive of Stuttered Speech (UCLASS). <em>JSLHR, 52</em>(2), 556–569.<br>
+   Perceptual Voice Qualities Database (PVQD). Mendeley Data. doi:10.17632/9dz247gnyb<br>
+   Saarbrücken Voice Database. Universität des Saarlandes (사용자 계정 필요)<br>
+   Yun, W. et al. (2015). The Korean Corpus of Spontaneous Speech. <em>Phonetics and Speech Sciences, 7</em>(2). 자료: OpenSLR 113 (CC BY-NC 2.0)</p>
+<p style="margin-top:16px">말과학 15주차 · §3.3 표의 수치는 각 주차에서 합성 후 되분석하거나 직접 계산해 확인한 값을 다시 모은 것이다. 공개 음성 자료는 각 자료의 이용 조건을 따른다.
+   한 학기 동안 수고 많았습니다.</p></footer>
 </section>
 </main></div>
 
